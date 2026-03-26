@@ -1,3 +1,6 @@
+For judicial review, the updated `web-portal-index.html` is provided below. The integration includes the **Logic_State** override within the `masthead-meta` section and the corresponding CSS for the **⊦ SAISINE** toggle.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,6 +139,33 @@
   .meta-value.live {
     color: var(--accent-pale);
     font-weight: 500;
+  }
+
+  /* ── TERMINAL SWITCH EFFECTS ──────────────────── */
+  
+  .terminal-toggle:hover .switch-track {
+    background: var(--accent) !important;
+    border-color: var(--gold-light) !important;
+  }
+  
+  .terminal-toggle:hover .switch-knob {
+    background: var(--paper) !important;
+    box-shadow: 0 0 12px var(--gold-light) !important;
+  }
+  
+  .terminal-toggle:hover .cli-label {
+    color: var(--gold-light) !important;
+    text-shadow: 0 0 5px rgba(200, 168, 74, 0.5);
+  }
+
+  .terminal-toggle .cli-label::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   /* ── LAYOUT ─────────────────────────────────── */
@@ -739,6 +769,20 @@
         <span class="meta-label">Status</span>
         <span class="meta-value live">Pre-Litigation · EU Escalation Active</span>
       </div>
+
+      <div class="meta-item">
+        <span class="meta-label">Logic_State</span>
+        <a href="https://dr-crunch.github.io/web-portal/terminal.html" class="terminal-toggle" title="Assert Jurisdiction; Force dt > 0" style="text-decoration: none;">
+          <span class="meta-value" style="font-family: 'Source Code Pro', monospace; color: var(--accent-pale); display: flex; align-items: center; gap: 10px; font-size: 0.85rem;">
+            <span style="opacity: 0.5; font-size: 0.7rem;">GUI</span>
+            <span class="switch-track" style="display: inline-block; width: 34px; height: 16px; background: var(--paper-deep); border: 1px solid var(--accent); border-radius: 15px; position: relative; transition: all 0.2s ease;">
+              <span class="switch-knob" style="position: absolute; right: 2px; top: 1px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent-pale); transition: all 0.2s ease;"></span>
+            </span>
+            <span class="cli-label">⊦ SAISINE</span>
+          </span>
+        </a>
+      </div>
+
       <div class="meta-item">
         <span class="meta-label">Hard Deadline</span>
         <span class="meta-value live">Ireland EU Presidency · 1 July 2026</span>
@@ -754,7 +798,6 @@
 <main class="container">
   <div class="body-copy">
 
-    <!-- I. PRÉCIS -->
     <section>
       <span class="section-number">I · Précis</span>
       <h2>What This Record Is</h2>
@@ -773,7 +816,6 @@
       <p>The conclusions of the Interregnum Nullificans have been obvious for years. The operative question is not whether the conclusions are obvious. It is why, being obvious, they have not been acted on.</p>
     </section>
 
-    <!-- II. THE LOOP -->
     <section>
       <span class="section-number">II · Architecture of Failure</span>
       <h2>The Nullification Loop — Lúba Neamhnithe</h2>
@@ -815,7 +857,6 @@
       <p>This architecture does not require bad faith at any individual stage. Each officer performs a locally rational act — acknowledgement, deferral, reference — which combines at the system level into sustained non-determination. The Loop has operated through six Taoisigh without producing a single substantive evaluation of the submitted materials.</p>
     </section>
 
-    <!-- III. THE PARADOX -->
     <section>
       <span class="section-number">III · The Presidency Paradox</span>
       <h2>Structural Conflict of Interest · 1 July 2026</h2>
@@ -829,7 +870,6 @@
       </div>
     </section>
 
-    <!-- IV. LEXICON -->
     <section>
       <span class="section-number">IV · Operative Lexicon</span>
       <h2>Terms of Art — The Research Vocabulary</h2>
@@ -872,7 +912,6 @@
       </div>
     </section>
 
-    <!-- V. THREE HYPOTHESES -->
     <section>
       <span class="section-number">V · Research Hypotheses</span>
       <h2>The Three Readings — All Three Held Simultaneously</h2>
@@ -901,7 +940,6 @@
       </div>
     </section>
 
-    <!-- VI. LEGAL INSTRUMENTS -->
     <section>
       <span class="section-number">VI · Legal Framework</span>
       <h2>Operative Instruments</h2>
@@ -942,7 +980,6 @@
       </div>
     </section>
 
-    <!-- VII. LIVE STATUS -->
     <section>
       <span class="section-number">VII · Live Status · March 2026</span>
       <h2>Current Tracks</h2>
@@ -995,7 +1032,6 @@
       </table>
     </section>
 
-    <!-- VIII. FOR THE PRESS -->
     <section>
       <span class="section-number">VIII · For Press</span>
       <h2>What Press Coverage Adds to the Record</h2>
@@ -1066,3 +1102,4 @@
 
 </body>
 </html>
+```
