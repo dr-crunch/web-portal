@@ -3,36 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Civic Signal · Meinhardt Initiative · Interregnum Nullificans 2006–2026</title>
+<title>Civic Signal · Meinhardt Initiative · 2006–2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
-    
-  
-    <!-- Open Graph / Facebook, LinkedIn, Discord, etc. -->
-    <meta property="og:title" content="Civic Signal · Saisine Logique · Interregnum Nullificans 2006–2026" />
-    <meta property="og:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dr-crunch.github.io/web-portal/sitemap.html" />
-    <meta property="og:site_name" content="Dr Crunch Web Portal" />
-    <meta property="og:image" content="https://dr-crunch.github.io/web-portal/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Cormorant:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-    <!-- Twitter / X Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Interregnum Nullificans 2006–2026" />
-    <meta name="twitter:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
-    <meta name="twitter:image" content="https://dr-crunch.github.io/web-portal/og-image.jpg" />
-
-    <!-- Optional extra meta tags for better SEO and previews -->
-    <meta name="description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
-    
-  <style>
+<!-- Open Graph / Facebook, LinkedIn, Discord -->
+<meta property="og:title" content="Civic Signal · Saisine Logique · Interregnum Nullificans 2006–2026" />
+<meta property="og:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dr-crunch.github.io/web-portal/sitemap.html" />
+<meta property="og:site_name" content="Meinhardt Initiative Web Portal" />
+<meta property="og:image" content="https://dr-crunch.github.io/web-portal/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Interregnum Nullificans 2006–2026" />
+<meta name="twitter:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
+<meta name="twitter:image" content="https://dr-crunch.github.io/web-portal/og-image.jpg" />
+<meta name="description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
+<style>
   :root {
-    --ink: #0c0b09;
-    --surface: #141210;
-    --surface2: #1c1a17;
+    --ink: #06050a;
+    --surface: #0e0d14;
+    --surface2: #13121b;
     --parchment: #e8e3d4;
     --parchment-dim: #9e9887;
     --parchment-faint: #2a2720;
@@ -52,8 +47,212 @@
     --blue-dim: #185fa5;
     --blue-bg: #0c1929;
     --gold: #c9a84c;
-    --rule: rgba(232, 227, 212, 0.1);
-    --rule-strong: rgba(232, 227, 212, 0.2);
+    --star: #d4cfc0;
+    --rule: rgba(232, 227, 212, 0.08);
+    --rule-strong: rgba(232, 227, 212, 0.15);
+  }
+
+  /* ─── STAR CANVAS ─── */
+  #starfield {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* ─── SIDEREAL HEADER BAND ─── */
+  .sidereal-band {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(6,5,10,0) 0%, rgba(6,5,10,0.85) 100%);
+    padding: 20px 32px 0;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .sidereal-coord {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(220,182,96,0.8);
+    text-transform: uppercase;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+
+    .sidereal-coord span { color: rgba(220,182,96,0.8); margin: 0 4px; }
+  
+  /* ─── CONSTITUTIONAL PRIMER SECTION ─── */
+  .constitution-section {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .constitution-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1;
+    color: var(--parchment);
+    margin-bottom: 8px;
+  }
+
+  .constitution-section h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .const-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--parchment-dim);
+    margin-bottom: 40px;
+  }
+
+  .star-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+  }
+
+  .star-article {
+    padding: 28px 28px 24px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    background: var(--surface);
+    transition: background 0.25s;
+  }
+
+  .star-article:hover { background: var(--surface2); }
+
+  .star-article:last-child,
+  .star-article:nth-child(2n) { border-right: none; }
+
+  .star-glyph {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .star-glyph::before {
+    content: '✦';
+    font-size: 8px;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  .star-article h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .star-article h3 em { font-style: italic; color: var(--parchment-dim); }
+
+  .star-plain {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px;
+    color: var(--parchment-dim);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .star-plain strong {
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  .star-cite {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: rgba(201,168,76,0.5);
+    text-transform: uppercase;
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+
+  .star-cite a {
+    color: rgba(201,168,76,0.7);
+    text-decoration: none;
+  }
+  .star-cite a:hover { color: var(--gold); }
+
+  /* ─── SIDEREAL AXIOM ─── */
+  .axiom-bar {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 32px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .axiom-rule {
+    width: 3px;
+    align-self: stretch;
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,168,76,0.1) 100%);
+    border-radius: 2px;
+    min-height: 80px;
+  }
+
+  .axiom-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .axiom-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+  }
+
+  .axiom-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--parchment);
+    line-height: 1.45;
+  }
+
+  .axiom-plain {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px;
+    color: var(--parchment-dim);
+    line-height: 1.7;
+    max-width: 620px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,7 +277,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.35;
   }
 
   /* ─── ALERT STRIP ─── */
@@ -572,10 +771,20 @@
 </head>
 <body>
 
+<canvas id="starfield"></canvas>
+
+<!-- ─── SIDEREAL COORD BAR ─── -->
+<div class="sidereal-band">
+  <div class="sidereal-coord">
+     <span>Epoch 2006.6 → 2026.3</span><span>·</span>
+    <span>Fixed reference: Bunreacht na hÉireann 1937</span>
+  </div>
+</div>
+
 <!-- ─── ALERT STRIP ─── -->
 <div class="alert-strip">
   <div class="alert-strip-text">
-    Interregnum Nullificans<span>·</span>2006–2026<span>·</span>Pre-litigation status<span>·</span>EU Council Presidency deadline: 1 July 2026
+    Constitutional logic normalised<span>·</span>2006–2026<span>·</span>Pre-litigation<span>·</span>EU Council Presidency deadline: 1 July 2026
   </div>
   <div class="hot-buttons">
     <a href="https://dr-wojak.github.io/start-here/" class="btn btn-normie" target="_blank" rel="noopener">
@@ -649,6 +858,84 @@
       <div class="hyp-title">C — Epistemic Failure</div>
       <div class="hyp-body">Institutions not equipped to evaluate what was placed before them; performed the appearance of evaluation instead. Most charitable reading. Does not diminish legal consequences.</div>
       <div class="hyp-remedy">→ Remedy differs in quantum, not kind</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── JURISPRUDENTIAL FRAMEWORK ─── -->
+<section class="constitution-section">
+  <div class="const-sub">Jurisprudential framework · Saisine Logique</div>
+  <h2>Five principles.<br><em>All pre-existing the failure.</em><br>All still operative.</h2>
+
+  <div class="axiom-bar" style="padding:32px 0 40px; border:none; max-width:100%; grid-template-columns:3px 1fr;">
+    <div class="axiom-rule"></div>
+    <div class="axiom-body">
+      <div class="axiom-label">II · The saisine principle · ⊢ Jurisdictional arrest</div>
+      <div class="axiom-text">Once a competent authority is formally seized of a matter, its discretion narrows to one: it may only <em>decide</em>. It no longer holds the discretion to ignore. The transition is mathematical —-from frozen state to active process. It's the jurisdictional lock that prevents any subsequent claim that the matter lies "outside remit."</div>
+      <div class="axiom-plain">In plain terms: once they confirmed receipt, the clock started. Every year without a determination is a year in breach — not of administrative preference, but of constitutional obligation. The saisine principle converts silence from a posture into a provable failure. Citizens can activate this logic for any submission to any public body: send formally, confirm receipt, request determination. The duty attaches on delivery.</div>
+    </div>
+  </div>
+
+  <div class="star-grid">
+
+    <div class="star-article">
+      <div class="star-glyph">I · Art. 40.3° · Bunreacht na hÉireann 1937</div>
+      <h3>Constitutional contumacy<br><em>The vindication mandate</em></h3>
+      <div class="star-plain">The State guarantees to respect and vindicate the personal rights of the citizen. Delay is a grievance; <strong>contumacy is a structural refusal</strong>. When the State acknowledges a submission but issues no determination across two decades, it has effectively withdrawn the protection of the law. The right to a determination is a <em>latent constitutional right</em> —necessary for the enjoyment of all others. Without a determination, there is no administrative act to judicially review. The silence forecloses the remedy it claims to leave open.</div>
+      <div class="star-cite">Fixed star since 1937 · <a href="https://www.irishstatutebook.ie/eli/cons/en/html#article40" target="_blank" rel="noopener">Bunreacht Art. 40.3 ↗</a></div>
+    </div>
+
+    <div class="star-article">
+      <div class="star-glyph">III · Art. 41 CFR · EU Charter 2000 · Reg. 2021/821</div>
+      <h3>Right to good administration<br><em>Four limbs, all engaged</em></h3>
+      <div class="star-plain">The DFA is the designated competent authority under EU Regulation 2021/821 (Dual-Use Goods). All four limbs of Art. 41 are independently breached:</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin:10px 0 12px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-dim);border-left:2px solid rgba(201,168,76,0.3);padding-left:8px;line-height:1.5;"><span style="color:var(--gold);">Right to be heard</span><br>Bypassed via Silence Veto</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-dim);border-left:2px solid rgba(201,168,76,0.3);padding-left:8px;line-height:1.5;"><span style="color:var(--gold);">Timely handling</span><br>19 years ≠ reasonable time</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-dim);border-left:2px solid rgba(201,168,76,0.3);padding-left:8px;line-height:1.5;"><span style="color:var(--gold);">Duty to give reasons</span><br>Silence is unreviewable · arbitrary</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-dim);border-left:2px solid rgba(201,168,76,0.3);padding-left:8px;line-height:1.5;"><span style="color:var(--gold);">Access to file</span><br>JCEUA deletion · Oct 2025</div>
+      </div>
+      <div class="star-cite">Binding since 2009 · <a href="https://fra.europa.eu/en/eu-charter/article/41-right-good-administration" target="_blank" rel="noopener">Art. 41 CFR ↗</a> · "Designed Forgetting" evidenced</div>
+    </div>
+
+    <div class="star-article">
+      <div class="star-glyph">IV · Order 84 RSC · High Court · Mandamus</div>
+      <h3>The Hoop-Trick<br><em>and how mandamus collapses it</em></h3>
+      <div class="star-plain">The Hoop-Trick: two authorities — JCEUA and JCPP — each claim the other holds responsibility. The duty <strong>evaporates in the gap between them</strong>. This is not an accident; it is the architecture of evasocracy. Mandamus is the judicial instrument that collapses this circularity. It identifies the competent authority — in this case, the DFA as designated publisher of compliance records under Reg. 2021/821 — and forces the hoop to close. The High Court may issue mandamus wherever a public duty exists and has been demonstrably neglected.</div>
+      <div class="star-cite">Available to any citizen · Order 84, Rule 18 · No Act of Parliament required</div>
+    </div>
+
+    <div class="star-article">
+      <div class="star-glyph">V · Misfeasance in public office</div>
+      <h3>From epistemic failure<br><em>to bad-faith threshold</em></h3>
+      <div class="star-plain">Misfeasance requires showing <strong>targeted malice</strong> or <strong>reckless indifference</strong> to the illegality of the act and the probability of harm. The record identifies two threshold events: the <em>McEntee Foreclosure</em> (February 2026), closing the parliamentary route without addressing the underlying science; and <em>Designed Forgetting</em> (October 2025), the active deletion of formally received correspondence by the JCEUA. Both move the matter from Hypothesis C (epistemic failure — most charitable) toward Hypothesis B (misfeasance). The remedy differs in quantum not in kind.</div>
+      <div class="star-cite">Tairiscint Mheinhardt Part IV · Three Degrees: Malice · Reckless indifference · Epistemic failure</div>
+    </div>
+
+  </div>
+
+  <!-- Synthesis -->
+  <div style="margin-top:2px; padding:32px 28px; background:var(--surface); border:1px solid var(--rule-strong); border-top:3px solid rgba(201,168,76,0.4);">
+    <div class="axiom-label" style="margin-bottom:16px;">Synthesis · The nullification loop as an optimisation problem</div>
+    <div class="axiom-text" style="font-size:clamp(16px,2vw,20px); margin-bottom:14px;">Transform a feedback cycle of silence into a forced move towards determination.</div>
+    <div class="star-plain" style="max-width:760px;">The legal methodology of the Initiative is precise: the Saisine Principle renders the State's evasocracy <strong>visible on the institutional record</strong>, transforming the Nullification Loop from a self-sustaining system into a provable breach. Each of the five principles above is a separate and independent basis for relief. Together they close every exit the loop has used. The Presidency Paradox — Ireland chairing EU rule-of-law proceedings from 1 July 2026 while this record stands unresolved — is not rhetoric. It is a justiciable conflict of interest, now before the Ombudsman, PETI, and CJEU Registry.</div>
+    <div style="margin-top:24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; border-top:1px solid var(--rule); padding-top:20px;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.1em;margin-bottom:6px;">01 · Build the paper trail</div>
+        <div class="star-plain" style="font-size:13px;">Send formally. Confirm receipt. Every reference number is a timestamp on the duty to respond. The trail is your evidence that the saisine was activated.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.1em;margin-bottom:6px;">02 · Name the silence</div>
+        <div class="star-plain" style="font-size:13px;">Write again after 4–8 weeks. State explicitly: no determination has issued. Request one. Log the date. Repeat. Repetition is evidence of structural refusal, not clerical delay.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.1em;margin-bottom:6px;">03 · Invoke by article number</div>
+        <div class="star-plain" style="font-size:13px;">Art. 40.3 Bunreacht (national floor). Art. 41 CFR (EU, if in scope). Art. 6 ECHR (fair hearing). Copy your TD, the Ombudsman office, and the relevant committee clerk. Place it on the record.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.1em;margin-bottom:6px;">04 · Go public</div>
+        <div class="star-plain" style="font-size:13px;">Submit to committees, FOI, PETI. All CC0 materials in this corpus may be attached freely. Once public and timestamped, the obscurity defence is removed from the institution. The stars are fixed.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -780,7 +1067,7 @@
       <text x="340" y="600" text-anchor="middle" class="section-label">— GitHub repositories —</text>
 
       <!-- Row 1 of repos -->
-      <g class="node-gh" data-href="https://github.com/dr-crunch/nullification-loops" onclick="navigate(this)">
+      <g class="node-gh" data-href="https://dr-crunch.github.io/nullification-loops" onclick="navigate(this)">
         <rect x="20" y="610" width="190" height="50" rx="8"/>
         <text x="115" y="628" class="t1" text-anchor="middle" dominant-baseline="central">nullification-loops</text>
         <text x="115" y="646" class="t2" text-anchor="middle" dominant-baseline="central">14 EU languages</text>
@@ -793,7 +1080,7 @@
       <g class="node-legal" data-href="https://github.com/dr-wojak/governmentality-2025" onclick="navigate(this)">
         <rect x="424" y="610" width="236" height="50" rx="8"/>
         <text x="542" y="628" class="t1" text-anchor="middle" dominant-baseline="central">governmentality-2025</text>
-        <text x="542" y="646" class="t2" text-anchor="middle" dominant-baseline="central">Memoranda & Notices</text>
+        <text x="542" y="646" class="t2" text-anchor="middle" dominant-baseline="central">Memoranda &amp; Notices</text>
       </g>
 
       <!-- Row 2 of repos -->
@@ -822,7 +1109,7 @@
       <text x="340" y="730" text-anchor="middle" class="section-label">— footer navigation —</text>
 
       <!-- Footer nav nodes -->
-      <g class="node-nav" data-href="https://github.com/dr-crunch/nullification-loops/tree/main/compendium/pieces-jointes#user-content-fn-interregnum-04d4efb4fc558f1c9b1d341cf5c89c38" onclick="navigate(this)">
+      <g class="node-nav" data-href="https://github.com/dr-crunch/nullification-loops/tree/main/compendium/pieces-jointes#user-content-fn-interregnum-389c8ddbfafeae57e9b2a2084a2a0448" onclick="navigate(this)">
         <rect x="30" y="740" width="130" height="36" rx="6"/>
         <text x="95" y="758" text-anchor="middle" dominant-baseline="central">Statement of Record</text>
       </g>
@@ -933,11 +1220,12 @@
 <footer>
   <div class="footer-left">
     <a href="https://dr-crunch.github.io/nullification-loops/" target="_blank">dr-crunch.github.io/nullification-loops</a><br>
-    <a href="https://github.com/dr-wojak?tab=repositories" target="_blank">github.com/dr-wojak?</a> · CC0 · The record is public.
+    <a href="https://github.com/dr-wojak?tab=repositories" target="_blank">github.com/dr-wojak</a> · CC0 · The record is public · The stars are fixed.
   </div>
   <div class="footer-right">
     Interregnum Nullificans · 2006–2026<br>
-    The duty to reason has not been discharged.
+    The duty to reason has not been discharged.<br>
+    <span style="opacity:0.4;">Saisine logique · Critique publique · Logistique humanitaire</span>
   </div>
 </footer>
 
@@ -945,10 +1233,60 @@
 <div class="tooltip" id="tooltip"></div>
 
 <script>
+  // ─── STARFIELD ───
+  (function() {
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const N = 280;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function seed() {
+      stars = [];
+      for (let i = 0; i < N; i++) {
+        const mag = Math.random(); // 0=bright, 1=dim
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: mag < 0.05 ? 1.4 : mag < 0.2 ? 0.9 : 0.5,
+          a: 0.15 + (1 - mag) * 0.65,
+          twinkle: Math.random() * Math.PI * 2,
+          speed: 0.003 + Math.random() * 0.006,
+          color: mag < 0.08 ? '#c9a84c' : mag < 0.15 ? '#b8d4f0' : '#d4cfc0'
+        });
+      }
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        const flicker = 0.85 + 0.15 * Math.sin(s.twinkle + t * s.speed);
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = s.color;
+        ctx.globalAlpha = s.a * flicker;
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    seed();
+    window.addEventListener('resize', () => { resize(); seed(); });
+    requestAnimationFrame(draw);
+  })();
+</script>
+
+<script>
   // Navigate on node click
   function navigate(el) {
     const href = el.getAttribute('data-href');
-    if (href && !href.includes('meinhardt-main') && !href.includes('meinhardt-complaints')) {
+    if (href && !href.includes('12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g') && !href.includes('1FMPO1exETcpb4jxX-q5Mh2VIpYwYuATS')) {
       window.open(href, '_blank', 'noopener');
     }
   }
@@ -956,19 +1294,24 @@
   // Tooltip on hover
   const tooltip = document.getElementById('tooltip');
   const labels = {
-    'https://dr-wojak.github.io/': 'Terminal hub · All routes originate here',
-    'https://dr-crunch.github.io/nullification-loops/': 'Primary public landing · 14 EU languages',
-    'https://dr-wojak.github.io/nullification-loops/dossier.html': '8-tab full dossier · Complete evidentiary record',
-    'https://dr-wojak.github.io/nullification-loops/tairiscint.html': 'Constitutional indictment · Tairiscint Mheinhardt',
-    'https://dr-crunch.github.io/nullification-loops/luba-neamhnithe': 'Lúba Neamhnithe · Gaeilge compendium entry',
-    'https://dr-crunch.github.io/nullification-loops/boucles-de-nullification': 'Boucles de Nullification · Français compendium',
-    'https://github.com/dr-crunch/nullification-loops': 'GitHub · nullification-loops · 14 language versions',
-    'https://github.com/dr-wojak/start-here': 'Basic Portal · Plain-language introduction',
-    'https://github.com/dr-wojak/meinhardt-initiative-public-flyer': 'Public petition · Civic outreach flyer',
+    'https://dr-crunch.github.io/': 'On-ramp · All routes originate here',
+    'https://dr-crunch.github.io/nullification-loops/': 'Primary public landing',
+    'https://dr-crunch.github.io/nullification-loops/dossier.html': '8-tab full dossier · Complete evidentiary record',
+    'https://dr-crunch.github.io/nullification-loops/tairiscint.html': 'Constitutional indictment · Tairiscint Mheinhardt',
+    'https://github.com/dr-crunch/nullification-loops/blob/main/compendium/luba-neamhnithe.md': 'Lúba Neamhnithe · Gaeilge compendium entry',
+    'https://github.com/dr-crunch/nullification-loops/blob/main/compendium/boucles-de-nullification.md': 'Boucles de Nullification · Français compendium',
+    'https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g': 'Main Repository · Google Drive · primary archive',
+    'https://drive.google.com/drive/u/0/folders/1FMPO1exETcpb4jxX-q5Mh2VIpYwYuATS': '226-page formal complaint · complete evidentiary record',
+    'https://github.com/dr-crunch/nullification-loops': 'GitHub · nullification-loops',
+    'https://github.com/dr-wojak/start-here': 'Basic Structured Intro · Plain-language portal',
+    'https://github.com/dr-wojak/governmentality-2025': 'Memoranda & Notices · Structural indictment',
     'https://github.com/dr-wojak/public-relations': 'Civic engagement repository',
-    'https://github.com/dr-wojak/redundancy-awareness': 'Ministerial correspondence archive',
-    'https://github.com/dr-wojak/public-reations': 'Public Relations · Podcast archive · EN/ES audio',
-    'https://github.com/dr-wojak/econ': 'Economic Studies · Opportunity costs · Tokenship',
+    'https://github.com/dr-crunch/redundancy-awareness': 'Ministerial correspondence archive',
+    'https://github.com/dr-wojak/public-relations?tab=readme-ov-file#06-redundancy-awareness-podcasts': 'Podcast archive · EN/ES audio',
+    'https://github.com/dr-wojak/econ': 'Economic Studies · Opportunity costs',
+    'https://github.com/dr-crunch/nullification-loops/tree/main/compendium/pieces-jointes#user-content-fn-interregnum-389c8ddbfafeae57e9b2a2084a2a0448': 'Statement of Record · Interregnum Nullificans',
+    'https://dr-crunch.github.io/nullification-loops/': 'nullification-loops · Primary landing',
+    'https://github.com/dr-crunch': 'GitHub · dr-crunch · All repositories',
   };
 
   document.querySelectorAll('g[data-href]').forEach(g => {
