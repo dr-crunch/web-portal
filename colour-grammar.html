@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colour Grammar · Meinhardt Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   BASE TOKENS
+═══════════════════════════════════════════════════ */
+:root {
+  /* ── Ink & Surface ── */
+  --ink:       #0a0910;
+  --surface:   #141018;
+  --surface2:  #1c1820;
+  --surface3:  #221e2a;
+  --rule:      rgba(200,180,230,0.09);
+  --rule-strong: rgba(200,180,230,0.16);
+
+  /* ── Parchment / Text ── */
+  --parchment:      #e8e3d4;
+  --parchment-dim:  #9e9887;
+  --parchment-faint:#38303e;
+
+  /* ── CORE PALETTE ── */
+  --rivulet:     #38c8b8; --rivulet-dim:  #187868; --rivulet-bg:  #081e1a;
+  --citron:      #d4c06a; --citron-dim:   #7a6e28; --citron-bg:   #1c1a08;
+  --scarlet:     #c8253a; --scarlet-dim:  #7a1020; --scarlet-bg:  #1a080a;
+  --bordeaux:    #b87898; --bordeaux-dim: #4a2838; --bordeaux-bg: #180d12;
+  --dragonfly:   #5ab0c8; --dragonfly-dim:#183e4a; --dragonfly-bg:#0a1820;
+  --cosmic:      #9898c8; --cosmic-dim:   #404068; --cosmic-bg:   #10101e;
+  --graphite:    #a8a040; --graphite-dim: #4a4820; --graphite-bg: #181808;
+  --coral:       #c87870; --coral-dim:    #784038; --coral-bg:    #1c0e0c;
+  --nantucket:   #7ab8d8; --nantucket-dim:#2a5878; --nantucket-bg:#0a1820;
+  --satin:       #c8bfa8; --satin-dim:    #6e6858; --satin-bg:    #1e1c18;
+
+  /* ── PORTAL TRIAD ── */
+  --grape:       #6b2d8b; --grape-lt:     #9b58c8; --grape-dim:   #3a1050; --grape-bg: #12081a;
+  --gold:        #c8a830; --gold-lt:      #e8c850; --gold-dim:    #7a6218; --gold-bg:  #1a1608;
+  --sherwood:    #1a7a48; --sherwood-lt:  #38c878; --sherwood-dim:#0a3820; --sherwood-bg:#081a10;
+
+  /* ── SEMANTIC ROLES ── */
+  --S-demonstrated: var(--rivulet);
+  --S-structure:    var(--citron);
+  --S-blocking:     var(--scarlet);
+  --S-narrative:    var(--bordeaux);
+  --S-legal:        var(--dragonfly);
+  --S-analytical:   var(--cosmic);
+  --S-neutral:      var(--satin);
+  --S-portal:       var(--grape-lt);
+}
+
+/* ═══════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Grain texture */
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:0; opacity:0.4;
+}
+
+/* ═══════════════════════════════════════════════════
+   LAYOUT SHELL
+═══════════════════════════════════════════════════ */
+.page { position:relative; z-index:1; max-width:1080px; margin:0 auto; padding:0 32px 80px; }
+
+/* ═══════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════ */
+.ds-header {
+  padding: 64px 0 52px;
+  border-bottom: 1px solid var(--rule-strong);
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+}
+.ds-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--citron);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ds-eyebrow::before { content: '◈'; font-size: 13px; }
+.ds-eyebrow::after  { content:''; flex:1; height:1px; background:var(--citron); opacity:.18; max-width:240px; }
+.ds-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(38px, 5.5vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+  color: var(--parchment);
+}
+.ds-h1 em { font-style: italic; color: var(--bordeaux); }
+.ds-sub {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--parchment-dim);
+  margin-top: 10px;
+  line-height: 1.6;
+  max-width: 560px;
+}
+.ds-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+.ds-meta-item {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--parchment-dim);
+}
+.ds-meta-item strong { color: var(--parchment); }
+
+/* ═══════════════════════════════════════════════════
+   SECTION SCAFFOLDING
+═══════════════════════════════════════════════════ */
+.ds-section { padding: 56px 0 0; }
+.ds-section + .ds-section { border-top: 1px solid var(--rule); margin-top: 56px; }
+.ds-section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--cosmic);
+  opacity: .6;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ds-section-label::after { content:''; flex:1; height:1px; background: currentColor; opacity:.25; }
+.ds-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--parchment);
+  margin-bottom: 6px;
+}
+.ds-section-sub {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--parchment-dim);
+  margin-bottom: 36px;
+  max-width: 600px;
+}
+
+/* ═══════════════════════════════════════════════════
+   § 1 — SWATCHES
+═══════════════════════════════════════════════════ */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+  gap: 16px;
+}
+
+.swatch-card {
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid rgba(200,180,230,0.1);
+  transition: transform .2s, box-shadow .2s;
+  cursor: default;
+}
+.swatch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.5);
+}
+.swatch-chip {
+  height: 108px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 12px;
+}
+.swatch-chip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.35) 0%, transparent 55%);
+}
+.swatch-name-on-chip {
+  position: relative;
+  z-index: 1;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  line-height: 1.3;
+}
+.swatch-body {
+  background: var(--surface2);
+  padding: 12px 13px 13px;
+}
+.swatch-hex {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  margin-bottom: 3px;
+}
+.swatch-role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .07em;
+  color: var(--parchment-dim);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.swatch-trio {
+  display: flex;
+  gap: 4px;
+  margin-top: 9px;
+}
+.swatch-trio-chip {
+  height: 6px;
+  border-radius: 2px;
+  flex: 1;
+  opacity: .75;
+}
+
+/* Portal swatch variant */
+.swatch-portal .swatch-body {
+  background: var(--grape-bg);
+  border-top: 1px solid rgba(107,45,139,.35);
+}
+
+/* ═══════════════════════════════════════════════════
+   § 2 — SEMANTIC ROLE TABLE
+═══════════════════════════════════════════════════ */
+.role-table { width:100%; border-collapse:collapse; }
+.role-table tr { border-bottom: 1px solid var(--rule); transition: background .18s; }
+.role-table tr:hover { background: var(--surface2); }
+.role-table td { padding: 14px 12px; vertical-align: middle; }
+.role-table td:first-child  { width: 160px; }
+.role-table td:nth-child(2) { width: 100px; }
+.role-table td:nth-child(3) { width: 80px;  }
+.role-pip {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.role-pip-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.role-hex {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .05em;
+  color: var(--parchment-dim);
+}
+.role-sample {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  color: var(--parchment-dim);
+  line-height: 1.5;
+}
+.role-sample strong { color: var(--parchment); }
+.role-contexts {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.role-ctx {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid;
+  opacity: .75;
+}
+
+/* ═══════════════════════════════════════════════════
+   § 3 — BUTTONS
+═══════════════════════════════════════════════════ */
+.btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.btn-row-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--parchment-faint);
+  margin-bottom: 10px;
+  margin-top: 18px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all .2s;
+  position: relative;
+  overflow: hidden;
+  background: none;
+}
+.btn::before {
+  content:''; position:absolute; inset:0;
+  background: currentColor; opacity:0; transition: opacity .2s;
+}
+.btn:hover::before { opacity:.08; }
+
+.btn-rivulet   { color:var(--rivulet);   border-color:var(--rivulet-dim);   background:var(--rivulet-bg);   }
+.btn-citron    { color:var(--citron);    border-color:var(--citron-dim);    background:var(--citron-bg);    }
+.btn-scarlet   { color:var(--scarlet);   border-color:var(--scarlet-dim);   background:var(--scarlet-bg);   }
+.btn-bordeaux  { color:var(--bordeaux);  border-color:var(--bordeaux-dim);  background:var(--bordeaux-bg);  }
+.btn-dragonfly { color:var(--dragonfly); border-color:var(--dragonfly-dim); background:var(--dragonfly-bg); }
+.btn-cosmic    { color:var(--cosmic);    border-color:var(--cosmic-dim);    background:var(--cosmic-bg);    }
+.btn-graphite  { color:var(--graphite);  border-color:var(--graphite-dim);  background:var(--graphite-bg);  }
+.btn-coral     { color:var(--coral);     border-color:var(--coral-dim);     background:var(--coral-bg);     }
+.btn-nantucket { color:var(--nantucket); border-color:var(--nantucket-dim); background:var(--nantucket-bg); }
+.btn-satin     { color:var(--satin);     border-color:var(--satin-dim);     background:var(--satin-bg);     }
+.btn-grape     { color:var(--grape-lt);  border-color:var(--grape-dim);     background:var(--grape-bg);     }
+.btn-gold      { color:var(--gold-lt);   border-color:var(--gold-dim);      background:var(--gold-bg);      }
+.btn-sherwood  { color:var(--sherwood-lt);border-color:var(--sherwood-dim); background:var(--sherwood-bg);  }
+
+.btn-rivulet:hover   { border-color:var(--rivulet);   box-shadow:0 0 14px rgba(56,200,184,.2);   }
+.btn-citron:hover    { border-color:var(--citron);    box-shadow:0 0 14px rgba(212,192,106,.2);  }
+.btn-scarlet:hover   { border-color:var(--scarlet);   box-shadow:0 0 14px rgba(200,37,58,.22);   }
+.btn-bordeaux:hover  { border-color:var(--bordeaux);  box-shadow:0 0 14px rgba(184,120,152,.2);  }
+.btn-dragonfly:hover { border-color:var(--dragonfly); box-shadow:0 0 14px rgba(90,176,200,.2);   }
+.btn-cosmic:hover    { border-color:var(--cosmic);    box-shadow:0 0 14px rgba(152,152,200,.2);  }
+.btn-graphite:hover  { border-color:var(--graphite);  box-shadow:0 0 14px rgba(168,160,64,.18);  }
+.btn-coral:hover     { border-color:var(--coral);     box-shadow:0 0 14px rgba(200,120,112,.2);  }
+.btn-nantucket:hover { border-color:var(--nantucket); box-shadow:0 0 14px rgba(122,184,216,.2);  }
+.btn-satin:hover     { border-color:var(--satin);     box-shadow:0 0 10px rgba(200,191,168,.15); }
+.btn-grape:hover     { border-color:var(--grape-lt);  box-shadow:0 0 16px rgba(155,88,200,.25);  }
+.btn-gold:hover      { border-color:var(--gold-lt);   box-shadow:0 0 16px rgba(232,200,80,.2);   }
+.btn-sherwood:hover  { border-color:var(--sherwood-lt);box-shadow:0 0 14px rgba(56,200,120,.2);  }
+
+/* Solid variants */
+.btn-solid-rivulet { background:var(--rivulet); border-color:var(--rivulet); color:var(--ink); }
+.btn-solid-rivulet:hover { background:#4ae0ce; }
+.btn-solid-scarlet { background:var(--scarlet); border-color:var(--scarlet); color:#fff; }
+.btn-solid-scarlet:hover { background:#e02d44; }
+.btn-solid-grape   { background:var(--grape); border-color:var(--grape-lt); color:var(--parchment); }
+.btn-solid-grape:hover { background:var(--grape-lt); }
+
+/* ═══════════════════════════════════════════════════
+   § 4 — BADGES / TAGS
+═══════════════════════════════════════════════════ */
+.badge-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: 1px solid;
+}
+.badge-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+
+.badge-rivulet   { color:var(--rivulet);   border-color:rgba(56,200,184,.3);   background:var(--rivulet-bg);   }
+.badge-rivulet   .badge-dot { background:var(--rivulet); box-shadow:0 0 5px rgba(56,200,184,.6); }
+.badge-citron    { color:var(--citron);    border-color:rgba(212,192,106,.3);  background:var(--citron-bg);    }
+.badge-citron    .badge-dot { background:var(--citron);  box-shadow:0 0 5px rgba(212,192,106,.5);}
+.badge-scarlet   { color:var(--scarlet);   border-color:rgba(200,37,58,.3);    background:var(--scarlet-bg);   }
+.badge-scarlet   .badge-dot { background:var(--scarlet); box-shadow:0 0 5px rgba(200,37,58,.6);  }
+.badge-bordeaux  { color:var(--bordeaux);  border-color:rgba(184,120,152,.3);  background:var(--bordeaux-bg);  }
+.badge-bordeaux  .badge-dot { background:var(--bordeaux);}
+.badge-dragonfly { color:var(--dragonfly); border-color:rgba(90,176,200,.3);   background:var(--dragonfly-bg); }
+.badge-dragonfly .badge-dot { background:var(--dragonfly);}
+.badge-cosmic    { color:var(--cosmic);    border-color:rgba(152,152,200,.3);  background:var(--cosmic-bg);    }
+.badge-cosmic    .badge-dot { background:var(--cosmic);  }
+.badge-grape-lt  { color:var(--grape-lt);  border-color:rgba(155,88,200,.3);   background:var(--grape-bg);     }
+.badge-grape-lt  .badge-dot { background:var(--grape-lt);}
+.badge-gold-lt   { color:var(--gold-lt);   border-color:rgba(232,200,80,.3);   background:var(--gold-bg);      }
+.badge-gold-lt   .badge-dot { background:var(--gold-lt); }
+.badge-sherwood  { color:var(--sherwood-lt);border-color:rgba(56,200,120,.3);  background:var(--sherwood-bg);  }
+.badge-sherwood  .badge-dot { background:var(--sherwood-lt);}
+.badge-satin     { color:var(--satin);     border-color:rgba(200,191,168,.2);  background:var(--satin-bg);     }
+.badge-satin     .badge-dot { background:var(--satin);   }
+
+/* Pill variant */
+.badge-pill { border-radius: 999px; padding: 3px 12px; }
+
+/* ═══════════════════════════════════════════════════
+   § 5 — STATUS PIPS (with labels)
+═══════════════════════════════════════════════════ */
+.pip-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pip-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.pip {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pip-label { flex: 1; }
+.pip-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--parchment-dim);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   § 6 — CARDS
+═══════════════════════════════════════════════════ */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1px; background:var(--rule-strong); border:1px solid var(--rule-strong); border-radius:3px; overflow:hidden; }
+
+.card {
+  background: var(--surface);
+  padding: 24px 22px 20px;
+  transition: background .2s;
+  position: relative;
+}
+.card:hover { background: var(--surface2); }
+
+.card-accent { position:absolute; top:0; left:0; right:0; height:2px; }
+.card-pip-row {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.card-pip-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight:400;
+  color: var(--parchment);
+  margin-bottom: 8px; line-height:1.25;
+}
+.card-title em { font-style:italic; color:var(--parchment-dim); }
+.card-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px; color: var(--parchment-dim);
+  line-height: 1.7; margin-bottom: 14px;
+}
+.card-body strong { color: var(--parchment); font-weight:500; }
+.card-note {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing:.04em;
+  border-top: 1px solid var(--rule);
+  padding-top: 10px; line-height: 1.65;
+}
+
+/* Portal card */
+.card-portal {
+  background: linear-gradient(150deg, rgba(107,45,139,.14) 0%, rgba(18,8,26,.85) 60%);
+  border: 1px solid rgba(107,45,139,.45);
+}
+.card-portal:hover { background: linear-gradient(150deg, rgba(107,45,139,.2) 0%, rgba(18,8,26,.9) 60%); }
+
+/* ═══════════════════════════════════════════════════
+   § 7 — ALERT / WARN BARS
+═══════════════════════════════════════════════════ */
+.alert-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 10px 18px;
+  border-radius: 3px; border: 1px solid;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.alert-bar-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+  display: block; margin-bottom: 5px;
+}
+.alert-bar-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: .06em;
+}
+.alert-bar span { color: var(--parchment-dim); margin: 0 6px; }
+.alert-bar-actions { display:flex; gap:8px; flex-shrink:0; }
+
+/* Variants */
+.alert-blocking { border-color:var(--scarlet-dim); background:rgba(200,37,58,.04); }
+.alert-blocking .alert-bar-label { color:var(--scarlet); }
+.alert-blocking .alert-bar-text  { color:rgba(200,37,58,.7); }
+.alert-needs    { border-color:var(--citron-dim);  background:rgba(212,192,106,.03); }
+.alert-needs    .alert-bar-label { color:var(--citron); }
+.alert-needs    .alert-bar-text  { color:rgba(212,192,106,.65); }
+.alert-info     { border-color:var(--dragonfly-dim); background:rgba(90,176,200,.03); }
+.alert-info     .alert-bar-label { color:var(--dragonfly); }
+.alert-info     .alert-bar-text  { color:rgba(90,176,200,.65); }
+.alert-portal   { border-color:var(--grape-dim); background:rgba(107,45,139,.06); }
+.alert-portal   .alert-bar-label { color:var(--grape-lt); }
+.alert-portal   .alert-bar-text  { color:rgba(155,88,200,.65); }
+
+/* Axiom bar */
+.axiom-bar {
+  display: grid; grid-template-columns: 3px 1fr; gap: 22px;
+  padding: 28px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  margin: 28px 0;
+}
+.axiom-rule { border-radius:2px; }
+.axiom-body { display:flex; flex-direction:column; gap:8px; }
+.axiom-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing:.2em; text-transform:uppercase;
+  opacity: .45;
+}
+.axiom-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px,2.2vw,23px); font-weight:300; font-style:italic;
+  color: var(--parchment); line-height:1.45;
+}
+.axiom-plain {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; color: var(--parchment-dim); line-height:1.72; max-width:600px;
+}
+
+/* ═══════════════════════════════════════════════════
+   § 8 — GLOSSARY ROW
+═══════════════════════════════════════════════════ */
+.gloss-table { width:100%; border-collapse:collapse; }
+.gloss-table tr { border-bottom:1px solid var(--rule); transition:background .18s; }
+.gloss-table tr:hover { background:var(--surface2); }
+.gloss-table td { padding:13px 12px; vertical-align:top; line-height:1.6; }
+.gloss-table td:first-child {
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em;
+  color:var(--dragonfly); white-space:nowrap; padding-right:22px; width:195px;
+}
+.gloss-table td:last-child {
+  font-family:'EB Garamond',serif; font-size:14px; color:var(--parchment-dim);
+}
+.gloss-corr {
+  display:block; margin-top:4px;
+  font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.04em;
+  color:rgba(90,176,200,.28);
+}
+
+/* ═══════════════════════════════════════════════════
+   § 9 — NET COUNTER
+═══════════════════════════════════════════════════ */
+.net-row {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--rule-strong); border:1px solid var(--rule-strong);
+  border-radius:3px; overflow:hidden; margin-top:28px;
+}
+.net-cell {
+  background:var(--surface); padding:28px 24px; text-align:center;
+}
+.net-n {
+  font-family:'Cormorant Garamond',serif; font-size:60px;
+  font-weight:300; line-height:1; margin-bottom:8px;
+}
+.net-label {
+  font-family:'IBM Plex Mono',monospace; font-size:10px;
+  letter-spacing:.12em; text-transform:uppercase; line-height:1.55;
+}
+
+/* ═══════════════════════════════════════════════════
+   § 10 — TICKER SAMPLE
+═══════════════════════════════════════════════════ */
+.ticker-wrap {
+  background:var(--surface2); border:1px solid var(--rule-strong);
+  padding:.45rem 0; overflow:hidden; white-space:nowrap;
+  border-radius:3px; margin-bottom:10px;
+}
+.ticker-inner {
+  display:inline-block; animation:ticker 40s linear infinite;
+  font-family:'IBM Plex Mono',monospace; font-size:.6rem;
+  letter-spacing:.12em; color:var(--parchment-dim);
+}
+.ticker-inner span { margin:0 2.5rem; }
+.ticker-inner .hi  { color:var(--scarlet); }
+.ticker-inner .go  { color:var(--citron);  }
+@keyframes ticker { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+
+/* ═══════════════════════════════════════════════════
+   § 11 — TASK ITEM
+═══════════════════════════════════════════════════ */
+.task-list { display:flex; flex-direction:column; gap:1px; background:var(--rule-strong); border:1px solid var(--rule-strong); border-radius:2px; }
+.task-item {
+  background:var(--surface); padding:18px 22px;
+  display:grid; grid-template-columns:78px 1fr; gap:18px;
+  align-items:start; transition:background .15s;
+}
+.task-item:hover { background:var(--surface2); }
+.task-id { font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; line-height:1; padding-top:2px; }
+.task-tag {
+  display:inline-block; margin-top:8px;
+  font-family:'IBM Plex Mono',monospace; font-size:8.5px;
+  letter-spacing:.12em; text-transform:uppercase;
+  padding:3px 8px; border-radius:2px; border:1px solid;
+}
+.task-name {
+  font-family:'IBM Plex Mono',monospace; font-size:11px;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--parchment);
+  margin-bottom:6px; display:block;
+}
+.task-plain {
+  font-family:'EB Garamond',serif; font-size:14px;
+  color:var(--parchment-dim); line-height:1.7;
+}
+
+/* ═══════════════════════════════════════════════════
+   COLOUR TOKEN REFERENCE STRIP
+═══════════════════════════════════════════════════ */
+.token-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.token-item {
+  background: var(--surface2);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.token-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+}
+.token-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+.token-trio { display:flex; gap:3px; margin-top:4px; }
+.token-trio-chip { height:4px; flex:1; border-radius:2px; }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════ */
+@media(max-width:640px){
+  .ds-header { grid-template-columns:1fr; }
+  .ds-meta { text-align:left; align-items:flex-start; }
+  .swatch-grid { grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); gap:12px; }
+  .net-row { grid-template-columns:1fr; }
+  .task-item { grid-template-columns:1fr; }
+  .role-table td:nth-child(3), .role-table td:nth-child(4) { display:none; }
+}
+
+/* ═══════════════════════════════════════════════════
+   ANIMATION
+═══════════════════════════════════════════════════ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);} }
+.fade-up { animation:fadeUp .55s ease forwards; opacity:0; }
+.fd2 { animation-delay:.1s; }
+.fd3 { animation-delay:.2s; }
+.fd4 { animation-delay:.3s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ═══ HEADER ══════════════════════════════════════ -->
+<header class="ds-header fade-up">
+  <div>
+    <div class="ds-eyebrow">Meinhardt Initiative · Design System</div>
+    <h1 class="ds-h1">Colour <em>Grammar</em></h1>
+    <p class="ds-sub">Every hue carries a semantic role. This page documents the full palette, its aliases, and how each colour behaves in context — buttons, badges, cards, bars, and status indicators.</p>
+  </div>
+  <div class="ds-meta">
+    <div class="ds-meta-item"><strong>Version</strong> — 2.0</div>
+    <div class="ds-meta-item"><strong>April</strong> 2026</div>
+    <div class="ds-meta-item">CC0 · Public Domain</div>
+  </div>
+</header>
+
+
+<!-- ═══ § 1 · SWATCHES ══════════════════════════════ -->
+<div class="ds-section fade-up fd2">
+  <div class="ds-section-label">§ 01</div>
+  <div class="ds-section-title">The Palette</div>
+  <p class="ds-section-sub">Thirteen named colours plus three surface levels. Each has a base, a dim (borders), and a bg (field backgrounds).</p>
+
+  <div class="swatch-grid">
+
+    <!-- RIVULET -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#38c8b8;">
+        <div class="swatch-name-on-chip">Rivulet</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#38c8b8;">#38c8b8</div>
+        <div class="swatch-role">Demonstrated · Positive · Solid</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#38c8b8;"></div>
+          <div class="swatch-trio-chip" style="background:#187868;"></div>
+          <div class="swatch-trio-chip" style="background:#081e1a;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CITRON -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#d4c06a;">
+        <div class="swatch-name-on-chip">Citron</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#d4c06a;">#d4c06a</div>
+        <div class="swatch-role">Structure · Section labels · Eyebrows</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#d4c06a;"></div>
+          <div class="swatch-trio-chip" style="background:#7a6e28;"></div>
+          <div class="swatch-trio-chip" style="background:#1c1a08;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCARLET -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#c8253a;">
+        <div class="swatch-name-on-chip">Scarlet</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#c8253a;">#c8253a</div>
+        <div class="swatch-role">Blocking · Urgent · Must close</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#c8253a;"></div>
+          <div class="swatch-trio-chip" style="background:#7a1020;"></div>
+          <div class="swatch-trio-chip" style="background:#1a080a;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BORDEAUX -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#b87898;">
+        <div class="swatch-name-on-chip">Bordeaux</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#b87898;">#b87898</div>
+        <div class="swatch-role">Narrative · Rhetorical · Humanistic</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#b87898;"></div>
+          <div class="swatch-trio-chip" style="background:#4a2838;"></div>
+          <div class="swatch-trio-chip" style="background:#180d12;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRAGONFLY -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#5ab0c8;">
+        <div class="swatch-name-on-chip">Dragonfly</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#5ab0c8;">#5ab0c8</div>
+        <div class="swatch-role">Legal-instrumental · Reference</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#5ab0c8;"></div>
+          <div class="swatch-trio-chip" style="background:#183e4a;"></div>
+          <div class="swatch-trio-chip" style="background:#0a1820;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COSMIC -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#9898c8;">
+        <div class="swatch-name-on-chip">Cosmic</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#9898c8;">#9898c8</div>
+        <div class="swatch-role">Analytical · Conceptual · Section nums</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#9898c8;"></div>
+          <div class="swatch-trio-chip" style="background:#404068;"></div>
+          <div class="swatch-trio-chip" style="background:#10101e;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAPHITE -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#a8a040;">
+        <div class="swatch-name-on-chip">Graphite</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#a8a040;">#a8a040</div>
+        <div class="swatch-role">Secondary structure · Process nodes</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#a8a040;"></div>
+          <div class="swatch-trio-chip" style="background:#4a4820;"></div>
+          <div class="swatch-trio-chip" style="background:#181808;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORAL -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#c87870;">
+        <div class="swatch-name-on-chip">Coral</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#c87870;">#c87870</div>
+        <div class="swatch-role">Warm warning · Soft escalation</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#c87870;"></div>
+          <div class="swatch-trio-chip" style="background:#784038;"></div>
+          <div class="swatch-trio-chip" style="background:#1c0e0c;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NANTUCKET -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#7ab8d8;">
+        <div class="swatch-name-on-chip">Nantucket</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#7ab8d8;">#7ab8d8</div>
+        <div class="swatch-role">Process nodes · Chain flow</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#7ab8d8;"></div>
+          <div class="swatch-trio-chip" style="background:#2a5878;"></div>
+          <div class="swatch-trio-chip" style="background:#0a1820;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATIN -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#c8bfa8;">
+        <div class="swatch-name-on-chip">Satin</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#c8bfa8;">#c8bfa8</div>
+        <div class="swatch-role">Neutral · System controls</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#c8bfa8;"></div>
+          <div class="swatch-trio-chip" style="background:#6e6858;"></div>
+          <div class="swatch-trio-chip" style="background:#1e1c18;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAPE -->
+    <div class="swatch-card swatch-portal">
+      <div class="swatch-chip" style="background:linear-gradient(135deg,#6b2d8b,#9b58c8);">
+        <div class="swatch-name-on-chip">Grape</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#9b58c8;">#9b58c8 <span style="color:#6b2d8b;font-size:10px;">/ #6b2d8b</span></div>
+        <div class="swatch-role">Portal · Landmark · Drive sections</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#9b58c8;"></div>
+          <div class="swatch-trio-chip" style="background:#6b2d8b;"></div>
+          <div class="swatch-trio-chip" style="background:#3a1050;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOLD -->
+    <div class="swatch-card swatch-portal">
+      <div class="swatch-chip" style="background:linear-gradient(135deg,#c8a830,#e8c850);">
+        <div class="swatch-name-on-chip">Gold</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#e8c850;">#e8c850 <span style="color:#c8a830;font-size:10px;">/ #c8a830</span></div>
+        <div class="swatch-role">Portal accent · Document emphasis</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#e8c850;"></div>
+          <div class="swatch-trio-chip" style="background:#c8a830;"></div>
+          <div class="swatch-trio-chip" style="background:#7a6218;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHERWOOD -->
+    <div class="swatch-card swatch-portal">
+      <div class="swatch-chip" style="background:linear-gradient(135deg,#1a7a48,#38c878);">
+        <div class="swatch-name-on-chip">Sherwood</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#38c878;">#38c878 <span style="color:#1a7a48;font-size:10px;">/ #1a7a48</span></div>
+        <div class="swatch-role">Portal positive · Tairiscint block</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#38c878;"></div>
+          <div class="swatch-trio-chip" style="background:#1a7a48;"></div>
+          <div class="swatch-trio-chip" style="background:#0a3820;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARCHMENT -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:#e8e3d4;">
+        <div class="swatch-name-on-chip" style="color:rgba(10,9,16,.6);">Parchment</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#e8e3d4;">#e8e3d4 <span style="color:#9e9887;font-size:10px;">/ #9e9887</span></div>
+        <div class="swatch-role">Primary text · Dimmed body copy</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#e8e3d4;"></div>
+          <div class="swatch-trio-chip" style="background:#9e9887;"></div>
+          <div class="swatch-trio-chip" style="background:#38303e;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SURFACE LEVELS -->
+    <div class="swatch-card">
+      <div class="swatch-chip" style="background:linear-gradient(135deg,#141018,#1c1820,#221e2a);">
+        <div class="swatch-name-on-chip">Surface</div>
+      </div>
+      <div class="swatch-body">
+        <div class="swatch-hex" style="color:#9e9887;">#141018 / #1c1820 / #221e2a</div>
+        <div class="swatch-role">Card · Panel · Raised surface</div>
+        <div class="swatch-trio">
+          <div class="swatch-trio-chip" style="background:#141018;"></div>
+          <div class="swatch-trio-chip" style="background:#1c1820;"></div>
+          <div class="swatch-trio-chip" style="background:#221e2a;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ § 2 · SEMANTIC ROLES ════════════════════════ -->
+<div class="ds-section fade-up fd3">
+  <div class="ds-section-label">§ 02</div>
+  <div class="ds-section-title">Semantic Role Map</div>
+  <p class="ds-section-sub">Each colour carries a fixed meaning. Applying the wrong colour to a role is a grammar error, not a style choice.</p>
+
+  <table class="role-table">
+    <tbody>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#38c8b8;box-shadow:0 0 6px rgba(56,200,184,.55);"></div><span style="color:#38c8b8;">Rivulet</span></div></td>
+        <td><div class="role-hex">#38c8b8</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#38c8b8;border-color:rgba(56,200,184,.3);background:var(--rivulet-bg);">Demonstrated</span></div></td>
+        <td><div class="role-sample">Status pips, net counters, SVG "solid" cards, confirmed sequences.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#d4c06a;box-shadow:0 0 6px rgba(212,192,106,.5);"></div><span style="color:#d4c06a;">Citron</span></div></td>
+        <td><div class="role-hex">#d4c06a</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#d4c06a;border-color:rgba(212,192,106,.3);background:var(--citron-bg);">Structure</span><span class="role-ctx" style="color:#d4c06a;border-color:rgba(212,192,106,.3);background:var(--citron-bg);">Needs</span></div></td>
+        <td><div class="role-sample">Section eyebrows, sidereal coords, prompt-line carets, <strong>needs-derivation</strong> pips.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#c8253a;box-shadow:0 0 6px rgba(200,37,58,.55);"></div><span style="color:#c8253a;">Scarlet</span></div></td>
+        <td><div class="role-hex">#c8253a</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#c8253a;border-color:rgba(200,37,58,.3);background:var(--scarlet-bg);">Blocking</span></div></td>
+        <td><div class="role-sample">Warn boxes, gap pips, blocking task IDs, header lede border, live status.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#b87898;"></div><span style="color:#b87898;">Bordeaux</span></div></td>
+        <td><div class="role-hex">#b87898</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#b87898;border-color:rgba(184,120,152,.3);background:var(--bordeaux-bg);">Narrative</span></div></td>
+        <td><div class="role-sample">Machol quote bar, axiom rule stripes, rhetorical/humanistic accents, h1 <em>italic</em> emphasis.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#5ab0c8;"></div><span style="color:#5ab0c8;">Dragonfly</span></div></td>
+        <td><div class="role-hex">#5ab0c8</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#5ab0c8;border-color:rgba(90,176,200,.3);background:var(--dragonfly-bg);">Legal</span></div></td>
+        <td><div class="role-sample">Glossary term column, legal-repo bars, OI-03 (non-blocking tasks), legal reference nodes.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#9898c8;"></div><span style="color:#9898c8;">Cosmic</span></div></td>
+        <td><div class="role-hex">#9898c8</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#9898c8;border-color:rgba(152,152,200,.3);background:var(--cosmic-bg);">Analytical</span></div></td>
+        <td><div class="role-sample">Section numbers, alert strip, SVG section headers, owl-layer doctrine nodes.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#9b58c8;"></div><span style="color:#9b58c8;">Grape</span></div></td>
+        <td><div class="role-hex">#9b58c8 / #6b2d8b</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#9b58c8;border-color:rgba(155,88,200,.3);background:var(--grape-bg);">Portal</span></div></td>
+        <td><div class="role-sample">Drive portal sections, Redundancy Awareness landing blocks, landmark identity elements.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#e8c850;"></div><span style="color:#e8c850;">Gold</span></div></td>
+        <td><div class="role-hex">#e8c850 / #c8a830</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#e8c850;border-color:rgba(232,200,80,.3);background:var(--gold-bg);">Portal accent</span></div></td>
+        <td><div class="role-sample">Portal eyebrows, doc-card top bars, Cinzel title glows, PDF preview left border.</div></td>
+      </tr>
+      <tr>
+        <td><div class="role-pip"><div class="role-pip-dot" style="background:#38c878;"></div><span style="color:#38c878;">Sherwood</span></div></td>
+        <td><div class="role-hex">#38c878 / #1a7a48</div></td>
+        <td><div class="role-contexts"><span class="role-ctx" style="color:#38c878;border-color:rgba(56,200,120,.3);background:var(--sherwood-bg);">Portal positive</span></div></td>
+        <td><div class="role-sample">Tairiscint block, portal "filed" confirmations, sherwood-top-border landmark cards.</div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══ § 3 · BUTTONS ═══════════════════════════════ -->
+<div class="ds-section fade-up fd3">
+  <div class="ds-section-label">§ 03</div>
+  <div class="ds-section-title">Buttons</div>
+  <p class="ds-section-sub">All variants — outline (standard), solid (primary action). The hover state unlocks a faint glow in the hue of the button.</p>
+
+  <div class="btn-row-label">Outline · Core palette</div>
+  <div class="btn-grid">
+    <button class="btn btn-rivulet"><span>◎</span> Demonstrated</button>
+    <button class="btn btn-citron"><span>✦</span> Structure</button>
+    <button class="btn btn-scarlet"><span>⚠</span> Blocking</button>
+    <button class="btn btn-bordeaux"><span>◈</span> Narrative</button>
+    <button class="btn btn-dragonfly"><span>§</span> Legal</button>
+    <button class="btn btn-cosmic"><span>◇</span> Analytical</button>
+    <button class="btn btn-graphite"><span>·</span> Graphite</button>
+    <button class="btn btn-coral"><span>△</span> Coral</button>
+    <button class="btn btn-nantucket"><span>→</span> Nantucket</button>
+    <button class="btn btn-satin"><span>—</span> Neutral</button>
+  </div>
+
+  <div class="btn-row-label">Outline · Portal triad</div>
+  <div class="btn-grid">
+    <button class="btn btn-grape"><span>⬡</span> Portal</button>
+    <button class="btn btn-gold"><span>✦</span> Gold Accent</button>
+    <button class="btn btn-sherwood"><span>◎</span> Sherwood</button>
+  </div>
+
+  <div class="btn-row-label">Solid · Primary actions</div>
+  <div class="btn-grid">
+    <button class="btn btn-solid-rivulet">◎ Confirm / Filed</button>
+    <button class="btn btn-solid-scarlet">⚠ Blocking Action</button>
+    <button class="btn btn-solid-grape">⬡ Open Portal</button>
+  </div>
+</div>
+
+
+<!-- ═══ § 4 · BADGES ════════════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 04</div>
+  <div class="ds-section-title">Badges &amp; Tags</div>
+  <p class="ds-section-sub">Square-cornered for task/status labels. Pill variant for lighter semantic tags.</p>
+
+  <div style="margin-bottom:8px;"><div class="btn-row-label">Standard badges · with pip dot</div></div>
+  <div class="badge-row">
+    <span class="badge badge-rivulet"><span class="badge-dot"></span>Demonstrated</span>
+    <span class="badge badge-citron"><span class="badge-dot"></span>Needs derivation</span>
+    <span class="badge badge-scarlet"><span class="badge-dot"></span>Blocking</span>
+    <span class="badge badge-bordeaux"><span class="badge-dot"></span>Narrative</span>
+    <span class="badge badge-dragonfly"><span class="badge-dot"></span>Legal ref</span>
+    <span class="badge badge-cosmic"><span class="badge-dot"></span>Analytical</span>
+  </div>
+  <div class="badge-row" style="margin-top:8px;">
+    <span class="badge badge-grape-lt"><span class="badge-dot"></span>Portal</span>
+    <span class="badge badge-gold-lt"><span class="badge-dot"></span>Gold accent</span>
+    <span class="badge badge-sherwood"><span class="badge-dot"></span>Filed</span>
+    <span class="badge badge-satin"><span class="badge-dot"></span>Neutral</span>
+  </div>
+
+  <div style="margin-top:20px;"><div class="btn-row-label">Pill variant · without dot</div></div>
+  <div class="badge-row">
+    <span class="badge badge-pill badge-rivulet">✓ Solid</span>
+    <span class="badge badge-pill badge-citron">△ Needs work</span>
+    <span class="badge badge-pill badge-scarlet">✗ Must close</span>
+    <span class="badge badge-pill badge-dragonfly">§ OI-03</span>
+    <span class="badge badge-pill badge-cosmic">◇ Analytical</span>
+    <span class="badge badge-pill badge-grape-lt">⬡ Portal</span>
+  </div>
+</div>
+
+
+<!-- ═══ § 5 · STATUS PIPS ═══════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 05</div>
+  <div class="ds-section-title">Status Pips</div>
+  <p class="ds-section-sub">Glowing dot + label combination used in card headers to communicate the epistemic state of a claim at a glance.</p>
+
+  <div class="pip-demo">
+    <div class="pip-row">
+      <div class="pip" style="background:#38c8b8;box-shadow:0 0 7px rgba(56,200,184,.6);"></div>
+      <span class="pip-label" style="color:#38c8b8;">Solid</span>
+      <span class="pip-desc">Mechanism stated · chain complete · evidence in hand</span>
+    </div>
+    <div class="pip-row">
+      <div class="pip" style="background:#d4c06a;box-shadow:0 0 7px rgba(212,192,106,.5);"></div>
+      <span class="pip-label" style="color:#d4c06a;">Needs derivation</span>
+      <span class="pip-desc">Conclusion present · not yet built from the instrument</span>
+    </div>
+    <div class="pip-row">
+      <div class="pip" style="background:#c8253a;box-shadow:0 0 7px rgba(200,37,58,.6);"></div>
+      <span class="pip-label" style="color:#c8253a;">Must close first</span>
+      <span class="pip-desc">Gap blocks the next transmission — do not file</span>
+    </div>
+    <div class="pip-row">
+      <div class="pip" style="background:#5ab0c8;box-shadow:0 0 7px rgba(90,176,200,.45);"></div>
+      <span class="pip-label" style="color:#5ab0c8;">Not blocking</span>
+      <span class="pip-desc">Should be completed · not a prerequisite to filing</span>
+    </div>
+    <div class="pip-row">
+      <div class="pip" style="background:#9b58c8;box-shadow:0 0 7px rgba(155,88,200,.5);"></div>
+      <span class="pip-label" style="color:#9b58c8;">Portal active</span>
+      <span class="pip-desc">Landmark section — Redundancy Awareness corpus</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ § 6 · CARDS ═════════════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 06</div>
+  <div class="ds-section-title">Cards</div>
+  <p class="ds-section-sub">The three epistemic states and the portal variant. Top accent bar carries the colour; interior stays surface-level.</p>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-accent" style="background:#38c8b8;"></div>
+      <div class="card-pip-row">
+        <div class="card-pip-dot" style="background:#38c8b8;box-shadow:0 0 6px rgba(56,200,184,.55);"></div>
+        <span style="color:#38c8b8;">Solid</span>
+      </div>
+      <div class="card-title">Every domestic door<br><em>has been tried</em></div>
+      <div class="card-body">Sequence complete. <strong>Each act is dated.</strong> Each is independently reviewable. The chain from first submission to final closure is unbroken.</div>
+      <div class="card-note" style="color:rgba(56,200,184,.6);">
+        ✓ Pre-Litigation Notice · Feb 10<br>
+        ✓ Gunn Letter · Feb 24 · independently reviewable<br>
+        ✓ Exhaustion of domestic remedies standard met
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#d4c06a;"></div>
+      <div class="card-pip-row">
+        <div class="card-pip-dot" style="background:#d4c06a;box-shadow:0 0 6px rgba(212,192,106,.5);"></div>
+        <span style="color:#d4c06a;">Needs derivation</span>
+      </div>
+      <div class="card-title">Three courts — no overlap<br><em>shown from description, not law</em></div>
+      <div class="card-body">The non-overlap argument is correct but described from a diagram. <strong>Each jurisdiction needs to be shown from its own instrument.</strong></div>
+      <div class="card-note" style="color:rgba(212,192,106,.6);">
+        △ Irish Ombudsman Act s.7 not yet cited<br>
+        △ Art. 228 TFEU not yet derived<br>
+        → Derivation task · OI-03 · not blocking
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent" style="background:#c8253a;"></div>
+      <div class="card-pip-row">
+        <div class="card-pip-dot" style="background:#c8253a;box-shadow:0 0 6px rgba(200,37,58,.55);"></div>
+        <span style="color:#c8253a;">Must close first</span>
+      </div>
+      <div class="card-title">Did the agency fail,<br><em>or just disagree?</em></div>
+      <div class="card-body">2009 vs 2025: mutually exclusive positions. <strong>The breach argument has not been written yet.</strong> A respondent can contest this at the level of assertion.</div>
+      <div class="card-note" style="color:rgba(200,37,58,.6);">
+        ✗ Conclusion stated — not built from the standard<br>
+        ✗ O'Keeffe irrationality limb missing<br>
+        → OI-01 · Blocking
+      </div>
+    </div>
+
+    <div class="card card-portal">
+      <div class="card-accent" style="background:linear-gradient(90deg,var(--grape),var(--grape-lt));"></div>
+      <div class="card-pip-row">
+        <div class="card-pip-dot" style="background:#9b58c8;box-shadow:0 0 6px rgba(155,88,200,.5);"></div>
+        <span style="color:#9b58c8;">Portal active</span>
+      </div>
+      <div class="card-title">Redundancy Awareness<br><em>Corpus · 2006–2026</em></div>
+      <div class="card-body">Five document clusters, eleven glossary terms, two legal writs. <strong>The record is an instrument now, not a chronicle.</strong></div>
+      <div class="card-note" style="color:rgba(155,88,200,.6);">
+        ⬡ Drive portal · CC0 · Public Domain<br>
+        ⬡ dr-crunch.github.io<br>
+        ⬡ Tairiscint Mheinhardt — primary instrument
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ § 7 · ALERT BARS ════════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 07</div>
+  <div class="ds-section-title">Alert &amp; Warn Bars</div>
+  <p class="ds-section-sub">Used in the alert strip, warn-box, and axiom bar. The left border or top accent identifies the register.</p>
+
+  <div style="margin-top:4px;">
+    <div class="alert-bar alert-blocking">
+      <div>
+        <span class="alert-bar-label">⚠ Blocking — do not transmit</span>
+        <span class="alert-bar-text">OI-01 and OI-02 must be completed<span>·</span>O'Keeffe limb unwritten<span>·</span>Ombudsman conflict unresolved</span>
+      </div>
+      <div class="alert-bar-actions">
+        <button class="btn btn-scarlet" style="font-size:10px;padding:5px 12px;">Open OI-01</button>
+      </div>
+    </div>
+
+    <div class="alert-bar alert-needs">
+      <div>
+        <span class="alert-bar-label">△ Needs derivation</span>
+        <span class="alert-bar-text">Three-court architecture<span>·</span>show from the law itself<span>·</span>OI-03</span>
+      </div>
+      <div class="alert-bar-actions">
+        <button class="btn btn-citron" style="font-size:10px;padding:5px 12px;">OI-03</button>
+      </div>
+    </div>
+
+    <div class="alert-bar alert-info">
+      <div>
+        <span class="alert-bar-label">✓ Reference</span>
+        <span class="alert-bar-text">Irish Ombudsman Act s.7<span>·</span>Art. 228 TFEU<span>·</span>Défenseur des Droits mandate</span>
+      </div>
+      <div class="alert-bar-actions">
+        <button class="btn btn-dragonfly" style="font-size:10px;padding:5px 12px;">View</button>
+      </div>
+    </div>
+
+    <div class="alert-bar alert-portal">
+      <div>
+        <span class="alert-bar-label">⬡ Portal · Redundancy Awareness</span>
+        <span class="alert-bar-text">Drive corpus active<span>·</span>Tairiscint linked<span>·</span>CC0</span>
+      </div>
+      <div class="alert-bar-actions">
+        <button class="btn btn-grape" style="font-size:10px;padding:5px 12px;">Open</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AXIOM BAR SAMPLE -->
+  <div style="margin-top:28px;">
+    <div class="btn-row-label">Axiom bar · bordeaux register</div>
+    <div class="axiom-bar">
+      <div class="axiom-rule" style="background:linear-gradient(to bottom,#b87898,rgba(184,120,152,.04));"></div>
+      <div class="axiom-body">
+        <div class="axiom-tag" style="color:rgba(184,120,152,.45);">Structural note · grammar and law converge</div>
+        <div class="axiom-quote">Local rules that cannot close the system from inside require an external constraint to close them.</div>
+        <div class="axiom-plain">The writing rules for this project follow the same logic as the legal case. Individual rules cannot close the system alone; K.3 only emerges when they compose under the right conditions.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ § 8 · TASK LIST ══════════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 08</div>
+  <div class="ds-section-title">Task Items</div>
+  <p class="ds-section-sub">Scarlet for blocking OIs, dragonfly for non-blocking. Orbitron numerics, IBM Plex Mono task names, EB Garamond body copy.</p>
+
+  <div class="task-list">
+    <div class="task-item">
+      <div>
+        <div class="task-id" style="color:#c8253a;">OI-01</div>
+        <span class="task-tag" style="color:#c8253a;border-color:rgba(200,37,58,.3);background:#1a080a;">Blocking</span>
+      </div>
+      <div>
+        <span class="task-name">Write the incompetence argument properly</span>
+        <div class="task-plain">The 2009 and 2025 positions are mutually exclusive. <strong>The breach argument has not been written yet.</strong> It needs a dedicated passage built step by step from the O'Keeffe irrationality standard.</div>
+      </div>
+    </div>
+    <div class="task-item">
+      <div>
+        <div class="task-id" style="color:#c8253a;">OI-02</div>
+        <span class="task-tag" style="color:#c8253a;border-color:rgba(200,37,58,.3);background:#1a080a;">Blocking</span>
+      </div>
+      <div>
+        <span class="task-name">Resolve the Ombudsman complaint conflict</span>
+        <div class="task-plain">One added paragraph names the annual report mechanism as operative remedy. <strong>Currently the draft identifies the conflict as an irony.</strong> It needs to name it as a structural challenge.</div>
+      </div>
+    </div>
+    <div class="task-item">
+      <div>
+        <div class="task-id" style="color:#5ab0c8;">OI-03</div>
+        <span class="task-tag" style="color:#5ab0c8;border-color:rgba(90,176,200,.3);background:#0a1820;">Not blocking</span>
+      </div>
+      <div>
+        <span class="task-name">Show the three-court architecture from the law itself</span>
+        <div class="task-plain">Instead of saying "these bodies don't overlap," show text by text <strong>exactly why no single authority can substitute for any other</strong>. Not blocking, but should be completed in the same session.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ § 9 · GLOSSARY ROW ═══════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 09</div>
+  <div class="ds-section-title">Glossary Table</div>
+  <p class="ds-section-sub">Term column in dragonfly (legal-instrumental). Definition in EB Garamond parchment-dim. Legal correlate in a dimmed dragonfly note beneath.</p>
+
+  <table class="gloss-table">
+    <tr>
+      <td>The Nullification Loop<br><span style="font-size:9px;opacity:.4;font-style:italic;">Lúba Neamhnithe</span></td>
+      <td>Five institutional moves — acknowledge, defer, displace, assert sufficiency, reset — that together produce the same output (no decision) regardless of who is operating at any stage.<span class="gloss-corr">Art. 41 EU Charter · Meadows · Re Haughey · Order 84 RSC</span></td>
+    </tr>
+    <tr>
+      <td>Silence Veto</td>
+      <td>When an institution's silence operates as a decision against you — a "no" delivered without process, without reasons, and without your right to be heard being discharged.<span class="gloss-corr">Re Haughey · McDonald · Art. 41 CFR · O'Keeffe · Order 84 RSC</span></td>
+    </tr>
+    <tr>
+      <td>Evasocracy<br><span style="font-size:9px;opacity:.4;font-style:italic;">Séachanachas</span></td>
+      <td>Governing through systematic non-decision. Not indecision — the active management of silence as a policy instrument.<span class="gloss-corr">Art. 4(3) TEU · O'Keeffe · Heaney</span></td>
+    </tr>
+    <tr>
+      <td>The McEntee Foreclosure</td>
+      <td>DOD-MO-01201-2025. February 4th, 2026. A minister's private secretary closed the file with reasons. Those reasons fail on three independent legal grounds. <strong style="color:#e8e3d4;">This is the primary court target.</strong><span class="gloss-corr">O'Keeffe irrationality · Meadows reasons failure · Heaney proportionality: all three limbs</span></td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ═══ § 10 · NET COUNTER ═══════════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 10</div>
+  <div class="ds-section-title">Net Counter &amp; Ticker</div>
+  <p class="ds-section-sub">The three-cell summary block and the scrolling ticker — the primary data-at-a-glance elements.</p>
+
+  <div class="net-row">
+    <div class="net-cell">
+      <div class="net-n" style="color:#38c8b8;">3</div>
+      <div class="net-label" style="color:rgba(56,200,184,.55);">claims fully<br>demonstrated</div>
+    </div>
+    <div class="net-cell">
+      <div class="net-n" style="color:#d4c06a;">3</div>
+      <div class="net-label" style="color:rgba(212,192,106,.55);">need to be derived<br>from source instruments</div>
+    </div>
+    <div class="net-cell">
+      <div class="net-n" style="color:#c8253a;">2</div>
+      <div class="net-label" style="color:rgba(200,37,58,.55);">gaps block the<br>next transmission</div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;">
+    <div class="btn-row-label">Ticker · scarlet hi / citron go / parchment-dim base</div>
+    <div class="ticker-wrap">
+      <div class="ticker-inner">
+        <span class="hi">MEINHARDT INITIATIVE</span><span>WHAT WE KNOW</span><span class="go">MARCH 2026</span><span>19 YEARS · ZERO DETERMINATIONS</span><span class="hi">EPISTEMOLOGICAL AUDIT</span><span>THE RECORD IS AN INSTRUMENT</span><span class="go">NOT A CHRONICLE</span><span>CLAIM VS DEMONSTRATION</span><span class="hi">FOUR TASKS REMAIN</span><span>EU PRESIDENCY · 1 JULY 2026</span><span class="go">CC0 · PUBLIC DOMAIN</span><span>THE DUTY HAS NOT BEEN DISCHARGED</span>
+        <span class="hi">MEINHARDT INITIATIVE</span><span>WHAT WE KNOW</span><span class="go">MARCH 2026</span><span>19 YEARS · ZERO DETERMINATIONS</span><span class="hi">EPISTEMOLOGICAL AUDIT</span><span>THE RECORD IS AN INSTRUMENT</span><span class="go">NOT A CHRONICLE</span><span>CLAIM VS DEMONSTRATION</span><span class="hi">FOUR TASKS REMAIN</span><span>EU PRESIDENCY · 1 JULY 2026</span><span class="go">CC0 · PUBLIC DOMAIN</span><span>THE DUTY HAS NOT BEEN DISCHARGED</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ § 11 · TOKEN REFERENCE ══════════════════════ -->
+<div class="ds-section">
+  <div class="ds-section-label">§ 11</div>
+  <div class="ds-section-title">CSS Variable Index</div>
+  <p class="ds-section-sub">Every variable used in the system. Copy directly into :root {}. The trio strip shows base · dim · bg.</p>
+
+  <div class="token-strip">
+    <div class="token-item"><div class="token-name">Rivulet</div><div class="token-value" style="color:#38c8b8;">--rivulet / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#38c8b8;"></div><div class="token-trio-chip" style="background:#187868;"></div><div class="token-trio-chip" style="background:#081e1a;"></div></div></div>
+    <div class="token-item"><div class="token-name">Citron</div><div class="token-value" style="color:#d4c06a;">--citron / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#d4c06a;"></div><div class="token-trio-chip" style="background:#7a6e28;"></div><div class="token-trio-chip" style="background:#1c1a08;"></div></div></div>
+    <div class="token-item"><div class="token-name">Scarlet</div><div class="token-value" style="color:#c8253a;">--scarlet / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#c8253a;"></div><div class="token-trio-chip" style="background:#7a1020;"></div><div class="token-trio-chip" style="background:#1a080a;"></div></div></div>
+    <div class="token-item"><div class="token-name">Bordeaux</div><div class="token-value" style="color:#b87898;">--bordeaux / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#b87898;"></div><div class="token-trio-chip" style="background:#4a2838;"></div><div class="token-trio-chip" style="background:#180d12;"></div></div></div>
+    <div class="token-item"><div class="token-name">Dragonfly</div><div class="token-value" style="color:#5ab0c8;">--dragonfly / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#5ab0c8;"></div><div class="token-trio-chip" style="background:#183e4a;"></div><div class="token-trio-chip" style="background:#0a1820;"></div></div></div>
+    <div class="token-item"><div class="token-name">Cosmic</div><div class="token-value" style="color:#9898c8;">--cosmic / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#9898c8;"></div><div class="token-trio-chip" style="background:#404068;"></div><div class="token-trio-chip" style="background:#10101e;"></div></div></div>
+    <div class="token-item"><div class="token-name">Graphite</div><div class="token-value" style="color:#a8a040;">--graphite / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#a8a040;"></div><div class="token-trio-chip" style="background:#4a4820;"></div><div class="token-trio-chip" style="background:#181808;"></div></div></div>
+    <div class="token-item"><div class="token-name">Coral</div><div class="token-value" style="color:#c87870;">--coral / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#c87870;"></div><div class="token-trio-chip" style="background:#784038;"></div><div class="token-trio-chip" style="background:#1c0e0c;"></div></div></div>
+    <div class="token-item"><div class="token-name">Nantucket</div><div class="token-value" style="color:#7ab8d8;">--nantucket / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#7ab8d8;"></div><div class="token-trio-chip" style="background:#2a5878;"></div><div class="token-trio-chip" style="background:#0a1820;"></div></div></div>
+    <div class="token-item"><div class="token-name">Satin</div><div class="token-value" style="color:#c8bfa8;">--satin / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#c8bfa8;"></div><div class="token-trio-chip" style="background:#6e6858;"></div><div class="token-trio-chip" style="background:#1e1c18;"></div></div></div>
+    <div class="token-item"><div class="token-name">Grape</div><div class="token-value" style="color:#9b58c8;">--grape-lt / --grape / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#9b58c8;"></div><div class="token-trio-chip" style="background:#6b2d8b;"></div><div class="token-trio-chip" style="background:#3a1050;"></div></div></div>
+    <div class="token-item"><div class="token-name">Gold</div><div class="token-value" style="color:#e8c850;">--gold-lt / --gold / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#e8c850;"></div><div class="token-trio-chip" style="background:#c8a830;"></div><div class="token-trio-chip" style="background:#7a6218;"></div></div></div>
+    <div class="token-item"><div class="token-name">Sherwood</div><div class="token-value" style="color:#38c878;">--sherwood-lt / --sherwood / -dim / -bg</div><div class="token-trio"><div class="token-trio-chip" style="background:#38c878;"></div><div class="token-trio-chip" style="background:#1a7a48;"></div><div class="token-trio-chip" style="background:#0a3820;"></div></div></div>
+    <div class="token-item"><div class="token-name">Parchment</div><div class="token-value" style="color:#e8e3d4;">--parchment / -dim / -faint</div><div class="token-trio"><div class="token-trio-chip" style="background:#e8e3d4;"></div><div class="token-trio-chip" style="background:#9e9887;"></div><div class="token-trio-chip" style="background:#38303e;"></div></div></div>
+    <div class="token-item"><div class="token-name">Surface</div><div class="token-value" style="color:#9e9887;">--surface / 2 / 3</div><div class="token-trio"><div class="token-trio-chip" style="background:#141018;"></div><div class="token-trio-chip" style="background:#1c1820;"></div><div class="token-trio-chip" style="background:#221e2a;"></div></div></div>
+    <div class="token-item"><div class="token-name">Rule</div><div class="token-value" style="color:#9e9887;">--rule / --rule-strong</div><div class="token-trio"><div class="token-trio-chip" style="background:rgba(200,180,230,0.09);border:1px solid rgba(200,180,230,0.2);"></div><div class="token-trio-chip" style="background:rgba(200,180,230,0.16);border:1px solid rgba(200,180,230,0.2);"></div></div></div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer style="padding:40px 0 0;border-top:1px solid var(--rule);margin-top:56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--parchment-dim);line-height:1.8;">
+    Meinhardt Initiative · Colour Grammar · v2.0<br>
+    <a href="https://dr-crunch.github.io" style="color:var(--parchment-dim);text-decoration:none;">dr-crunch.github.io</a>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(158,152,135,.35);text-align:right;letter-spacing:.1em;text-transform:uppercase;line-height:1.8;">
+    CC0 · Public Domain<br>
+    <span style="opacity:.5;">Interregnum Nullificans</span>
+  </div>
+</footer>
+
+</div><!-- /page -->
+</body>
+</html>
