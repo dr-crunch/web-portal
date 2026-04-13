@@ -4,35 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Open Graph / Facebook, LinkedIn, Discord, etc. -->
-    <meta property="og:title" content="Meinhardt Website Design Specification 2.32" />
-    <meta property="og:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dr-crunch.github.io/web-portal/colour-grammar-master.html" />
-    <meta property="og:site_name" content="Meinhardt Website Design Specification 2.33" />
-    <meta property="og:image" content="https://dr-crunch.github.io/web-portal/og-colour-grammar.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+<!-- Open Graph / Facebook, LinkedIn, Discord, etc. -->
+<meta property="og:title" content="Meinhardt Website Design Specification 2.32" />
+<meta property="og:description" content="Style Guide for the Meinhardt Initiative website." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dr-crunch.github.io/web-portal/colour-grammar-master.html" />
+<meta property="og:site_name" content="Meinhardt Website Design Specification 2.32" />
+<meta property="og:image" content="https://dr-crunch.github.io/web-portal/og-colour-grammar.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
-    <!-- Twitter / X Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Meinhardt Website Design Specification 2.32" />
-    <meta name="twitter:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
-    <meta name="twitter:image" content="https://dr-crunch.github.io/web-portal/og-colour-grammar.jpg" />
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Meinhardt Website Design Specification 2.32" />
+<meta name="twitter:description" content="Style Guide for the Meinhardt Initiative website." />
+<meta name="twitter:image" content="https://dr-crunch.github.io/web-portal/og-colour-grammar.jpg" />
 
-    <!-- Optional extra meta tags for better SEO and previews -->
-    <meta name="description" content="Meinhardt Initiative / Website Design Document" />
+<!-- SEO -->
+<meta name="description" content="Meinhardt Initiative / Website Design Document" />
 
-  
 <title>Design Specification — Meinhardt Initiative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
-
-<title>Colour Grammar · Meinhardt Design System · 2026 · Master</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
-   TOKENS — v2.3 Master
+   TOKENS — v2.32 Master
    [A] 2026 Forecast · [B] Comfort Zone · [C] Glamor & Gleam
 ═══════════════════════════════════════════════════ */
 :root {
@@ -71,13 +67,14 @@
   --stretch-limo:#28283a; --stretch-limo-dim:#181828; --stretch-limo-bg:#080810;
 
   /* NACRE — paper-print document layer */
-  --usquebaugh:  #ffe5d0;
-  --aqua-vitae:  #edfff8;
-  --willow:      #d5e9db;
-  --glaze:       #edffff;
-  --quire:       #fff6ff;
-  --deckle:      #dbccd7;
-  --deckle-dim:  #c0acc1;
+  --usquebaugh:    #ffe5d0;
+  --aqua-vitae:    #edfff8;
+  --willow:        #d5e9db;
+  --glaze:         #edffff;
+  --quire:         #fff6ff;
+  --laitance:      #fefcfe;  /* annotation · S-resolved · dist 29.3 · +14 +14 +22 · Porcelain */
+  --deckle:        #dbccd7;
+  --deckle-dim:    #c0acc1;
 
   --S-demonstrated: var(--rivulet);
   --S-structure:    var(--citron);
@@ -90,6 +87,8 @@
   --S-portal:       var(--grape-lt);
   --S-ambient:      var(--cloud-dancer);
   --S-domain:       var(--regatta);
+  --S-earth:        var(--aqua-gray);
+  --S-resolved:     var(--laitance);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -136,17 +135,7 @@ body::before{
 }
 .nacre-zone>.nz-inner{position:relative;z-index:1;max-width:1008px;margin:0 auto;}
 
-/* transition bands — fade ink↔paper */
-.nacre-zone-top{
-  height:48px;
-  background:linear-gradient(to bottom,var(--ink),var(--cloud-dancer));
-  margin:0 -36px;position:relative;z-index:3;
-}
-.nacre-zone-bot{
-  height:48px;
-  background:linear-gradient(to bottom,var(--cloud-dancer),var(--ink));
-  margin:0 -36px;position:relative;z-index:3;
-}
+
 
 /* ═══════════════════════════════════════════════════
    HEADER
@@ -263,6 +252,7 @@ body::before{
 .pcard-grid{display:grid;gap:3px;}
 .pcard-grid-4{grid-template-columns:repeat(4,minmax(0,1fr));}
 .pcard-grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.pcard-grid-5{grid-template-columns:repeat(5,minmax(0,1fr));}
 
 .pcard{
   padding:20px 18px 18px;display:flex;flex-direction:column;
@@ -416,6 +406,8 @@ body::before{
 .btn-regatta{color:var(--regatta-lt);border-color:var(--regatta-dim);background:var(--regatta-bg);}
 .btn-aqua-gray{color:var(--aqua-gray);border-color:var(--aqua-gray-dim);background:var(--aqua-gray-bg);}
 .btn-cloud-dancer{color:var(--cloud-dancer-dim);border-color:rgba(200,196,184,.2);background:rgba(240,238,232,.04);}
+.btn-laitance{color:var(--cloud-dancer);border-color:rgba(192,172,193,.28);background:rgba(254,252,254,.04);}
+.btn-laitance:hover{border-color:var(--deckle-dim);box-shadow:0 0 10px rgba(192,172,193,.18);}
 .btn-mountain{color:var(--mountain-lt);border-color:var(--mountain-dim);background:var(--mountain-bg);}
 .btn-rivulet:hover{border-color:var(--rivulet);box-shadow:0 0 14px rgba(56,200,184,.2);}
 .btn-citron:hover{border-color:var(--citron);box-shadow:0 0 14px rgba(212,192,106,.2);}
@@ -573,6 +565,9 @@ body::before{
 .ticker-inner .domain{color:var(--regatta-lt);}
 .ticker-inner .nacre{color:var(--deckle-dim);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp .55s ease forwards;opacity:0;}
+.fd2{animation-delay:.1s;}.fd3{animation-delay:.2s;}.fd4{animation-delay:.3s;}.fd5{animation-delay:.4s;}
 
 /* ═══════════════════════════════════════════════════
    DARK — §11 TASK LIST
@@ -614,9 +609,7 @@ body::before{
 /* ═══════════════════════════════════════════════════
    ANIMATION
 ═══════════════════════════════════════════════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-.fade-up{animation:fadeUp .55s ease forwards;opacity:0;}
-.fd2{animation-delay:.1s;}.fd3{animation-delay:.2s;}.fd4{animation-delay:.3s;}.fd5{animation-delay:.4s;}
+
 
 /* ═══════════════════════════════════════════════════
    RESPONSIVE
@@ -630,9 +623,11 @@ body::before{
   .or-triad{grid-template-columns:1fr;}
   .pcard-grid-4{grid-template-columns:repeat(2,minmax(0,1fr));}
   .pcard-grid-3{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .pcard-grid-5{grid-template-columns:repeat(2,minmax(0,1fr));}
   .role-table td:nth-child(3),.role-table td:nth-child(4){display:none;}
   .nacre-zone{margin:0 -20px;padding:40px 24px 40px;}
-  .nacre-zone-top,.nacre-zone-bot{margin:0 -20px;}
+
+
 }
 </style>
 </head>
@@ -643,14 +638,14 @@ body::before{
 <div class="page">
 
 <!-- ═══ HEADER ═══════════════════════════════════════ -->
-<header class="ds-header fade-up">
+<header class="ds-header">
   <div>
     <div class="ds-eyebrow">Meinhardt Initiative · Design System</div>
     <h1 class="ds-h1">Colour <em>Grammar</em></h1>
     <p class="ds-sub">Master edition. The Nacre paper-print layer precedes the dark grammar — both systems share tokens, share ink, and are governed by the same rule set. Starfield background; paper occludes it.</p>
   </div>
   <div class="ds-meta">
-    <div class="ds-meta-item"><strong>Version</strong> — 2.3 Master</div>
+    <div class="ds-meta-item"><strong>Version</strong> — 2.32 Master</div>
     <div class="ds-meta-item"><strong>April</strong> 2026</div>
     <div class="ds-meta-item">Nacre · P.07–P.10</div>
     <div class="ds-meta-item">CC0 · Public Domain</div>
@@ -661,12 +656,12 @@ body::before{
 <!-- ════════════════════════════════════════════════════
      NACRE — paper comes first
 ════════════════════════════════════════════════════ -->
-<div class="nacre-zone-top"></div>
-<div class="nacre-zone fade-up fd2">
+
+<div class="nacre-zone">
 <div class="nz-inner">
 
   <div class="nz-section">
-    <div class="nz-eyebrow">Nacre · paper-print document layer · v2.3</div>
+    <div class="nz-eyebrow">Nacre · paper-print document layer · v2.32</div>
     <div class="nz-title">The Paper <em>Layer</em></div>
     <div class="nz-sub">Eight grounds white-balanced to Cloud Dancer (avg dist 30.0). Ink: Stretch Limo #28283a. Deckle-dim pulled 15% toward Grape-dim. Light → dark. Four proposals follow.</div>
 
@@ -674,7 +669,7 @@ body::before{
     <div class="nz-key">
       <div class="nz-key-chip" style="background:#f0eee8;" title="Cloud Dancer"></div>
       <div class="nz-key-chip" style="background:#edfff8;" title="Aqua Vitae"></div>
-      <div class="nz-key-chip" style="background:#fff6ff;" title="Quire"></div>
+      <div class="nz-key-chip" style="background:#fefcfe;" title="Laitance"></div>
       <div class="nz-key-chip" style="background:#edffff;" title="Glaze"></div>
       <div class="nz-key-chip" style="background:#ffe5d0;" title="Usquebaugh"></div>
       <div class="nz-key-chip" style="background:#d5e9db;" title="Willow"></div>
@@ -688,6 +683,7 @@ body::before{
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#f0eee8;"><div class="nacre-chip-name">cloud-dancer</div><div class="nacre-chip-hex">#f0eee8</div><div class="nacre-chip-dist">dist 0 · ref · [A&amp;B] 11-4201</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#edfff8;"><div class="nacre-chip-name">aqua-vitae</div><div class="nacre-chip-hex">#edfff8</div><div class="nacre-chip-dist">dist 23.5 · G+17 B+16</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#fff6ff;"><div class="nacre-chip-name">quire</div><div class="nacre-chip-hex">#fff6ff</div><div class="nacre-chip-dist">dist 28.6 · B+23 R+15</div></div></div>
+      <div class="nacre-swatch"><div class="nacre-chip" style="background:#fefcfe;"><div class="nacre-chip-name">laitance</div><div class="nacre-chip-hex">#fefcfe</div><div class="nacre-chip-dist">dist 29.3 · +14 +14 +22 · annotation</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#edffff;"><div class="nacre-chip-name">glaze</div><div class="nacre-chip-hex">#edffff</div><div class="nacre-chip-dist">dist 28.8 · B+23</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#ffe5d0;"><div class="nacre-chip-name">usquebaugh</div><div class="nacre-chip-hex">#ffe5d0</div><div class="nacre-chip-dist">dist 29.7 · B−24</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#d5e9db;"><div class="nacre-chip-name">willow</div><div class="nacre-chip-hex">#d5e9db</div><div class="nacre-chip-dist">dist 30.4 · R−27</div></div></div>
@@ -699,6 +695,7 @@ body::before{
       <div class="nacre-token-item" style="background:#f0eee8;"><div class="nacre-token-name">--cloud-dancer</div><div class="nacre-token-value">#f0eee8</div><div class="nacre-token-note">white balance · dist 0</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#f0eee8;border:0.5px solid rgba(40,40,58,.15);"></div></div></div>
       <div class="nacre-token-item" style="background:#edfff8;"><div class="nacre-token-name">--aqua-vitae</div><div class="nacre-token-value">#edfff8</div><div class="nacre-token-note">cool mint · dist 23.5</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#edfff8;"></div></div></div>
       <div class="nacre-token-item" style="background:#fff6ff;"><div class="nacre-token-name">--quire</div><div class="nacre-token-value">#fff6ff</div><div class="nacre-token-note">ghost lavender · dist 28.6</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#fff6ff;"></div></div></div>
+      <div class="nacre-token-item" style="background:#fefcfe;"><div class="nacre-token-name">--laitance</div><div class="nacre-token-value">#fefcfe</div><div class="nacre-token-note">annotation stock · dist 29.3</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#fefcfe;"></div></div></div>
       <div class="nacre-token-item" style="background:#edffff;"><div class="nacre-token-name">--glaze</div><div class="nacre-token-value">#edffff</div><div class="nacre-token-note">ice cyan · dist 28.8</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#edffff;"></div></div></div>
       <div class="nacre-token-item" style="background:#ffe5d0;"><div class="nacre-token-name">--usquebaugh</div><div class="nacre-token-value">#ffe5d0</div><div class="nacre-token-note">warm amber · dist 29.7</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#ffe5d0;"></div></div></div>
       <div class="nacre-token-item" style="background:#d5e9db;"><div class="nacre-token-name">--willow</div><div class="nacre-token-value">#d5e9db</div><div class="nacre-token-note">hushed sage · dist 30.4</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#d5e9db;"></div></div></div>
@@ -721,11 +718,11 @@ body::before{
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#f0eee8;"></div>
           <div class="proposal-pip" style="background:#edfff8;"></div>
-          <div class="proposal-pip" style="background:#fff6ff;"></div>
+          <div class="proposal-pip" style="background:#fefcfe;"></div>
           <div class="proposal-pip" style="background:#edffff;"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">cloud-dancer · aqua-vitae · quire · glaze · ink</div>
+          <div class="proposal-ground-label">cloud-dancer · aqua-vitae · laitance · glaze · ink</div>
         </div>
       </div>
     </div>
@@ -733,10 +730,10 @@ body::before{
     <div class="pb">
       <div class="pb-label">Lightest register</div>
       <div class="pcard-grid pcard-grid-4">
-        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · ground</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">dist 0</span></div></div>
-        <div class="pcard" style="background:#edfff8;"><div><div class="pcard-token">aqua-vitae</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#edfff8</span><span class="pcard-dist">dist 23.5</span></div></div>
-        <div class="pcard" style="background:#fff6ff;"><div><div class="pcard-token">quire</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#fff6ff</span><span class="pcard-dist">dist 28.6</span></div></div>
-        <div class="pcard" style="background:#edffff;"><div><div class="pcard-token">glaze</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#edffff</span><span class="pcard-dist">dist 28.8</span></div></div>
+        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · ground</div><div class="pcard-heading">Document<br><em>substrate</em></div><div class="pcard-body">The neutral prior. Before role is assigned, before argument is committed, Cloud Dancer is the sheet itself — the white-balance reference against which all velatura distances are measured. It is not white; it is the absence of decision.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">dist 0</span></div></div>
+        <div class="pcard" style="background:#edfff8;"><div><div class="pcard-token">aqua-vitae · exhibit</div><div class="pcard-heading">Exhibit<br><em>field</em></div><div class="pcard-body">The green band of the tricolour — the Gaelic tradition, the given, the extant. Exhibit material is evidence tipped in from outside the argument: instruments, correspondence, filed documents. The field is demonstrable; it does not argue, it shows.</div></div><div class="pcard-foot"><span class="pcard-hex">#edfff8</span><span class="pcard-dist">dist 23.5</span></div></div>
+        <div class="pcard" style="background:#fefcfe;"><div><div class="pcard-token">laitance · annotation</div><div class="pcard-heading">Annotation<br><em>margin</em></div><div class="pcard-body">The white field of the tricolour — the space of mediation between traditions. Annotation does not assert; it correlates. Marginalia, footnotes, legal referents: material that sits beside the argument in peaceful adjacency, refusing to be either exhibit or body.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">dist 29.3</span></div></div>
+        <div class="pcard" style="background:#edffff;"><div><div class="pcard-token">glaze · cover</div><div class="pcard-heading">Cover<br><em>sheet</em></div><div class="pcard-body">The lightest register — used where the document presents itself before being read. Title fields, running heads, cover sheets. A surface so close to the ground it reads as pure light, neither claiming colour nor refusing it.</div></div><div class="pcard-foot"><span class="pcard-hex">#edffff</span><span class="pcard-dist">dist 28.8</span></div></div>
       </div>
     </div>
     <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Velatura · optical principle</div><div class="nacre-axiom-quote">The ground is never absent. It speaks through every layer laid above it.</div><div class="nacre-axiom-plain">Cloud Dancer is the ground. Aqua-vitae, Quire, and Glaze are glazes applied over it — each modifies the temperature of the light without concealing the substrate. Stretch Limo reads the same on each: contrast governed by luminosity, not hue.</div></div></div>
@@ -746,7 +743,7 @@ body::before{
   <div class="nz-section">
     <div class="nz-eyebrow">§ P.08</div>
     <div class="nz-title">Paper Doctrine — <em>the working document register</em></div>
-    <div class="nz-sub">Mid-band grounds. Named stocks, each assigned a role: ground, body field, annotation margin, exhibit field.</div>
+    <div class="nz-sub">Mid-band grounds. Named stocks, each assigned a role: ground, exhibit field, annotation margin, body field.</div>
     <div class="proposal-header">
       <div class="proposal-n">08</div>
       <div>
@@ -755,11 +752,11 @@ body::before{
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#f0eee8;"></div>
           <div class="proposal-pip" style="background:#ffe5d0;"></div>
-          <div class="proposal-pip" style="background:#fff6ff;"></div>
+          <div class="proposal-pip" style="background:#fefcfe;"></div>
           <div class="proposal-pip" style="background:#d5e9db;"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">cloud-dancer · usquebaugh · quire · willow · ink</div>
+          <div class="proposal-ground-label">cloud-dancer · usquebaugh · laitance · willow · ink</div>
         </div>
       </div>
     </div>
@@ -768,9 +765,9 @@ body::before{
       <div class="pb-label">Named stocks · document role assignment</div>
       <div class="pcard-grid pcard-grid-4">
         <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · substrate</div><div class="pcard-heading">Document<br><em>ground</em></div><div class="pcard-body">The base sheet. White-balance reference — the paper the submission is printed on. All other stocks are overlaid against this ground.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">--N-substrate</span></div></div>
-        <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">usquebaugh · body field</div><div class="pcard-heading">Body<br><em>field</em></div><div class="pcard-body">Warm amber of new spirit. Body text ground for primary narrative sections — the main argument, the statement of facts, the submission proper.</div></div><div class="pcard-foot"><span class="pcard-hex">#ffe5d0</span><span class="pcard-dist">dist 29.7</span></div></div>
-        <div class="pcard" style="background:#fff6ff;"><div><div class="pcard-token">quire · annotation</div><div class="pcard-heading">Annotation<br><em>margin</em></div><div class="pcard-body">Ghost lavender of uncut sheets. Marginalia, footnotes, legal correlates — material that sits beside the argument rather than inside it.</div></div><div class="pcard-foot"><span class="pcard-hex">#fff6ff</span><span class="pcard-dist">dist 28.6</span></div></div>
         <div class="pcard" style="background:#d5e9db;"><div><div class="pcard-token">willow · exhibit</div><div class="pcard-heading">Exhibit<br><em>field</em></div><div class="pcard-body">Sage of gelatine sizing. Exhibit panels, supporting evidence fields, appended instruments — material tipped in from outside the argument.</div></div><div class="pcard-foot"><span class="pcard-hex">#d5e9db</span><span class="pcard-dist">dist 30.4</span></div></div>
+        <div class="pcard" style="background:#fefcfe;"><div><div class="pcard-token">laitance · annotation</div><div class="pcard-heading">Annotation<br><em>margin</em></div><div class="pcard-body">Ghost lavender of uncut sheets. Marginalia, footnotes, legal correlates — material that sits beside the argument rather than inside it.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">dist 29.3</span></div></div>
+        <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">usquebaugh · body field</div><div class="pcard-heading">Body<br><em>field</em></div><div class="pcard-body">Warm amber of new spirit. Body text ground for primary narrative sections — the main argument, the statement of facts, the submission proper.</div></div><div class="pcard-foot"><span class="pcard-hex">#ffe5d0</span><span class="pcard-dist">dist 29.7</span></div></div>
       </div>
     </div>
     <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Paper Doctrine · structural note</div><div class="nacre-axiom-quote">The stock defines the register before a word is printed.</div><div class="nacre-axiom-plain">A formal submission on Usquebaugh ground reads differently from the same text on Cloud Dancer — the warm amber pre-loads a context of sustained argument, the way cream-laid paper signals permanence before the reader processes a sentence. This is not decoration; it is constraint.</div></div></div>
@@ -780,28 +777,30 @@ body::before{
   <div class="nz-section">
     <div class="nz-eyebrow">§ P.09</div>
     <div class="nz-title">Strata — <em>the sedimentary register</em></div>
-    <div class="nz-sub">One colour from each depth band. Cloud Dancer as surface, Usquebaugh as shallow deposit, Deckle as deep layer, Deckle-dim as bedrock. The distance arithmetic is stratigraphy.</div>
+    <div class="nz-sub">One colour from each depth band. Cloud Dancer as surface, Laitance as resolved near-surface, Usquebaugh as shallow deposit, Deckle as deep layer, Deckle-dim as bedrock. The distance arithmetic is stratigraphy.</div>
     <div class="proposal-header">
       <div class="proposal-n">09</div>
       <div>
         <div class="proposal-title">Strata</div>
-        <div class="proposal-desc">Each colour deposited at a fixed distance from the Cloud Dancer ground. The distances (0 · 29.7 · 43.4 · 90.4) were produced by arithmetic against a fixed reference — not by aesthetic preference. Four layers, four roles, no overlap.</div>
+        <div class="proposal-desc">Each colour deposited at a fixed distance from the Cloud Dancer ground. The distances (0 · 29.6 · 29.7 · 43.4 · 90.4) were produced by arithmetic against a fixed reference — not by aesthetic preference. Five layers, five roles, no overlap. Laitance enters as the resolved surface layer — Porcelain, S-resolved.</div>
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#f0eee8;"></div>
+          <div class="proposal-pip" style="background:#fefcfe;border:1px solid rgba(192,172,193,.3);"></div>
           <div class="proposal-pip" style="background:#ffe5d0;"></div>
           <div class="proposal-pip" style="background:#dbccd7;"></div>
           <div class="proposal-pip" style="background:#c0acc1;"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">cloud-dancer · usquebaugh · deckle · deckle-dim · ink</div>
+          <div class="proposal-ground-label">cloud-dancer · laitance · usquebaugh · deckle · deckle-dim · ink</div>
         </div>
       </div>
     </div>
     <div class="proposal-rule"></div>
     <div class="pb">
       <div class="pb-label">Depth sequence · surface → bedrock</div>
-      <div class="pcard-grid pcard-grid-4">
+      <div class="pcard-grid pcard-grid-5">
         <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · surface</div><div class="pcard-heading">Surface<br><em>dist 0</em></div><div class="pcard-body">The reference layer. The white-balance anchor from which all distances are measured.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">layer 0</span></div></div>
+        <div class="pcard" style="background:#fefcfe;border-color:rgba(192,172,193,.2);"><div><div class="pcard-token">laitance · resolved</div><div class="pcard-heading">Resolved<br><em>dist 29.6</em></div><div class="pcard-body">Porcelain near-surface — the milky bloom that confirms the substrate has set. S-resolved layer. R=B over G.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">layer 0.5</span></div></div>
         <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">usquebaugh · shallow</div><div class="pcard-heading">Shallow<br><em>dist 29.7</em></div><div class="pcard-body">Warm amber — alluvial material settled close to the surface. Body text ground. First deposit.</div></div><div class="pcard-foot"><span class="pcard-hex">#ffe5d0</span><span class="pcard-dist">layer 1</span></div></div>
         <div class="pcard" style="background:#dbccd7;"><div><div class="pcard-token">deckle · mid</div><div class="pcard-heading">Mid<br><em>dist 43.4</em></div><div class="pcard-body">Dusty mauve — compressed mineral with residual warmth. First layer that reads as present rather than ambient.</div></div><div class="pcard-foot"><span class="pcard-hex">#dbccd7</span><span class="pcard-dist">layer 2</span></div></div>
         <div class="pcard" style="background:#c0acc1;"><div><div class="pcard-token">deckle-dim · bedrock</div><div class="pcard-heading">Bedrock<br><em>dist 90.4</em></div><div class="pcard-body">Grape-ancestral mauve, 15% pulled toward the portal's dim register. The anchor. Cover stock, colophon ground.</div></div><div class="pcard-foot"><span class="pcard-hex">#c0acc1</span><span class="pcard-dist">layer 3</span></div></div>
@@ -809,8 +808,9 @@ body::before{
     </div>
     <div class="pb" style="margin-top:3px;">
       <div class="pb-label">Ink on each stratum</div>
-      <div class="pcard-grid pcard-grid-4">
+      <div class="pcard-grid pcard-grid-5">
         <div class="pcard-ink"><div><div class="pcard-ink-label">stretch-limo on cloud-dancer</div><div class="pcard-ink-heading">Stretch Limo<br><em>on surface</em></div><div class="pcard-ink-body">Maximum contrast — the reference state. All other strata measured against this.</div></div><div class="pcard-ink-foot"><span class="pcard-ink-hex">#28283a on #f0eee8</span></div></div>
+        <div class="pcard" style="background:#fefcfe;border-color:rgba(192,172,193,.2);"><div><div class="pcard-token">ink on laitance</div><div class="pcard-heading">Stretch Limo<br><em>on resolved</em></div><div class="pcard-body">Porcelain ground barely distinguishable from Cloud Dancer — the ink reads identically, the surface whispers violet. The QED field.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #fefcfe</span></div></div>
         <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">ink on usquebaugh</div><div class="pcard-heading">Stretch Limo<br><em>on shallow</em></div><div class="pcard-body">Warm amber softens the blue-black of the ink — reads as antiquarian. Formal submission register.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #ffe5d0</span></div></div>
         <div class="pcard" style="background:#dbccd7;"><div><div class="pcard-token">ink on deckle</div><div class="pcard-heading">Stretch Limo<br><em>on mid</em></div><div class="pcard-body">Mauve ground pulls ink slightly cooler. Contrast holds firmly — exhibit and cover-page register.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #dbccd7</span></div></div>
         <div class="pcard" style="background:#c0acc1;"><div><div class="pcard-token">ink on deckle-dim</div><div class="pcard-heading">Stretch Limo<br><em>on bedrock</em></div><div class="pcard-body">Deepest ground — grape ancestry visible. Richest of the four pairs. Primary cover stock.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #c0acc1</span></div></div>
@@ -823,31 +823,31 @@ body::before{
   <div class="nz-section">
     <div class="nz-eyebrow">§ P.10</div>
     <div class="nz-title">Conspectus — <em>the survey register</em></div>
-    <div class="nz-sub">The three most present grounds plus Cloud Dancer as reversal highlight. Maximum presence, minimum ambiguity. Index pages, summary tables, colophon.</div>
+    <div class="nz-sub">The three most present grounds plus Laitance as latent field. Maximum presence, minimum ambiguity. Index pages, summary tables, colophon.</div>
     <div class="proposal-header">
       <div class="proposal-n">10</div>
       <div>
         <div class="proposal-title">Conspectus</div>
-        <div class="proposal-desc">From the Latin: a general survey of a subject. The version you hand to someone who needs to read the whole thing quickly. Cloud Dancer appears here not as ground but as reversal highlight — a white field within a darker context.</div>
+        <div class="proposal-desc">From the Latin: a general survey of a subject. The version you hand to someone who needs to read the whole thing quickly. Laitance appears here as the latent field — the surface that confirms resolution, not a reversal of the ground but a discharge of it.</div>
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#d5e9db;"></div>
           <div class="proposal-pip" style="background:#dbccd7;"></div>
           <div class="proposal-pip" style="background:#c0acc1;"></div>
-          <div class="proposal-pip" style="background:#f0eee8;border-color:rgba(40,40,58,.2);"></div>
+          <div class="proposal-pip" style="background:#fefcfe;border:1px solid rgba(192,172,193,.3);"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">willow · deckle · deckle-dim · cloud-dancer reversal · ink</div>
+          <div class="proposal-ground-label">willow · deckle · deckle-dim · laitance latent field · ink</div>
         </div>
       </div>
     </div>
     <div class="proposal-rule"></div>
     <div class="pb">
-      <div class="pb-label">Survey grounds · darker three + reversal</div>
+      <div class="pb-label">Survey grounds · darker three + latent field</div>
       <div class="pcard-grid pcard-grid-4">
         <div class="pcard" style="background:#d5e9db;"><div><div class="pcard-token">willow · index ground</div><div class="pcard-heading">Index<br><em>ground</em></div><div class="pcard-body">Hushed sage — organised material. Index pages, running headers, section dividers. Lightest of the three survey grounds.</div></div><div class="pcard-foot"><span class="pcard-hex">#d5e9db</span><span class="pcard-dist">dist 30.4</span></div></div>
         <div class="pcard" style="background:#dbccd7;"><div><div class="pcard-token">deckle · summary field</div><div class="pcard-heading">Summary<br><em>field</em></div><div class="pcard-body">Dusty mauve — the most present surface, the one the eye rests on. Summary tables, net counters, operative paragraph grounds.</div></div><div class="pcard-foot"><span class="pcard-hex">#dbccd7</span><span class="pcard-dist">dist 43.4</span></div></div>
         <div class="pcard" style="background:#c0acc1;"><div><div class="pcard-token">deckle-dim · colophon</div><div class="pcard-heading">Cover &amp;<br><em>colophon</em></div><div class="pcard-body">Grape-ancestral mauve. Cover sheet, back matter, colophon page — the weight that signals the document is complete.</div></div><div class="pcard-foot"><span class="pcard-hex">#c0acc1</span><span class="pcard-dist">dist 90.4</span></div></div>
-        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · reversal</div><div class="pcard-heading">Reversal<br><em>highlight</em></div><div class="pcard-body">Cloud Dancer appears here not as ground but as highlight — pull-quotes, boxed findings, marginal emphasis against Deckle or Deckle-dim.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">reversal field</span></div></div>
+        <div class="pcard" style="background:#fefcfe;border-color:rgba(192,172,193,.2);"><div><div class="pcard-token">laitance · latent field</div><div class="pcard-heading">Latent<br><em>field</em></div><div class="pcard-body">The Porcelain surface. Not a ground — a discharge. Pull-quotes, boxed findings, QED panels, struck conclusions. The survey is closed when this field is present.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">S-resolved</span></div></div>
       </div>
     </div>
     <div class="pb" style="margin-top:3px;">
@@ -863,7 +863,7 @@ body::before{
 
 </div>
 </div>
-<div class="nacre-zone-bot"></div>
+
 
 
 <!-- ════════════════════════════════════════════════════
@@ -871,7 +871,7 @@ body::before{
 ════════════════════════════════════════════════════ -->
 
 <!-- Pantone key -->
-<div class="ds-section fade-up fd3" style="padding-top:40px;">
+<div class="ds-section" style="padding-top:40px;">
   <div class="ds-section-label">Pantone Sources</div>
   <div class="pantone-key">
     <div class="pk-item"><div class="pk-pip" style="background:#7ab8d8;"></div>[A] 2026 Forecast — blues &amp; citrus</div>
@@ -882,7 +882,7 @@ body::before{
 </div>
 
 <!-- OR Conspectus triad -->
-<div class="ds-section fade-up fd3">
+<div class="ds-section">
   <div class="ds-section-label">O.R. Conspectus</div>
   <div class="ds-section-title">Capital, Cogency &amp; Capaciousness</div>
   <p class="ds-section-sub">Three operational ideals from the 2012 conspectus mapped to colour registers. Colour grammar as constraint system — the feasible region defined by rules.</p>
@@ -896,10 +896,10 @@ body::before{
 </div>
 
 <!-- §01 SWATCHES -->
-<div class="ds-section fade-up fd3">
+<div class="ds-section">
   <div class="ds-section-label">§ 01</div>
   <div class="ds-section-title">The Dark Palette</div>
-  <p class="ds-section-sub">Nineteen named colours plus three surface levels. Each has a base, a dim (borders), and a bg (field backgrounds). 2026 additions marked ★.</p>
+  <p class="ds-section-sub">Twenty-one named colours plus three surface levels. Each has a base, a dim (borders), and a bg (field backgrounds). 2026 additions marked ★.</p>
   <div class="swatch-grid">
 
     <div class="swatch-card"><div class="swatch-chip" style="background:#38c8b8;"><div class="swatch-name-on-chip">Rivulet</div></div><div class="swatch-body"><div class="swatch-hex" style="color:#38c8b8;">#38c8b8</div><div class="swatch-role">Demonstrated · Positive</div><div class="swatch-pantone">[A] 14-4912 Rinsing Rivulet</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#38c8b8;"></div><div class="swatch-trio-chip" style="background:#187868;"></div><div class="swatch-trio-chip" style="background:#081e1a;"></div></div></div></div>
@@ -951,7 +951,7 @@ body::before{
 
 
 <!-- §02 ROLE MAP -->
-<div class="ds-section fade-up fd3">
+<div class="ds-section">
   <div class="ds-section-label">§ 02</div>
   <div class="ds-section-title">Semantic Role Map</div>
   <p class="ds-section-sub">Each colour carries a fixed meaning. Applying the wrong colour to a role is a grammar error, not a style choice.</p>
@@ -970,15 +970,16 @@ body::before{
       <tr style="background:rgba(120,160,128,.03);"><td style="border-left:2px solid rgba(120,160,128,.2);"><div class="role-pip"><div class="role-pip-dot" style="background:#78a080;"></div><span style="color:#78a080;">Mint Coffee</span></div><div class="role-pantone">◆ new · pending P.06</div></td><td><div class="role-hex" style="color:#78a080;">#deeed1</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#78a080;border-color:rgba(120,160,128,.25);background:var(--mint-coffee-bg);">Pending</span></div></td><td><div class="role-sample">Pale sage — role unassigned. Candidate for light-ground annotation, exhibit field, or ambient positive. P.06 Pigeonhole Rule governs — role must be defined before v2027.</div></td></tr>
       <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#f0eee8;border:1px solid rgba(200,196,184,.3);"></div><span style="color:#c8c4b8;">Cloud Dancer</span></div><div class="role-pantone">★ [A&amp;B] 11-4201</div></td><td><div class="role-hex" style="color:#c8c4b8;">#f0eee8</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#c8c4b8;border-color:rgba(200,196,184,.25);background:rgba(240,238,232,.03);">Ambient</span></div></td><td><div class="role-sample">Nacre ground, negative space articulation, print-facing surfaces. <span class="or-annotation">O.R.: Simulation · feasible region</span></div></td></tr>
       <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#3c5a9a;box-shadow:0 0 6px rgba(60,90,154,.5);"></div><span style="color:#3c5a9a;">Regatta</span></div><div class="role-pantone">★ [A] 18-4039</div></td><td><div class="role-hex" style="color:#3c5a9a;">#3c5a9a</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#3c5a9a;border-color:rgba(60,90,154,.3);background:var(--regatta-bg);">Domain</span></div></td><td><div class="role-sample">O.R. domain anchor, institutional weight bar, Capital register insets. <span class="or-annotation">O.R.: Decision science · linear programming</span></div></td></tr>
-      <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#a0b0a0;"></div><span style="color:#a0b0a0;">Aqua Gray</span></div><div class="role-pantone">★ [A] 15-5205</div></td><td><div class="role-hex" style="color:#a0b0a0;">#a0b0a0</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#a0b0a0;border-color:rgba(160,176,160,.25);background:var(--aqua-gray-bg);">Neutral bridge</span></div></td><td><div class="role-sample">Ambient analytical surfaces, neutral ground between warm and cool registers. <span class="or-annotation">O.R.: Queueing · steady-state</span></div></td></tr>
+      <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#a0b0a0;"></div><span style="color:#a0b0a0;">Aqua Gray</span></div><div class="role-pantone">★ [A] 15-5205</div></td><td><div class="role-hex" style="color:#a0b0a0;">#a0b0a0</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#a0b0a0;border-color:rgba(160,176,160,.25);background:var(--aqua-gray-bg);">Earth</span></div></td><td><div class="role-sample">Ambient analytical surfaces, neutral ground between warm and cool registers. <strong>--S-earth</strong> alias. <span class="or-annotation">O.R.: Queueing · steady-state</span></div></td></tr>
       <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#28283a;"></div><span style="color:#6a6878;">Stretch Limo</span></div><div class="role-pantone">★ [C] 19-4005</div></td><td><div class="role-hex" style="color:#6a6878;">#28283a</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#6a6878;border-color:rgba(40,40,58,.3);background:rgba(40,40,58,.1);">Nacre ink</span></div></td><td><div class="role-sample">Constant ink across all Nacre proposals. Blue-black with enough depth to read as print ink, not screen black. <span class="or-annotation">O.R.: Material effects · print medium</span></div></td></tr>
+      <tr class="role-new"><td style="border-left:2px solid rgba(192,172,193,.35);"><div class="role-pip"><div class="role-pip-dot" style="background:#fefcfe;border:1px solid rgba(192,172,193,.45);"></div><span style="color:var(--deckle-dim);">Laitance</span></div><div class="role-pantone">Nacre · --S-resolved</div></td><td><div class="role-hex" style="color:var(--deckle-dim);">#fefcfe</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:var(--deckle-dim);border-color:rgba(192,172,193,.3);background:rgba(254,252,254,.5);">Resolved</span></div></td><td><div class="role-sample">Highlight of discharge. The struck point, the QED, the over-specification that confirms the substrate has set. Porcelain ground — R=B, G suppressed by 2 — merest violet whisper over white. Milky surface that rises when hardening is complete. <span class="or-annotation">O.R.: Proof of feasibility · closure condition</span></div></td></tr>
     </tbody>
   </table>
 </div>
 
 
 <!-- §03 BUTTONS -->
-<div class="ds-section fade-up fd3">
+<div class="ds-section">
   <div class="ds-section-label">§ 03</div>
   <div class="ds-section-title">Buttons</div>
   <p class="ds-section-sub">All variants — outline (standard), solid (primary action). 2026 additions include Regatta, Aqua Gray, Cloud Dancer, Mountain Trail.</p>
@@ -1006,6 +1007,7 @@ body::before{
     <button class="btn btn-regatta"><span>◈</span> Regatta · Domain</button>
     <button class="btn btn-aqua-gray"><span>◇</span> Aqua Gray · Bridge</button>
     <button class="btn btn-cloud-dancer"><span>○</span> Cloud Dancer · Ambient</button>
+    <button class="btn btn-laitance"><span>◉</span> Laitance · Resolved</button>
     <button class="btn btn-mountain"><span>·</span> Mountain Trail · Earth</button>
     <button class="btn btn-sandstone"><span>△</span> Sandstone · Needs</button>
     <button class="btn btn-mint-coffee"><span>◇</span> Mint Coffee · Pending</button>
@@ -1022,7 +1024,7 @@ body::before{
 
 
 <!-- §04 BADGES -->
-<div class="ds-section fade-up fd3">
+<div class="ds-section">
   <div class="ds-section-label">§ 04</div>
   <div class="ds-section-title">Badges &amp; Tags</div>
   <p class="ds-section-sub">Square-cornered for task/status labels. Pill variant for lighter semantic tags.</p>
@@ -1064,7 +1066,7 @@ body::before{
 
 
 <!-- §05 PIPS -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 05</div>
   <div class="ds-section-title">Status Pips</div>
   <p class="ds-section-sub">Glowing dot + label. 2026 adds Domain pip and Ambient pip.</p>
@@ -1077,12 +1079,13 @@ body::before{
     <div class="pip-row"><div class="pip" style="background:#6080c8;box-shadow:0 0 7px rgba(96,128,200,.55);"></div><span class="pip-label" style="color:#6080c8;">★ Domain brief</span><span class="pip-desc">O.R. thematic content — Capital / Cogency / Capaciousness register</span></div>
     <div class="pip-row"><div class="pip" style="background:#a0b0a0;"></div><span class="pip-label" style="color:#a0b0a0;">★ Ambient</span><span class="pip-desc">Neutral bridge — steady-state or background-layer annotation</span></div>
     <div class="pip-row"><div class="pip" style="background:#78a080;"></div><span class="pip-label" style="color:#78a080;">◆ Pending</span><span class="pip-desc">Mint Coffee — role unassigned · P.06 Pigeonhole Rule governs</span></div>
+    <div class="pip-row"><div class="pip" style="background:#fefcfe;border:1px solid rgba(192,172,193,.35);"></div><span class="pip-label" style="color:var(--deckle-dim);">◉ Resolved</span><span class="pip-desc">Laitance — proposition discharged · QED rendered · the strike that closes the point</span></div>
   </div>
 </div>
 
 
 <!-- §06 CARDS -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 06</div>
   <div class="ds-section-title">Cards</div>
   <p class="ds-section-sub">Three epistemic states, the portal variant, and the 2026 Domain card.</p>
@@ -1098,7 +1101,7 @@ body::before{
 
 
 <!-- §07 ALERT BARS -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 07</div>
   <div class="ds-section-title">Alert &amp; Warn Bars</div>
   <p class="ds-section-sub">2026 adds the Domain alert bar for O.R. thematic content.</p>
@@ -1124,7 +1127,7 @@ body::before{
 
 
 <!-- §08 GLOSSARY -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 08</div>
   <div class="ds-section-title">Glossary Table</div>
   <p class="ds-section-sub">Term column in dragonfly. 2026 additions include O.R. domain terms and Nacre vocabulary.</p>
@@ -1133,15 +1136,15 @@ body::before{
     <tr><td>Silence Veto</td><td>When an institution's silence operates as a decision against you — a "no" delivered without process, without reasons, and without your right to be heard being discharged.<span class="gloss-corr">Re Haughey · McDonald · Art. 41 CFR · O'Keeffe · Order 84 RSC</span></td></tr>
     <tr><td>Diplomatic Missing Mass</td><td>From the conspectus: the gap between demonstrable O.R. capability and institutional recognition of that capability. In colour terms: tokens that exist but carry no semantic role assignment. Cloud Dancer and Aqua Gray occupied this gap in v2.0.<span class="gloss-corr">Conspectus §2 · Diplomatic Missing Mass</span></td></tr>
     <tr><td>Evasocracy<br><span style="font-size:9px;opacity:.4;font-style:italic;">Séachanachas</span></td><td>Governing through systematic non-decision. Not indecision — the active management of silence as a policy instrument.<span class="gloss-corr">Art. 4(3) TEU · O'Keeffe · Heaney</span></td></tr>
-    <tr><td>Capital · Cogency · Capaciousness</td><td>Three operational ideals from the 2012 O.R. conspectus. In the colour grammar: Capital maps to institutional blues (Regatta, Dragonfly, Cosmic); Cogency to the structure-evidence register (Citron, Rivulet, Scarlet); Capaciousness to ambient and neutral surfaces (Cloud Dancer, Aqua Gray, Satin).<span class="gloss-corr">Conspectus §1–§3 · 2012</span></td></tr>
-    <tr><td>Velatura · Strata · Conspectus</td><td>Three of the four Nacre proposals (P.07, P.09, P.10). Velatura: transparent glaze depth over Cloud Dancer. Strata: sedimentary column, one layer per depth band. Conspectus: the survey register, three most-present grounds plus Cloud Dancer as reversal.<span class="gloss-corr">Nacre · P.07–P.10 · Colour Grammar v2.3</span></td></tr>
+    <tr><td>Capital · Cogency · Capaciousness</td><td>Three operational ideals from the 2012 O.R. conspectus. In the colour grammar: Capital maps to institutional blues (Regatta, Dragonfly, Cosmic); Cogency to the structure-evidence register (Citron, Rivulet, Scarlet); Capaciousness to ambient and neutral surfaces (Cloud Dancer, Aqua Gray, Satin).<span class="gloss-corr">Conspectus §1–§3</span></td></tr>
+    <tr><td>Velatura · Strata · Conspectus</td><td>Three of the four Nacre proposals (P.07, P.09, P.10). Velatura: transparent glaze depth over Cloud Dancer. Strata: sedimentary column, five layers including Laitance as resolved near-surface. Conspectus: the survey register, three most-present grounds plus Laitance as latent field (S-resolved).<span class="gloss-corr">Nacre · P.07–P.10 · Colour Grammar v2.32</span></td></tr>
     <tr><td>Billings Phenomenon</td><td>Supply of truth always exceeds demand. In colour grammar: more registers are available than any single document needs. Scarcity is a feature — the grammar enforces it by restricting cross-register use.<span class="gloss-corr">Conspectus §1 · Josh Billings epigraph</span></td></tr>
   </table>
 </div>
 
 
 <!-- §09 NET COUNTER -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 09</div>
   <div class="ds-section-title">Net Counter &amp; Ticker</div>
   <div class="net-row">
@@ -1162,7 +1165,7 @@ body::before{
 
 
 <!-- §10 TASK LIST -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 10</div>
   <div class="ds-section-title">Task Items</div>
   <p class="ds-section-sub">Scarlet for blocking OIs, dragonfly for non-blocking. IBM Plex Mono task names, EB Garamond body copy.</p>
@@ -1175,10 +1178,10 @@ body::before{
 
 
 <!-- §11 TOKEN REFERENCE -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">§ 11</div>
   <div class="ds-section-title">CSS Variable Index</div>
-  <p class="ds-section-sub">Every variable in the v2.3 system — dark grammar and Nacre layer. Pantone source noted. Trio strip: base · dim · bg.</p>
+  <p class="ds-section-sub">Every variable in the v2.32 system — dark grammar and Nacre layer. Pantone source noted. Trio strip: base · dim · bg.</p>
   <div class="token-strip">
     <div class="token-item"><div class="token-name">Rivulet</div><div class="token-value" style="color:#38c8b8;">--rivulet / -dim / -bg</div><div class="token-pantone">[A] 14-4912 Rinsing Rivulet</div><div class="token-trio"><div class="token-trio-chip" style="background:#38c8b8;"></div><div class="token-trio-chip" style="background:#187868;"></div><div class="token-trio-chip" style="background:#081e1a;"></div></div></div>
     <div class="token-item"><div class="token-name">Citron</div><div class="token-value" style="color:#d4c06a;">--citron / -dim / -bg</div><div class="token-pantone">[A] 14-0827 Dusky Citron</div><div class="token-trio"><div class="token-trio-chip" style="background:#d4c06a;"></div><div class="token-trio-chip" style="background:#7a6e28;"></div><div class="token-trio-chip" style="background:#1c1a08;"></div></div></div>
@@ -1202,7 +1205,7 @@ body::before{
     <div class="token-item token-item-new"><div class="token-name">★ Aqua Gray</div><div class="token-value" style="color:#a0b0a0;">--aqua-gray / -dim / -bg</div><div class="token-pantone">[A] 15-5205 Aqua Gray</div><div class="token-trio"><div class="token-trio-chip" style="background:#a0b0a0;"></div><div class="token-trio-chip" style="background:#4a5848;"></div><div class="token-trio-chip" style="background:#101810;"></div></div></div>
     <div class="token-item token-item-new"><div class="token-name">★ Mountain Trail</div><div class="token-value" style="color:#8a7868;">--mountain / -dim / -bg</div><div class="token-pantone">[B] 17-0807 Mountain Trail</div><div class="token-trio"><div class="token-trio-chip" style="background:#8a7868;"></div><div class="token-trio-chip" style="background:#4a3828;"></div><div class="token-trio-chip" style="background:#181008;"></div></div></div>
     <div class="token-item token-item-new"><div class="token-name">★ Stretch Limo</div><div class="token-value" style="color:#6a6878;">--stretch-limo / -dim / -bg</div><div class="token-pantone">[C] 19-4005 Stretch Limo</div><div class="token-trio"><div class="token-trio-chip" style="background:#28283a;"></div><div class="token-trio-chip" style="background:#181828;"></div><div class="token-trio-chip" style="background:#080810;"></div></div></div>
-    <div class="token-item" style="background:rgba(40,40,58,.08);border-color:rgba(40,40,58,.15);grid-column:span 2;"><div class="token-name" style="color:#8a8898;">Nacre layer</div><div class="token-value" style="color:#8a8898;font-size:10px;">--usquebaugh · --aqua-vitae · --willow · --glaze · --quire · --deckle · --deckle-dim</div><div class="token-pantone">White balance: Cloud Dancer · Ink: Stretch Limo · avg dist 30.0</div><div class="token-trio"><div class="token-trio-chip" style="background:#ffe5d0;"></div><div class="token-trio-chip" style="background:#edfff8;"></div><div class="token-trio-chip" style="background:#d5e9db;"></div><div class="token-trio-chip" style="background:#edffff;"></div><div class="token-trio-chip" style="background:#fff6ff;"></div><div class="token-trio-chip" style="background:#dbccd7;"></div><div class="token-trio-chip" style="background:#c0acc1;"></div></div></div>
+    <div class="token-item" style="background:rgba(40,40,58,.08);border-color:rgba(40,40,58,.15);grid-column:span 2;"><div class="token-name" style="color:#8a8898;">Nacre layer</div><div class="token-value" style="color:#8a8898;font-size:10px;">--usquebaugh · --aqua-vitae · --willow · --glaze · --quire · --laitance · --deckle · --deckle-dim</div><div class="token-pantone">White balance: Cloud Dancer · Ink: Stretch Limo · avg dist 30.0 · annotation: laitance #fefcfe</div><div class="token-trio"><div class="token-trio-chip" style="background:#ffe5d0;"></div><div class="token-trio-chip" style="background:#edfff8;"></div><div class="token-trio-chip" style="background:#d5e9db;"></div><div class="token-trio-chip" style="background:#edffff;"></div><div class="token-trio-chip" style="background:#fff6ff;"></div><div class="token-trio-chip" style="background:#fefcfe;"></div><div class="token-trio-chip" style="background:#dbccd7;"></div><div class="token-trio-chip" style="background:#c0acc1;"></div></div></div>
     <div class="token-item"><div class="token-name">Parchment</div><div class="token-value" style="color:#e8e3d4;">--parchment / -dim / -faint</div><div class="token-pantone">No TCX — corpus-specific</div><div class="token-trio"><div class="token-trio-chip" style="background:#e8e3d4;"></div><div class="token-trio-chip" style="background:#9e9887;"></div><div class="token-trio-chip" style="background:#38303e;"></div></div></div>
     <div class="token-item"><div class="token-name">Surface</div><div class="token-value" style="color:#9e9887;">--surface / 2 / 3</div><div class="token-pantone">[C] 19-4005 Stretch Limo ≈ --surface</div><div class="token-trio"><div class="token-trio-chip" style="background:#141018;"></div><div class="token-trio-chip" style="background:#1c1820;"></div><div class="token-trio-chip" style="background:#221e2a;"></div></div></div>
     <div class="token-item"><div class="token-name">Rule</div><div class="token-value" style="color:#9e9887;">--rule / --rule-strong</div><div class="token-pantone">Compositional — no TCX equivalent</div><div class="token-trio"><div class="token-trio-chip" style="background:rgba(200,180,230,0.09);border:1px solid rgba(200,180,230,0.18);"></div><div class="token-trio-chip" style="background:rgba(200,180,230,0.16);border:1px solid rgba(200,180,230,0.18);"></div></div></div>
@@ -1211,7 +1214,7 @@ body::before{
 
 
 <!-- ═══ 2027 PROPOSALS ══════════════════════════════ -->
-<div class="ds-section fade-up fd4">
+<div class="ds-section">
   <div class="ds-section-label">2027 Design Document</div>
   <div class="ds-section-title">Proposed <em>Directions</em></div>
   <p class="ds-section-sub">Six proposals drawn from the O.R. conspectus, the Pantone collation, and the systemic logic of the existing grammar. Each is a structural direction, not a cosmetic change.</p>
@@ -1303,7 +1306,7 @@ body::before{
       <div style="padding:20px 20px 18px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--cosmic);opacity:.6;margin-bottom:10px;">P.06</div>
         <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:19px;color:var(--parchment);margin-bottom:4px;line-height:1.2;">The <em style="font-style:italic;">Pigeonhole Rule</em></div>
-        <div style="font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);line-height:1.7;margin-bottom:14px;">The system now has 21 named tokens and 12 semantic roles — nine tokens have no exclusive container. Before v2027 closes: <strong style="color:var(--parchment);">Mint Coffee must be assigned or retired.</strong> Woodrose → Dim Narrative (P.03). Mountain-lt → active. No new tokens admitted without a vacancy.</div>
+        <div style="font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);line-height:1.7;margin-bottom:14px;">The system now has 21 named tokens and 13 semantic roles — nine tokens have no exclusive container. Before v2027 closes: <strong style="color:var(--parchment);">Mint Coffee must be assigned or retired.</strong> Woodrose → Dim Narrative (P.03). Mountain-lt → active. No new tokens admitted without a vacancy.</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid var(--rule);padding-top:10px;">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(120,160,128,.25);color:var(--mint-coffee-dim);background:var(--mint-coffee-bg);">Mint Coffee → assign</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(176,112,128,.2);color:var(--woodrose);background:var(--woodrose-bg);">Woodrose → P.03</span>
@@ -1320,12 +1323,11 @@ body::before{
 <!-- FOOTER -->
 <footer style="padding:40px 0 0;border-top:1px solid var(--rule);margin-top:56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
   <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--parchment-dim);line-height:1.9;">
-    Meinhardt Initiative · Colour Grammar · v2.3 Master · Merged<br>
+    Meinhardt Initiative · Colour Grammar · v2.32 Master · Merged<br>
     Dark grammar: Pantone [A] 2026 Forecast · [B] Comfort Zone · [C] Glamor &amp; Gleam<br>
     New: Sandstone (--S-needs) · Mint Coffee (pending) · scarlet-lt · regatta-lt · mountain-lt<br>
     Nacre layer: Cloud Dancer ground · Stretch Limo ink · P.07–P.10<br>
-    O.R. conspectus: Capital · Cogency · Capaciousness · 
-   2012<br>
+    O.R. conspectus: Capital · Cogency · Capaciousness<br>
     <a href="https://dr-crunch.github.io" style="color:var(--parchment-dim);text-decoration:none;">dr-crunch.github.io</a>
   </div>
   <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(158,152,135,.35);text-align:right;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;">
