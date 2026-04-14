@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Open Graph / Facebook, LinkedIn, Discord, etc. -->
-<meta property="og:title" content="Meinhardt Website Design Specification 2.35" />
+<meta property="og:title" content="Meinhardt Website Design Specification 2.37" />
 <meta property="og:description" content="Pre-litigation public evidentiary record on the 19-year administrative non-decision by the Irish State under the Meinhardt Initiative. EU Council Presidency deadline: 1 July 2026." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://dr-crunch.github.io/web-portal/colour-grammar-master.html" />
@@ -16,7 +17,7 @@
 
 <!-- Twitter / X Cards -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Meinhardt Website Design Specification 2.35" />
+<meta name="twitter:title" content="Meinhardt Website Design Specification 2.37" />
 <meta name="twitter:description" content="Style Guide for the Meinhardt Initiative website." />
 <meta name="twitter:image" content="https://dr-crunch.github.io/web-portal/og-colour-grammar.jpg" />
 
@@ -26,10 +27,13 @@
 <title>Design Specification — Meinhardt Initiative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
+
+   
 <style>
 /* ═══════════════════════════════════════════════════
-   TOKENS — v2.35 Master
-   [A] 2026 Forecast · [B] Comfort Zone · [C] Glamour & Gleam
+   TOKENS — v2.4 Master
+   [A] 2026 Forecast · [B] Comfort Zone · [C] Glamor & Gleam
+   v2.4: Abalone added — P.11 · S-liminal · threshold register
 ═══════════════════════════════════════════════════ */
 :root {
   --ink:             #0a0910;
@@ -65,23 +69,18 @@
   --woodrose:    #b07080; --woodrose-dim:  #502838; --woodrose-bg:  #180d12;
   --mountain:    #8a7868; --mountain-lt:   #b0a090; --mountain-dim: #4a3828; --mountain-bg: #181008;
   --stretch-limo:#28283a; --stretch-limo-dim:#181828; --stretch-limo-bg:#080810;
-  /* Perplexity · muted forest-grey · S-perplexity · uncertainty without blockage */
-  --perplexity:  #525d52; --perplexity-dim: #2a302a; --perplexity-bg: #0e120e;
+
+  /* Abalone · liminal threshold · shell before the pearl · v2.4 */
+  --abalone:     #9888a8; --abalone-lt:   #c0b8c8; --abalone-dim:  #4a3858; --abalone-bg:  #120e18;
 
   /* NACRE — paper-print document layer */
-  --usquebaugh:    #ffe5d0;
-  --aqua-vitae:    #edfff8;
-  --willow:        #d5e9db;
-  --glaze:         #edffff;
-  --quire:         #fff6ff;
-  --laitance:      #fefcfe;  /* annotation · S-resolved · dist 29.3 · +14 +14 +22 · Porcelain */
-  --deckle:        #dbccd7;
-  --deckle-dim:    #c0acc1;
-
-  /* NACRE — augmented ink register · drawn from dark palette bg tones */
-  --N-ink:         var(--stretch-limo);   /* #28283a · constant · blue-black */
-  --N-ink-grape:   var(--grape-bg);       /* #12081a · portal · violet-black */
-  --N-ink-cosmic:  var(--cosmic-bg);      /* #10101e · analytical · deep blue-black */
+  --usquebaugh:  #ffe5d0;
+  --aqua-vitae:  #edfff8;
+  --willow:      #d5e9db;
+  --glaze:       #edffff;
+  --quire:       #fff6ff;
+  --deckle:      #dbccd7;
+  --deckle-dim:  #c0acc1;
 
   --S-demonstrated: var(--rivulet);
   --S-structure:    var(--citron);
@@ -94,9 +93,7 @@
   --S-portal:       var(--grape-lt);
   --S-ambient:      var(--cloud-dancer);
   --S-domain:       var(--regatta);
-  --S-earth:        var(--aqua-gray);
-  --S-resolved:     var(--laitance);
-  --S-perplexity:   var(--perplexity);
+  --S-liminal:      var(--abalone-lt); /* v2.4 · threshold · nacre / dark boundary */
 }
 
 /* ═══════════════════════════════════════════════════
@@ -143,7 +140,17 @@ body::before{
 }
 .nacre-zone>.nz-inner{position:relative;z-index:1;max-width:1008px;margin:0 auto;}
 
-
+/* transition bands — fade ink↔paper */
+.nacre-zone-top{
+  height:48px;
+  background:linear-gradient(to bottom,var(--ink),var(--cloud-dancer));
+  margin:0 -36px;position:relative;z-index:3;
+}
+.nacre-zone-bot{
+  height:48px;
+  background:linear-gradient(to bottom,var(--cloud-dancer),var(--ink));
+  margin:0 -36px;position:relative;z-index:3;
+}
 
 /* ═══════════════════════════════════════════════════
    HEADER
@@ -260,7 +267,6 @@ body::before{
 .pcard-grid{display:grid;gap:3px;}
 .pcard-grid-4{grid-template-columns:repeat(4,minmax(0,1fr));}
 .pcard-grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
-.pcard-grid-5{grid-template-columns:repeat(5,minmax(0,1fr));}
 
 .pcard{
   padding:20px 18px 18px;display:flex;flex-direction:column;
@@ -414,11 +420,8 @@ body::before{
 .btn-regatta{color:var(--regatta-lt);border-color:var(--regatta-dim);background:var(--regatta-bg);}
 .btn-aqua-gray{color:var(--aqua-gray);border-color:var(--aqua-gray-dim);background:var(--aqua-gray-bg);}
 .btn-cloud-dancer{color:var(--cloud-dancer-dim);border-color:rgba(200,196,184,.2);background:rgba(240,238,232,.04);}
-.btn-laitance{color:var(--cloud-dancer);border-color:rgba(192,172,193,.28);background:rgba(254,252,254,.04);}
-.btn-laitance:hover{border-color:var(--deckle-dim);box-shadow:0 0 10px rgba(192,172,193,.18);}
-.btn-perplexity{color:#a0aa9e;border-color:rgba(82,93,82,.3);background:var(--perplexity-bg);}
-.btn-perplexity:hover{border-color:var(--perplexity);box-shadow:0 0 10px rgba(82,93,82,.2);}
 .btn-mountain{color:var(--mountain-lt);border-color:var(--mountain-dim);background:var(--mountain-bg);}
+.btn-abalone{color:var(--abalone-lt);border-color:var(--abalone-dim);background:var(--abalone-bg);}
 .btn-rivulet:hover{border-color:var(--rivulet);box-shadow:0 0 14px rgba(56,200,184,.2);}
 .btn-citron:hover{border-color:var(--citron);box-shadow:0 0 14px rgba(212,192,106,.2);}
 .btn-scarlet:hover{border-color:var(--scarlet-lt);box-shadow:0 0 14px rgba(200,37,58,.22);}
@@ -486,8 +489,6 @@ body::before{
 .badge-aqua-gray .badge-dot{background:var(--aqua-gray);}
 .badge-mountain{color:var(--mountain-lt);border-color:rgba(138,120,104,.25);background:var(--mountain-bg);}
 .badge-mountain .badge-dot{background:var(--mountain-lt);}
-.badge-perplexity{color:#a0aa9e;border-color:rgba(82,93,82,.3);background:var(--perplexity-bg);}
-.badge-perplexity .badge-dot{background:var(--perplexity);}
 .badge-pill{border-radius:999px;padding:3px 12px;}
 
 /* ═══════════════════════════════════════════════════
@@ -577,9 +578,6 @@ body::before{
 .ticker-inner .domain{color:var(--regatta-lt);}
 .ticker-inner .nacre{color:var(--deckle-dim);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-.fade-up{animation:fadeUp .55s ease forwards;opacity:0;}
-.fd2{animation-delay:.1s;}.fd3{animation-delay:.2s;}.fd4{animation-delay:.3s;}.fd5{animation-delay:.4s;}
 
 /* ═══════════════════════════════════════════════════
    DARK — §11 TASK LIST
@@ -621,7 +619,9 @@ body::before{
 /* ═══════════════════════════════════════════════════
    ANIMATION
 ═══════════════════════════════════════════════════ */
-
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp .55s ease forwards;opacity:0;}
+.fd2{animation-delay:.1s;}.fd3{animation-delay:.2s;}.fd4{animation-delay:.3s;}.fd5{animation-delay:.4s;}
 
 /* ═══════════════════════════════════════════════════
    RESPONSIVE
@@ -635,189 +635,10 @@ body::before{
   .or-triad{grid-template-columns:1fr;}
   .pcard-grid-4{grid-template-columns:repeat(2,minmax(0,1fr));}
   .pcard-grid-3{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .pcard-grid-5{grid-template-columns:repeat(2,minmax(0,1fr));}
   .role-table td:nth-child(3),.role-table td:nth-child(4){display:none;}
   .nacre-zone{margin:0 -20px;padding:40px 24px 40px;}
-
-
+  .nacre-zone-top,.nacre-zone-bot{margin:0 -20px;}
 }
-/* ═══════════════════════════════════════════════════════
-   P.11 · ABALONE & MIXED INKS
-═══════════════════════════════════════════════════════ */
-:root {
-  --AB-bg:var(--ink);
-  --AB-surface:#0e0c15;
-  --AB-surface2:#15101e;
-  --AB-ink:#12081a;
-  --AB-ink-dim:#28283a;
-  --AB-rule:rgba(192,172,193,0.1);
-  --AB-rule-strong:rgba(192,172,193,0.18);
-  --ab-grape:#12081a; --ab-cosmic:#10101e; --ab-limo:#28283a;
-  --ab-pearl:#fefcfe; --ab-ice:#edffff; --ab-mint:#edfff8;
-  --ab-amber:#ffe5d0; --ab-sage:#d5e9db; --ab-orchid:#c0acc1;
-  --ab-mauve:#dbccd7; --ab-ghost:#fff6ff; --ab-cloud:#f0eee8;
-  --S-syzygy:var(--quire);
-  --S-synthesis:var(--aqua-vitae);
-  --S-dyadic:var(--deckle);
-  --S-bridge:var(--willow);
-}
-@keyframes nacre-grape{0%{background-position:0% 0%;}25%{background-position:100% 50%;}50%{background-position:80% 100%;}75%{background-position:20% 50%;}100%{background-position:0% 0%;}}
-@keyframes nacre-cosmic{0%{background-position:100% 0%;}33%{background-position:0% 60%;}66%{background-position:60% 100%;}100%{background-position:100% 0%;}}
-@keyframes nacre-limo{0%{background-position:50% 0%;}40%{background-position:0% 100%;}70%{background-position:100% 40%;}100%{background-position:50% 0%;}}
-@keyframes shimmer-text{0%,100%{opacity:.82;}50%{opacity:1;}}
-.p11-section{margin-top:56px;border-top:1px solid var(--AB-rule-strong);padding-top:40px;}
-.p11-eyebrow{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--deckle-dim);opacity:.5;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-.p11-eyebrow::after{content:'';flex:1;height:1px;background:currentColor;opacity:.25;}
-.p11-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,5vw,64px);line-height:.96;letter-spacing:-.01em;color:var(--cloud-dancer);margin-bottom:10px;}
-.p11-h1-irid{background:linear-gradient(135deg,var(--deckle-dim),var(--glaze),var(--laitance),var(--deckle-dim));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nacre-cosmic 14s ease-in-out infinite;display:inline;}
-.p11-lede{font-family:'EB Garamond',serif;font-size:15px;font-style:italic;color:var(--parchment-dim);max-width:620px;line-height:1.8;margin-bottom:36px;}
-.p11-lede strong{color:var(--parchment);font-style:normal;font-weight:500;}
-.p11-lede em{color:var(--deckle-dim);font-style:italic;}
-.p11-inversion{background:var(--AB-surface);border:1px solid var(--AB-rule-strong);border-left:3px solid var(--deckle-dim);border-radius:0 3px 3px 0;padding:18px 20px;margin-bottom:28px;}
-.p11-inv-label{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(192,172,193,.45);margin-bottom:8px;}
-.p11-inv-rule{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--cloud-dancer);line-height:1.4;margin-bottom:8px;}
-.p11-inv-body{font-family:'EB Garamond',serif;font-size:13px;color:var(--parchment-dim);line-height:1.7;}
-.p11-inv-permits{font-size:8.5px;letter-spacing:.05em;border-top:1px solid var(--AB-rule);padding-top:9px;margin-top:10px;line-height:1.7;color:rgba(192,172,193,.45);}
-.p11-chambers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--AB-rule-strong);border-radius:3px;overflow:hidden;margin-bottom:28px;}
-.p11-chamber{padding:28px 20px 24px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
-.p11-chamber::before{content:'';position:absolute;inset:0;background-size:400% 400%;pointer-events:none;}
-.p11-ch-grape{background:#12081a;}
-.p11-ch-cosmic{background:#10101e;}
-.p11-ch-limo{background:#28283a;}
-.p11-ch-grape::before{background:linear-gradient(135deg,rgba(254,252,254,.07),rgba(192,172,193,.09),rgba(237,255,255,.05),rgba(255,246,255,.07));animation:nacre-grape 20s ease-in-out infinite;}
-.p11-ch-cosmic::before{background:linear-gradient(135deg,rgba(237,255,255,.07),rgba(237,255,248,.09),rgba(254,252,254,.05));animation:nacre-cosmic 22s ease-in-out infinite;}
-.p11-ch-limo::before{background:linear-gradient(135deg,rgba(255,229,208,.07),rgba(213,233,219,.08),rgba(219,204,215,.06));animation:nacre-limo 24s ease-in-out infinite;}
-.p11-ch-top,.p11-ch-bottom{position:relative;z-index:1;}
-.p11-ch-tag{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px;display:block;}
-.p11-ch-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:4px;line-height:1.15;}
-.p11-ch-hex{font-size:10px;letter-spacing:.05em;margin-bottom:14px;opacity:.5;}
-.p11-ch-body{font-family:'EB Garamond',serif;font-size:13px;line-height:1.65;margin-bottom:20px;}
-.p11-nacre-stack{display:flex;flex-direction:column;gap:6px;}
-.p11-nacre-item{display:flex;align-items:center;gap:9px;}
-.p11-ni-swatch{width:22px;height:22px;border-radius:2px;flex-shrink:0;position:relative;overflow:hidden;}
-.p11-ni-swatch::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.22),transparent);}
-.p11-ni-name{font-size:9px;letter-spacing:.07em;text-transform:uppercase;}
-.p11-ni-role{font-family:'EB Garamond',serif;font-size:11.5px;font-style:italic;opacity:.5;line-height:1.35;}
-.p11-spectrum{height:2.5px;border-radius:2px;margin-bottom:9px;background-size:300% 100%;}
-.spec-grape-anim{background:linear-gradient(90deg,#fefcfe,#c0acc1,#edffff,#fff6ff,#fefcfe);background-size:300% 100%;animation:nacre-grape 16s ease-in-out infinite;}
-.spec-cosmic-anim{background:linear-gradient(90deg,#edffff,#edfff8,#fefcfe,#edffff);background-size:300% 100%;animation:nacre-cosmic 18s ease-in-out infinite;}
-.spec-limo-anim{background:linear-gradient(90deg,#ffe5d0,#d5e9db,#dbccd7,#ffe5d0);background-size:300% 100%;animation:nacre-limo 20s ease-in-out infinite;}
-.p11-ch-foot-label{font-size:8px;letter-spacing:.12em;text-transform:uppercase;opacity:.28;}
-.p11-ch-grape .p11-ch-tag,.p11-ch-grape .p11-ni-name,.p11-ch-grape .p11-ch-foot-label{color:var(--ab-pearl);}
-.p11-ch-grape .p11-ch-name{color:var(--ab-pearl);}
-.p11-ch-grape .p11-ch-hex,.p11-ch-grape .p11-ch-body{color:var(--ab-orchid);}
-.p11-ch-cosmic .p11-ch-tag,.p11-ch-cosmic .p11-ni-name,.p11-ch-cosmic .p11-ch-foot-label{color:var(--ab-ice);}
-.p11-ch-cosmic .p11-ch-name{color:var(--ab-ice);}
-.p11-ch-cosmic .p11-ch-hex,.p11-ch-cosmic .p11-ch-body{color:var(--ab-mint);}
-.p11-ch-limo .p11-ch-tag,.p11-ch-limo .p11-ni-name,.p11-ch-limo .p11-ch-foot-label{color:var(--ab-amber);}
-.p11-ch-limo .p11-ch-name{color:var(--ab-amber);}
-.p11-ch-limo .p11-ch-hex,.p11-ch-limo .p11-ch-body{color:var(--ab-sage);}
-.p11-roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px;}
-.p11-role-card{border-radius:3px;border:1px solid;overflow:hidden;}
-.p11-role-accent{height:2.5px;}
-.p11-role-body{padding:18px 18px 16px;background:var(--AB-surface2);}
-.p11-role-n{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px;opacity:.5;}
-.p11-role-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--parchment);margin-bottom:4px;line-height:1.15;}
-.p11-role-name em{font-style:italic;color:var(--parchment-dim);}
-.p11-role-def{font-family:'EB Garamond',serif;font-size:13.5px;color:var(--parchment-dim);line-height:1.68;margin-bottom:10px;}
-.p11-role-def strong{color:var(--parchment);font-weight:500;}
-.p11-role-foot{font-size:8.5px;letter-spacing:.05em;border-top:1px solid var(--AB-rule);padding-top:9px;line-height:1.65;}
-.p11-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:28px;}
-.p11-rule{background:var(--AB-surface);border:1px solid var(--AB-rule-strong);border-radius:3px;overflow:hidden;}
-.p11-rule-bar{height:2px;}
-.p11-rule-inner{padding:16px 15px 14px;}
-.p11-rule-n{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--parchment-faint);margin-bottom:8px;}
-.p11-rule-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;color:var(--parchment);margin-bottom:6px;line-height:1.25;}
-.p11-rule-title em{font-style:italic;color:var(--parchment-dim);}
-.p11-rule-body{font-family:'EB Garamond',serif;font-size:12.5px;color:var(--parchment-dim);line-height:1.65;}
-.p11-rule-body strong{color:var(--parchment);font-weight:500;}
-.p11-rule-note{font-size:8px;letter-spacing:.05em;color:var(--parchment-faint);border-top:1px solid var(--AB-rule);padding-top:7px;margin-top:9px;line-height:1.6;}
-.p11-axiom{padding:40px 0 20px;text-align:center;border-top:1px solid var(--AB-rule);margin-top:20px;}
-.p11-axiom-ghost{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,80px);font-weight:300;font-style:italic;background:linear-gradient(135deg,rgba(192,172,193,.06),rgba(254,252,254,.1),rgba(237,255,255,.06),rgba(219,204,215,.08));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nacre-grape 18s ease-in-out infinite;line-height:1;margin-bottom:-12px;user-select:none;}
-.p11-axiom-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(15px,2vw,22px);line-height:1.5;background:linear-gradient(135deg,var(--deckle-dim),var(--cloud-dancer),var(--deckle-dim),var(--ab-pearl),var(--deckle-dim));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nacre-limo 16s ease-in-out infinite;max-width:640px;margin:0 auto 12px;}
-.p11-axiom-attr{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(192,172,193,.25);}
-@media(max-width:640px){.p11-chambers{grid-template-columns:1fr;}.p11-roles-grid{grid-template-columns:1fr;}.p11-rules{grid-template-columns:1fr;}}
-/* ═══════════════════════════════════════════════════════
-   §04b · DARK PAPER GROUNDS · grape-black & cosmic-black
-   The paper layer extended downward into darkness
-═══════════════════════════════════════════════════════ */
-.bar-grape-nacre{height:3px;background:linear-gradient(90deg,#fefcfe,#c0acc1 45%,#fff6ff 75%,#fefcfe);}
-.bar-cosmic-nacre{height:3px;background:linear-gradient(90deg,#edffff,#edfff8 45%,#fefcfe 75%,#edffff);}
-.bar-grape-nacre-anim{height:3px;background:linear-gradient(90deg,#fefcfe,#c0acc1,#edffff,#fff6ff,#fefcfe);background-size:300% 100%;animation:nacre-grape 16s ease-in-out infinite;}
-.bar-cosmic-nacre-anim{height:3px;background:linear-gradient(90deg,#edffff,#edfff8,#fefcfe,#edffff);background-size:300% 100%;animation:nacre-cosmic 18s ease-in-out infinite;}
-.dark-paper-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--AB-rule-strong);border:1px solid var(--AB-rule-strong);border-radius:3px;overflow:hidden;margin-bottom:20px;}
-.dp-col{display:flex;flex-direction:column;}
-.dp-col-head{padding:14px 18px 12px;border-bottom:1px solid;display:flex;align-items:center;gap:10px;}
-.dp-col-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
-.dp-col-label{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.6;}
-.dp-col-hex{font-size:9px;letter-spacing:.04em;opacity:.38;margin-left:auto;}
-.dp-card{padding:16px 18px;position:relative;overflow:hidden;transition:filter .25s;}
-.dp-card:hover{filter:brightness(1.07);}
-.dp-card::before{content:'';position:absolute;inset:0;background-size:400% 400%;pointer-events:none;}
-.dp-grape{background:#12081a;}
-.dp-grape .dp-col-head{border-color:rgba(192,172,193,.12);}
-.dp-grape .dp-col-label{color:var(--ab-pearl);}
-.dp-grape .dp-col-hex{color:rgba(254,252,254,.3);}
-.dp-grape .dp-col-dot{background:#fefcfe;box-shadow:0 0 7px rgba(254,252,254,.25);}
-.dp-cosmic{background:#10101e;}
-.dp-cosmic .dp-col-head{border-color:rgba(237,255,255,.1);}
-.dp-cosmic .dp-col-label{color:var(--ab-ice);}
-.dp-cosmic .dp-col-hex{color:rgba(237,255,255,.28);}
-.dp-cosmic .dp-col-dot{background:#edffff;box-shadow:0 0 7px rgba(237,255,255,.2);}
-.dp-card-grape::before{background:linear-gradient(135deg,rgba(254,252,254,.06),rgba(192,172,193,.08),rgba(237,255,255,.04),rgba(254,252,254,.04));animation:nacre-grape 22s ease-in-out infinite;}
-.dp-card-cosmic::before{background:linear-gradient(135deg,rgba(237,255,255,.06),rgba(237,255,248,.08),rgba(254,252,254,.04),rgba(237,255,255,.04));animation:nacre-cosmic 24s ease-in-out infinite;}
-.dp-card-inner{position:relative;z-index:1;}
-.dp-card-tag{font-size:8px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px;display:block;}
-.dp-card-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;margin-bottom:5px;line-height:1.2;}
-.dp-card-title em{font-style:italic;opacity:.7;}
-.dp-card-body{font-family:'EB Garamond',serif;font-size:12.5px;line-height:1.65;margin-bottom:10px;}
-.dp-card-foot{font-size:8px;letter-spacing:.06em;border-top:1px solid;padding-top:8px;margin-top:4px;line-height:1.65;}
-.dp-grape .dp-card-tag,.dp-grape .dp-card-title{color:var(--ab-pearl);}
-.dp-grape .dp-card-body{color:var(--ab-orchid);}
-.dp-grape .dp-card-foot{color:rgba(192,172,193,.35);border-color:rgba(192,172,193,.1);}
-.dp-cosmic .dp-card-tag,.dp-cosmic .dp-card-title{color:var(--ab-ice);}
-.dp-cosmic .dp-card-body{color:var(--ab-mint);}
-.dp-cosmic .dp-card-foot{color:rgba(237,255,248,.32);border-color:rgba(237,255,255,.09);}
-.dp-type-stack{padding:16px 18px;border-top:1px solid;display:flex;flex-direction:column;gap:7px;}
-.dp-grape .dp-type-stack{border-color:rgba(192,172,193,.1);}
-.dp-cosmic .dp-type-stack{border-color:rgba(237,255,255,.08);}
-.dp-type-row{display:grid;grid-template-columns:20px auto 1fr 60px;gap:8px;align-items:baseline;}
-.dp-type-dot{width:7px;height:7px;border-radius:50%;margin-top:2px;}
-.dp-type-role{font-size:8px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
-.dp-type-sample{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;line-height:1.2;}
-.dp-type-grade{font-size:8px;letter-spacing:.06em;text-align:right;opacity:.38;}
-.dp-contrast-bar{padding:10px 18px;font-size:8px;letter-spacing:.08em;display:flex;justify-content:space-between;gap:8px;border-top:1px solid;}
-.dp-grape .dp-contrast-bar{border-color:rgba(192,172,193,.1);color:rgba(192,172,193,.4);}
-.dp-cosmic .dp-contrast-bar{border-color:rgba(237,255,255,.08);color:rgba(237,255,255,.35);}
-.dp-spectrum-strip{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;margin-bottom:16px;border:1px solid var(--AB-rule-strong);border-radius:2px;overflow:hidden;}
-.dp-spectrum-cell{display:flex;flex-direction:column;}
-.dp-spectrum-chip{height:36px;position:relative;}
-.dp-spectrum-chip::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.18),transparent 60%);}
-.dp-spectrum-label{padding:5px 6px;font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.3;border-top:1px solid rgba(200,180,230,.1);}
-/* Abalone extended section */
-.p11-extended{margin-top:48px;padding-top:40px;border-top:1px solid var(--AB-rule-strong);}
-.p11-ext-eyebrow{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--deckle-dim);opacity:.4;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-.p11-ext-eyebrow::after{content:'';flex:1;height:1px;background:currentColor;opacity:.2;}
-/* Iridescence matrix */
-.p11-matrix{width:100%;border-collapse:collapse;margin-bottom:28px;font-size:12px;}
-.p11-matrix th{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--AB-rule-strong);color:var(--parchment-faint);font-weight:400;text-align:center;}
-.p11-matrix th:first-child{text-align:left;}
-.p11-matrix td{padding:8px 10px;border-bottom:1px solid var(--AB-rule);vertical-align:middle;}
-.p11-matrix td:first-child{font-size:9px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;padding-right:16px;}
-.p11-mc{border-radius:2px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;}
-.p11-mc-grade{font-size:14px;}
-.p11-mc-note{font-size:7.5px;letter-spacing:.07em;text-transform:uppercase;opacity:.45;}
-/* Semantic nodes collation */
-.sn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:3px;margin-bottom:28px;}
-.sn-cell{background:var(--surface2);border:1px solid var(--rule);border-radius:3px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;}
-.sn-cell::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
-.sn-pip-row{display:flex;align-items:center;gap:8px;}
-.sn-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.sn-token{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;}
-.sn-var{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.04em;color:var(--parchment-faint);}
-.sn-role{font-family:'EB Garamond',serif;font-size:12.5px;font-style:italic;color:var(--parchment-dim);line-height:1.5;}
-.sn-note{font-family:'IBM Plex Mono',monospace;font-size:7.5px;letter-spacing:.06em;color:var(--parchment-faint);opacity:.65;margin-top:2px;}
-@media(max-width:640px){.dark-paper-grid{grid-template-columns:1fr;}.dp-spectrum-strip{grid-template-columns:repeat(5,1fr);}.sn-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -827,16 +648,16 @@ body::before{
 <div class="page">
 
 <!-- ═══ HEADER ═══════════════════════════════════════ -->
-<header class="ds-header">
+<header class="ds-header fade-up">
   <div>
     <div class="ds-eyebrow">Meinhardt Initiative · Design System</div>
     <h1 class="ds-h1">Colour <em>Grammar</em></h1>
     <p class="ds-sub">Master edition. The Nacre paper-print layer precedes the dark grammar — both systems share tokens, share ink, and are governed by the same rule set. Starfield background; paper occludes it.</p>
   </div>
   <div class="ds-meta">
-    <div class="ds-meta-item"><strong>Version</strong> — 2.35 Master</div>
+    <div class="ds-meta-item"><strong>Version</strong> — 2.4 Master</div>
     <div class="ds-meta-item"><strong>April</strong> 2026</div>
-    <div class="ds-meta-item">Nacre · P.07–P.10</div>
+    <div class="ds-meta-item">Nacre · P.07–P.11</div>
     <div class="ds-meta-item">CC0 · Public Domain</div>
   </div>
 </header>
@@ -845,20 +666,20 @@ body::before{
 <!-- ════════════════════════════════════════════════════
      NACRE — paper comes first
 ════════════════════════════════════════════════════ -->
-
-<div class="nacre-zone">
+<div class="nacre-zone-top"></div>
+<div class="nacre-zone fade-up fd2">
 <div class="nz-inner">
 
   <div class="nz-section">
-    <div class="nz-eyebrow">Nacre · paper-print document layer · v2.35</div>
+    <div class="nz-eyebrow">Nacre · paper-print document layer · v2.4</div>
     <div class="nz-title">The Paper <em>Layer</em></div>
-    <div class="nz-sub">Eight grounds white-balanced to Cloud Dancer (avg dist 30.0). Inks: Stretch Limo (constant) · Grape-bg · Cosmic-bg (augmented register). Deckle-dim pulled 15% toward Grape-dim. Light → dark. Four proposals follow.</div>
+    <div class="nz-sub">Eight grounds white-balanced to Cloud Dancer (avg dist 30.0). Ink: Stretch Limo #28283a. Deckle-dim pulled 15% toward Grape-dim. Light → dark. Five proposals: P.07–P.11. Abalone enters at P.11.</div>
 
     <div class="nz-key-label">Grounds · light → dark</div>
     <div class="nz-key">
       <div class="nz-key-chip" style="background:#f0eee8;" title="Cloud Dancer"></div>
       <div class="nz-key-chip" style="background:#edfff8;" title="Aqua Vitae"></div>
-      <div class="nz-key-chip" style="background:#fefcfe;" title="Laitance"></div>
+      <div class="nz-key-chip" style="background:#fff6ff;" title="Quire"></div>
       <div class="nz-key-chip" style="background:#edffff;" title="Glaze"></div>
       <div class="nz-key-chip" style="background:#ffe5d0;" title="Usquebaugh"></div>
       <div class="nz-key-chip" style="background:#d5e9db;" title="Willow"></div>
@@ -872,7 +693,6 @@ body::before{
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#f0eee8;"><div class="nacre-chip-name">cloud-dancer</div><div class="nacre-chip-hex">#f0eee8</div><div class="nacre-chip-dist">dist 0 · ref · [A&amp;B] 11-4201</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#edfff8;"><div class="nacre-chip-name">aqua-vitae</div><div class="nacre-chip-hex">#edfff8</div><div class="nacre-chip-dist">dist 23.5 · G+17 B+16</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#fff6ff;"><div class="nacre-chip-name">quire</div><div class="nacre-chip-hex">#fff6ff</div><div class="nacre-chip-dist">dist 28.6 · B+23 R+15</div></div></div>
-      <div class="nacre-swatch"><div class="nacre-chip" style="background:#fefcfe;"><div class="nacre-chip-name">laitance</div><div class="nacre-chip-hex">#fefcfe</div><div class="nacre-chip-dist">dist 29.3 · +14 +14 +22 · annotation</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#edffff;"><div class="nacre-chip-name">glaze</div><div class="nacre-chip-hex">#edffff</div><div class="nacre-chip-dist">dist 28.8 · B+23</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#ffe5d0;"><div class="nacre-chip-name">usquebaugh</div><div class="nacre-chip-hex">#ffe5d0</div><div class="nacre-chip-dist">dist 29.7 · B−24</div></div></div>
       <div class="nacre-swatch"><div class="nacre-chip" style="background:#d5e9db;"><div class="nacre-chip-name">willow</div><div class="nacre-chip-hex">#d5e9db</div><div class="nacre-chip-dist">dist 30.4 · R−27</div></div></div>
@@ -884,15 +704,12 @@ body::before{
       <div class="nacre-token-item" style="background:#f0eee8;"><div class="nacre-token-name">--cloud-dancer</div><div class="nacre-token-value">#f0eee8</div><div class="nacre-token-note">white balance · dist 0</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#f0eee8;border:0.5px solid rgba(40,40,58,.15);"></div></div></div>
       <div class="nacre-token-item" style="background:#edfff8;"><div class="nacre-token-name">--aqua-vitae</div><div class="nacre-token-value">#edfff8</div><div class="nacre-token-note">cool mint · dist 23.5</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#edfff8;"></div></div></div>
       <div class="nacre-token-item" style="background:#fff6ff;"><div class="nacre-token-name">--quire</div><div class="nacre-token-value">#fff6ff</div><div class="nacre-token-note">ghost lavender · dist 28.6</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#fff6ff;"></div></div></div>
-      <div class="nacre-token-item" style="background:#fefcfe;"><div class="nacre-token-name">--laitance</div><div class="nacre-token-value">#fefcfe</div><div class="nacre-token-note">annotation stock · dist 29.3</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#fefcfe;"></div></div></div>
       <div class="nacre-token-item" style="background:#edffff;"><div class="nacre-token-name">--glaze</div><div class="nacre-token-value">#edffff</div><div class="nacre-token-note">ice cyan · dist 28.8</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#edffff;"></div></div></div>
       <div class="nacre-token-item" style="background:#ffe5d0;"><div class="nacre-token-name">--usquebaugh</div><div class="nacre-token-value">#ffe5d0</div><div class="nacre-token-note">warm amber · dist 29.7</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#ffe5d0;"></div></div></div>
       <div class="nacre-token-item" style="background:#d5e9db;"><div class="nacre-token-name">--willow</div><div class="nacre-token-value">#d5e9db</div><div class="nacre-token-note">hushed sage · dist 30.4</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#d5e9db;"></div></div></div>
       <div class="nacre-token-item" style="background:#dbccd7;"><div class="nacre-token-name">--deckle</div><div class="nacre-token-value">#dbccd7</div><div class="nacre-token-note">dusty mauve · dist 43.4</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#dbccd7;"></div></div></div>
       <div class="nacre-token-item" style="background:#c0acc1;"><div class="nacre-token-name">--deckle-dim</div><div class="nacre-token-value">#c0acc1</div><div class="nacre-token-note">grape-pull · dist 90.4</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#c0acc1;"></div></div></div>
       <div class="nacre-token-item" style="background:#28283a;"><div class="nacre-token-name" style="color:#f0eee8;">--stretch-limo</div><div class="nacre-token-value" style="color:#f0eee8;opacity:.7;">#28283a</div><div class="nacre-token-note" style="color:#f0eee8;">constant ink · [C] 19-4005</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#28283a;"></div></div></div>
-      <div class="nacre-token-item" style="background:#12081a;"><div class="nacre-token-name" style="color:#f0eee8;">--N-ink-grape</div><div class="nacre-token-value" style="color:#f0eee8;opacity:.7;">#12081a</div><div class="nacre-token-note" style="color:#f0eee8;">portal · violet-black</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#12081a;"></div></div></div>
-      <div class="nacre-token-item" style="background:#10101e;"><div class="nacre-token-name" style="color:#f0eee8;">--N-ink-cosmic</div><div class="nacre-token-value" style="color:#f0eee8;opacity:.7;">#10101e</div><div class="nacre-token-note" style="color:#f0eee8;">analytical · deep blue-black</div><div class="nacre-trio"><div class="nacre-trio-chip" style="background:#10101e;"></div></div></div>
     </div>
   </div>
 
@@ -909,11 +726,11 @@ body::before{
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#f0eee8;"></div>
           <div class="proposal-pip" style="background:#edfff8;"></div>
-          <div class="proposal-pip" style="background:#fefcfe;"></div>
+          <div class="proposal-pip" style="background:#fff6ff;"></div>
           <div class="proposal-pip" style="background:#edffff;"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">cloud-dancer · aqua-vitae · laitance · glaze · ink</div>
+          <div class="proposal-ground-label">cloud-dancer · aqua-vitae · quire · glaze · ink</div>
         </div>
       </div>
     </div>
@@ -921,10 +738,10 @@ body::before{
     <div class="pb">
       <div class="pb-label">Lightest register</div>
       <div class="pcard-grid pcard-grid-4">
-        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · ground</div><div class="pcard-heading">Document<br><em>substrate</em></div><div class="pcard-body">The neutral prior. Before role is assigned, before argument is committed, Cloud Dancer is the sheet itself — the white-balance reference against which all velatura distances are measured. It is not white; it is the absence of decision.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">dist 0</span></div></div>
-        <div class="pcard" style="background:#edfff8;"><div><div class="pcard-token">aqua-vitae · exhibit</div><div class="pcard-heading">Exhibit<br><em>field</em></div><div class="pcard-body">The green band of the tricolour — the Gaelic tradition, the given, the extant. Exhibit material is evidence tipped in from outside the argument: instruments, correspondence, filed documents. The field is demonstrable; it does not argue, it shows.</div></div><div class="pcard-foot"><span class="pcard-hex">#edfff8</span><span class="pcard-dist">dist 23.5</span></div></div>
-        <div class="pcard" style="background:#fefcfe;"><div><div class="pcard-token">laitance · annotation</div><div class="pcard-heading">Annotation<br><em>margin</em></div><div class="pcard-body">The white field of the tricolour — the space of mediation between traditions. Annotation does not assert; it correlates. Marginalia, footnotes, legal referents: material that sits beside the argument in peaceful adjacency, refusing to be either exhibit or body.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">dist 29.3</span></div></div>
-        <div class="pcard" style="background:#edffff;"><div><div class="pcard-token">glaze · cover</div><div class="pcard-heading">Cover<br><em>sheet</em></div><div class="pcard-body">The lightest register — used where the document presents itself before being read. Title fields, running heads, cover sheets. A surface so close to the ground it reads as pure light, neither claiming colour nor refusing it.</div></div><div class="pcard-foot"><span class="pcard-hex">#edffff</span><span class="pcard-dist">dist 28.8</span></div></div>
+        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · ground</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">dist 0</span></div></div>
+        <div class="pcard" style="background:#edfff8;"><div><div class="pcard-token">aqua-vitae</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#edfff8</span><span class="pcard-dist">dist 23.5</span></div></div>
+        <div class="pcard" style="background:#fff6ff;"><div><div class="pcard-token">quire</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#fff6ff</span><span class="pcard-dist">dist 28.6</span></div></div>
+        <div class="pcard" style="background:#edffff;"><div><div class="pcard-token">glaze</div><div class="pcard-heading">Lorem ipsum<br><em>dolor sit amet</em></div><div class="pcard-body">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</div></div><div class="pcard-foot"><span class="pcard-hex">#edffff</span><span class="pcard-dist">dist 28.8</span></div></div>
       </div>
     </div>
     <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Velatura · optical principle</div><div class="nacre-axiom-quote">The ground is never absent. It speaks through every layer laid above it.</div><div class="nacre-axiom-plain">Cloud Dancer is the ground. Aqua-vitae, Quire, and Glaze are glazes applied over it — each modifies the temperature of the light without concealing the substrate. Stretch Limo reads the same on each: contrast governed by luminosity, not hue.</div></div></div>
@@ -934,7 +751,7 @@ body::before{
   <div class="nz-section">
     <div class="nz-eyebrow">§ P.08</div>
     <div class="nz-title">Paper Doctrine — <em>the working document register</em></div>
-    <div class="nz-sub">Mid-band grounds. Named stocks, each assigned a role: ground, exhibit field, annotation margin, body field.</div>
+    <div class="nz-sub">Mid-band grounds. Named stocks, each assigned a role: ground, body field, annotation margin, exhibit field.</div>
     <div class="proposal-header">
       <div class="proposal-n">08</div>
       <div>
@@ -943,11 +760,11 @@ body::before{
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#f0eee8;"></div>
           <div class="proposal-pip" style="background:#ffe5d0;"></div>
-          <div class="proposal-pip" style="background:#fefcfe;"></div>
+          <div class="proposal-pip" style="background:#fff6ff;"></div>
           <div class="proposal-pip" style="background:#d5e9db;"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">cloud-dancer · usquebaugh · laitance · willow · ink</div>
+          <div class="proposal-ground-label">cloud-dancer · usquebaugh · quire · willow · ink</div>
         </div>
       </div>
     </div>
@@ -956,9 +773,9 @@ body::before{
       <div class="pb-label">Named stocks · document role assignment</div>
       <div class="pcard-grid pcard-grid-4">
         <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · substrate</div><div class="pcard-heading">Document<br><em>ground</em></div><div class="pcard-body">The base sheet. White-balance reference — the paper the submission is printed on. All other stocks are overlaid against this ground.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">--N-substrate</span></div></div>
-        <div class="pcard" style="background:#d5e9db;"><div><div class="pcard-token">willow · exhibit</div><div class="pcard-heading">Exhibit<br><em>field</em></div><div class="pcard-body">Sage of gelatine sizing. Exhibit panels, supporting evidence fields, appended instruments — material tipped in from outside the argument.</div></div><div class="pcard-foot"><span class="pcard-hex">#d5e9db</span><span class="pcard-dist">dist 30.4</span></div></div>
-        <div class="pcard" style="background:#fefcfe;"><div><div class="pcard-token">laitance · annotation</div><div class="pcard-heading">Annotation<br><em>margin</em></div><div class="pcard-body">Ghost lavender of uncut sheets. Marginalia, footnotes, legal correlates — material that sits beside the argument rather than inside it.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">dist 29.3</span></div></div>
         <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">usquebaugh · body field</div><div class="pcard-heading">Body<br><em>field</em></div><div class="pcard-body">Warm amber of new spirit. Body text ground for primary narrative sections — the main argument, the statement of facts, the submission proper.</div></div><div class="pcard-foot"><span class="pcard-hex">#ffe5d0</span><span class="pcard-dist">dist 29.7</span></div></div>
+        <div class="pcard" style="background:#fff6ff;"><div><div class="pcard-token">quire · annotation</div><div class="pcard-heading">Annotation<br><em>margin</em></div><div class="pcard-body">Ghost lavender of uncut sheets. Marginalia, footnotes, legal correlates — material that sits beside the argument rather than inside it.</div></div><div class="pcard-foot"><span class="pcard-hex">#fff6ff</span><span class="pcard-dist">dist 28.6</span></div></div>
+        <div class="pcard" style="background:#d5e9db;"><div><div class="pcard-token">willow · exhibit</div><div class="pcard-heading">Exhibit<br><em>field</em></div><div class="pcard-body">Sage of gelatine sizing. Exhibit panels, supporting evidence fields, appended instruments — material tipped in from outside the argument.</div></div><div class="pcard-foot"><span class="pcard-hex">#d5e9db</span><span class="pcard-dist">dist 30.4</span></div></div>
       </div>
     </div>
     <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Paper Doctrine · structural note</div><div class="nacre-axiom-quote">The stock defines the register before a word is printed.</div><div class="nacre-axiom-plain">A formal submission on Usquebaugh ground reads differently from the same text on Cloud Dancer — the warm amber pre-loads a context of sustained argument, the way cream-laid paper signals permanence before the reader processes a sentence. This is not decoration; it is constraint.</div></div></div>
@@ -968,30 +785,28 @@ body::before{
   <div class="nz-section">
     <div class="nz-eyebrow">§ P.09</div>
     <div class="nz-title">Strata — <em>the sedimentary register</em></div>
-    <div class="nz-sub">One colour from each depth band. Cloud Dancer as surface, Laitance as resolved near-surface, Usquebaugh as shallow deposit, Deckle as deep layer, Deckle-dim as bedrock. The distance arithmetic is stratigraphy.</div>
+    <div class="nz-sub">One colour from each depth band. Cloud Dancer as surface, Usquebaugh as shallow deposit, Deckle as deep layer, Deckle-dim as bedrock. The distance arithmetic is stratigraphy.</div>
     <div class="proposal-header">
       <div class="proposal-n">09</div>
       <div>
         <div class="proposal-title">Strata</div>
-        <div class="proposal-desc">Each colour deposited at a fixed distance from the Cloud Dancer ground. The distances (0 · 29.6 · 29.7 · 43.4 · 90.4) were produced by arithmetic against a fixed reference — not by aesthetic preference. Five layers, five roles, no overlap. Laitance enters as the resolved surface layer — Porcelain, S-resolved.</div>
+        <div class="proposal-desc">Each colour deposited at a fixed distance from the Cloud Dancer ground. The distances (0 · 29.7 · 43.4 · 90.4) were produced by arithmetic against a fixed reference — not by aesthetic preference. Four layers, four roles, no overlap.</div>
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#f0eee8;"></div>
-          <div class="proposal-pip" style="background:#fefcfe;border:1px solid rgba(192,172,193,.3);"></div>
           <div class="proposal-pip" style="background:#ffe5d0;"></div>
           <div class="proposal-pip" style="background:#dbccd7;"></div>
           <div class="proposal-pip" style="background:#c0acc1;"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">cloud-dancer · laitance · usquebaugh · deckle · deckle-dim · ink</div>
+          <div class="proposal-ground-label">cloud-dancer · usquebaugh · deckle · deckle-dim · ink</div>
         </div>
       </div>
     </div>
     <div class="proposal-rule"></div>
     <div class="pb">
       <div class="pb-label">Depth sequence · surface → bedrock</div>
-      <div class="pcard-grid pcard-grid-5">
+      <div class="pcard-grid pcard-grid-4">
         <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · surface</div><div class="pcard-heading">Surface<br><em>dist 0</em></div><div class="pcard-body">The reference layer. The white-balance anchor from which all distances are measured.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">layer 0</span></div></div>
-        <div class="pcard" style="background:#fefcfe;border-color:rgba(192,172,193,.2);"><div><div class="pcard-token">laitance · resolved</div><div class="pcard-heading">Resolved<br><em>dist 29.6</em></div><div class="pcard-body">Porcelain near-surface — the milky bloom that confirms the substrate has set. S-resolved layer. R=B over G.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">layer 0.5</span></div></div>
         <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">usquebaugh · shallow</div><div class="pcard-heading">Shallow<br><em>dist 29.7</em></div><div class="pcard-body">Warm amber — alluvial material settled close to the surface. Body text ground. First deposit.</div></div><div class="pcard-foot"><span class="pcard-hex">#ffe5d0</span><span class="pcard-dist">layer 1</span></div></div>
         <div class="pcard" style="background:#dbccd7;"><div><div class="pcard-token">deckle · mid</div><div class="pcard-heading">Mid<br><em>dist 43.4</em></div><div class="pcard-body">Dusty mauve — compressed mineral with residual warmth. First layer that reads as present rather than ambient.</div></div><div class="pcard-foot"><span class="pcard-hex">#dbccd7</span><span class="pcard-dist">layer 2</span></div></div>
         <div class="pcard" style="background:#c0acc1;"><div><div class="pcard-token">deckle-dim · bedrock</div><div class="pcard-heading">Bedrock<br><em>dist 90.4</em></div><div class="pcard-body">Grape-ancestral mauve, 15% pulled toward the portal's dim register. The anchor. Cover stock, colophon ground.</div></div><div class="pcard-foot"><span class="pcard-hex">#c0acc1</span><span class="pcard-dist">layer 3</span></div></div>
@@ -999,54 +814,45 @@ body::before{
     </div>
     <div class="pb" style="margin-top:3px;">
       <div class="pb-label">Ink on each stratum</div>
-      <div class="pcard-grid pcard-grid-5">
+      <div class="pcard-grid pcard-grid-4">
         <div class="pcard-ink"><div><div class="pcard-ink-label">stretch-limo on cloud-dancer</div><div class="pcard-ink-heading">Stretch Limo<br><em>on surface</em></div><div class="pcard-ink-body">Maximum contrast — the reference state. All other strata measured against this.</div></div><div class="pcard-ink-foot"><span class="pcard-ink-hex">#28283a on #f0eee8</span></div></div>
-        <div class="pcard" style="background:#fefcfe;border-color:rgba(192,172,193,.2);"><div><div class="pcard-token">ink on laitance</div><div class="pcard-heading">Stretch Limo<br><em>on resolved</em></div><div class="pcard-body">Porcelain ground barely distinguishable from Cloud Dancer — the ink reads identically, the surface whispers violet. The QED field.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #fefcfe</span></div></div>
         <div class="pcard" style="background:#ffe5d0;"><div><div class="pcard-token">ink on usquebaugh</div><div class="pcard-heading">Stretch Limo<br><em>on shallow</em></div><div class="pcard-body">Warm amber softens the blue-black of the ink — reads as antiquarian. Formal submission register.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #ffe5d0</span></div></div>
         <div class="pcard" style="background:#dbccd7;"><div><div class="pcard-token">ink on deckle</div><div class="pcard-heading">Stretch Limo<br><em>on mid</em></div><div class="pcard-body">Mauve ground pulls ink slightly cooler. Contrast holds firmly — exhibit and cover-page register.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #dbccd7</span></div></div>
         <div class="pcard" style="background:#c0acc1;"><div><div class="pcard-token">ink on deckle-dim</div><div class="pcard-heading">Stretch Limo<br><em>on bedrock</em></div><div class="pcard-body">Deepest ground — grape ancestry visible. Richest of the four pairs. Primary cover stock.</div></div><div class="pcard-foot"><span class="pcard-hex">#28283a on #c0acc1</span></div></div>
       </div>
     </div>
-    <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Strata · O.R. basis · conspectus §1</div><div class="nacre-axiom-quote">The column is readable because the distances were calculated, not chosen.</div><div class="nacre-axiom-plain">The heuristic that produced this palette is the same heuristic that governs the O.R. conspectus: measure first, then derive. The Pigeonhole Rule closes it: five layers, five roles, no overlap.</div></div></div>
-    <div class="pb" style="margin-top:28px;">
-      <div class="pb-label">Augmented ink register · dark palette bg tones on Cloud Dancer</div>
-      <div class="pcard-grid pcard-grid-3">
-        <div class="pcard-ink"><div><div class="pcard-ink-label">--N-ink · stretch-limo</div><div class="pcard-ink-heading">Stretch Limo<br><em>#28283a · constant</em></div><div class="pcard-ink-body">The reference ink. Blue-black — sufficient depth to read as print, not screen. All tinted inks measured against this.</div></div><div class="pcard-ink-foot"><span class="pcard-ink-hex">#28283a on Cloud Dancer</span></div></div>
-        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token" style="color:#12081a;">--N-ink-grape · #12081a</div><div class="pcard-heading" style="color:#12081a;">Portal<br><em>violet-black</em></div><div class="pcard-body" style="color:#12081a;opacity:.75;">Grape ancestry — deepest of the three. Use for portal-register documents, landmark submissions, colophon ink where violet undertone signals authority without warmth.</div></div><div class="pcard-foot"><span class="pcard-hex" style="color:#12081a;opacity:.5;">#12081a on #f0eee8</span></div></div>
-        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token" style="color:#10101e;">--N-ink-cosmic · #10101e</div><div class="pcard-heading" style="color:#10101e;">Analytical<br><em>deep blue-black</em></div><div class="pcard-body" style="color:#10101e;opacity:.75;">Cosmic ancestry — closest to neutral of the three. Deepest blue cast, nearly indistinguishable from Stretch Limo at reading distance. Use for analytical and domain-register documents.</div></div><div class="pcard-foot"><span class="pcard-hex" style="color:#10101e;opacity:.5;">#10101e on #f0eee8</span></div></div>
-      </div>
-    </div>
+    <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Strata · O.R. basis · conspectus §1</div><div class="nacre-axiom-quote">The column is readable because the distances were calculated, not chosen.</div><div class="nacre-axiom-plain">The heuristic that produced this palette is the same heuristic that governs the O.R. conspectus: measure first, then derive. The Pigeonhole Rule closes it: four layers, four roles, no overlap.</div></div></div>
   </div>
 
   <!-- P.10 CONSPECTUS -->
   <div class="nz-section">
     <div class="nz-eyebrow">§ P.10</div>
     <div class="nz-title">Conspectus — <em>the survey register</em></div>
-    <div class="nz-sub">The three most present grounds plus Laitance as latent field. Maximum presence, minimum ambiguity. Index pages, summary tables, colophon.</div>
+    <div class="nz-sub">The three most present grounds plus Cloud Dancer as reversal highlight. Maximum presence, minimum ambiguity. Index pages, summary tables, colophon.</div>
     <div class="proposal-header">
       <div class="proposal-n">10</div>
       <div>
         <div class="proposal-title">Conspectus</div>
-        <div class="proposal-desc">From the Latin: a general survey of a subject. The version you hand to someone who needs to read the whole thing quickly. Laitance appears here as the latent field — the surface that confirms resolution, not a reversal of the ground but a discharge of it.</div>
+        <div class="proposal-desc">From the Latin: a general survey of a subject. The version you hand to someone who needs to read the whole thing quickly. Cloud Dancer appears here not as ground but as reversal highlight — a white field within a darker context.</div>
         <div class="proposal-grounds">
           <div class="proposal-pip" style="background:#d5e9db;"></div>
           <div class="proposal-pip" style="background:#dbccd7;"></div>
           <div class="proposal-pip" style="background:#c0acc1;"></div>
-          <div class="proposal-pip" style="background:#fefcfe;border:1px solid rgba(192,172,193,.3);"></div>
+          <div class="proposal-pip" style="background:#f0eee8;border-color:rgba(40,40,58,.2);"></div>
           <div class="proposal-pip-sep"></div>
           <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
-          <div class="proposal-ground-label">willow · deckle · deckle-dim · laitance latent field · ink</div>
+          <div class="proposal-ground-label">willow · deckle · deckle-dim · cloud-dancer reversal · ink</div>
         </div>
       </div>
     </div>
     <div class="proposal-rule"></div>
     <div class="pb">
-      <div class="pb-label">Survey grounds · darker three + latent field</div>
+      <div class="pb-label">Survey grounds · darker three + reversal</div>
       <div class="pcard-grid pcard-grid-4">
         <div class="pcard" style="background:#d5e9db;"><div><div class="pcard-token">willow · index ground</div><div class="pcard-heading">Index<br><em>ground</em></div><div class="pcard-body">Hushed sage — organised material. Index pages, running headers, section dividers. Lightest of the three survey grounds.</div></div><div class="pcard-foot"><span class="pcard-hex">#d5e9db</span><span class="pcard-dist">dist 30.4</span></div></div>
         <div class="pcard" style="background:#dbccd7;"><div><div class="pcard-token">deckle · summary field</div><div class="pcard-heading">Summary<br><em>field</em></div><div class="pcard-body">Dusty mauve — the most present surface, the one the eye rests on. Summary tables, net counters, operative paragraph grounds.</div></div><div class="pcard-foot"><span class="pcard-hex">#dbccd7</span><span class="pcard-dist">dist 43.4</span></div></div>
         <div class="pcard" style="background:#c0acc1;"><div><div class="pcard-token">deckle-dim · colophon</div><div class="pcard-heading">Cover &amp;<br><em>colophon</em></div><div class="pcard-body">Grape-ancestral mauve. Cover sheet, back matter, colophon page — the weight that signals the document is complete.</div></div><div class="pcard-foot"><span class="pcard-hex">#c0acc1</span><span class="pcard-dist">dist 90.4</span></div></div>
-        <div class="pcard" style="background:#fefcfe;border-color:rgba(192,172,193,.2);"><div><div class="pcard-token">laitance · latent field</div><div class="pcard-heading">Latent<br><em>field</em></div><div class="pcard-body">The Porcelain surface. Not a ground — a discharge. Pull-quotes, boxed findings, QED panels, struck conclusions. The survey is closed when this field is present.</div></div><div class="pcard-foot"><span class="pcard-hex">#fefcfe</span><span class="pcard-dist">S-resolved</span></div></div>
+        <div class="pcard" style="background:#f0eee8;border-color:rgba(40,40,58,.12);"><div><div class="pcard-token">cloud-dancer · reversal</div><div class="pcard-heading">Reversal<br><em>highlight</em></div><div class="pcard-body">Cloud Dancer appears here not as ground but as highlight — pull-quotes, boxed findings, marginal emphasis against Deckle or Deckle-dim.</div></div><div class="pcard-foot"><span class="pcard-hex">#f0eee8</span><span class="pcard-dist">reversal field</span></div></div>
       </div>
     </div>
     <div class="pb" style="margin-top:3px;">
@@ -1057,12 +863,123 @@ body::before{
         <div class="pcard" style="background:#c0acc1;min-height:230px;"><div><div class="pcard-token">deckle-dim · colophon</div><div class="pcard-heading">Meinhardt Initiative<br><em>CC0 · Public Domain</em></div><div class="pcard-body">dr-crunch.github.io · Tairiscint Mheinhardt v5 · April 2026 · Nacre document layer · Stretch Limo ink · Cloud Dancer ground.</div></div><div class="pcard-foot"><span class="pcard-hex">#c0acc1</span><span class="pcard-dist">colophon · end</span></div></div>
       </div>
     </div>
-    <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Conspectus · closing note · P.10</div><div class="nacre-axiom-quote">A general survey. The supply of colour has always been in excess of the demand — the grammar enforces scarcity.</div><div class="nacre-axiom-plain">From the Billings Phenomenon: as scarce as truth is, the supply has always been in excess of the demand. The Nacre palette enacts the inverse — eight grounds, three inks, four proposals, each a restricted sub-grammar. The constant ink (Stretch Limo) holds the reference; the tinted inks (Grape-bg, Cosmic-bg) carry register. The system is closed.</div></div></div>
+    <div class="nacre-axiom"><div class="nacre-axiom-rule"></div><div class="nacre-axiom-body"><div class="nacre-axiom-tag">Conspectus · closing note · P.10</div><div class="nacre-axiom-quote">A general survey. The supply of colour has always been in excess of the demand — the grammar enforces scarcity.</div><div class="nacre-axiom-plain">From the Billings Phenomenon: as scarce as truth is, the supply has always been in excess of the demand. The Nacre palette enacts the inverse — eight grounds, one ink, four proposals, each a restricted sub-grammar. The system is closed.</div></div></div>
+  </div>
+
+  <!-- P.11 ABALONE — v2.4 addition -->
+  <div class="nz-section">
+    <div class="nz-eyebrow">§ P.11 · v2.4</div>
+    <div class="nz-title">Abalone — <em>the shell before the pearl</em></div>
+    <div class="nz-sub">The liminal register. Abalone is not the pearl — it is the structure within which nacre is produced. In the grammar: the threshold colour that sits exactly at the boundary between dark and light, between the corpus and the institution it addresses.</div>
+
+    <div class="proposal-header">
+      <div class="proposal-n">11</div>
+      <div>
+        <div class="proposal-title">Abalone <em>as Threshold Register</em></div>
+        <div class="proposal-desc">The abalone shell secretes nacre in response to irritation — the same irritant that, if unaddressed, produces the pearl. In colour terms: Abalone (#9888a8) is the muted grayish-lavender of the shell interior. It sits precisely between Stretch Limo ink and Cloud Dancer ground. Neither dark nor light — the transition itself. Semantic role: S-liminal. Carries content that exists at the boundary between registers.</div>
+        <div class="proposal-grounds">
+          <div class="proposal-pip" style="background:#c0b8c8;"></div>
+          <div class="proposal-pip" style="background:#9888a8;"></div>
+          <div class="proposal-pip" style="background:#4a3858;"></div>
+          <div class="proposal-pip" style="background:#120e18;"></div>
+          <div class="proposal-pip-sep"></div>
+          <div class="proposal-pip" style="background:#28283a;border-color:rgba(240,238,232,.2);"></div>
+          <div class="proposal-ground-label">abalone-lt · abalone · -dim · -bg · ink</div>
+        </div>
+      </div>
+    </div>
+    <div class="proposal-rule"></div>
+
+    <div class="pb">
+      <div class="pb-label">Abalone · four structural aspects of the shell</div>
+      <div class="pcard-grid pcard-grid-4">
+
+        <div class="pcard" style="background:#e8e4ef;border-color:rgba(152,136,168,.18);">
+          <div>
+            <div class="pcard-token">abalone-lt · outer surface</div>
+            <div class="pcard-heading">Outer<br><em>surface</em></div>
+            <div class="pcard-body">The visible face. What the institution sees before it chooses to look inside. Muted, pearlescent, non-threatening. The document face that precedes content — cover stock, running header, the title before the argument.</div>
+          </div>
+          <div class="pcard-foot"><span class="pcard-hex">#c0b8c8</span><span class="pcard-dist">--abalone-lt</span></div>
+        </div>
+
+        <div class="pcard" style="background:#ddd6e4;border-color:rgba(152,136,168,.22);">
+          <div>
+            <div class="pcard-token">abalone · nacre layer</div>
+            <div class="pcard-heading">Nacre<br><em>producing layer</em></div>
+            <div class="pcard-body">The mantle. Where aragonite is deposited one molecular layer at a time. In the grammar: the zone of productive irritation — the record that accumulates in response to nineteen years of unacknowledged signal. Not decoration. Process.</div>
+          </div>
+          <div class="pcard-foot"><span class="pcard-hex">#9888a8</span><span class="pcard-dist">--abalone</span></div>
+        </div>
+
+        <div class="pcard" style="background:#cec4d8;border-color:rgba(152,136,168,.25);">
+          <div>
+            <div class="pcard-token">abalone-dim · deep muscle</div>
+            <div class="pcard-heading">Deep<br><em>muscle</em></div>
+            <div class="pcard-body">The adductor — what holds the shell closed against external pressure. In institutional terms: the mechanism of persistent non-response. Not passive silence but active structural resistance. The Nullification Loop in colour.</div>
+          </div>
+          <div class="pcard-foot"><span class="pcard-hex">#4a3858</span><span class="pcard-dist">--abalone-dim</span></div>
+        </div>
+
+        <div class="pcard" style="background:#1c1828;border-color:rgba(152,136,168,.18);">
+          <div>
+            <div class="pcard-token">abalone-bg · substrate</div>
+            <div class="pcard-heading">Rock<br><em>substrate</em></div>
+            <div class="pcard-body">What the shell clings to. In the dark grammar: the near-black field from which abalone text emerges. This is the EU Council Presidency register — the rock to which Ireland's governance identity is attached as it assumes the chair.</div>
+          </div>
+          <div class="pcard-foot"><span class="pcard-hex">#120e18</span><span class="pcard-dist">--abalone-bg</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pb" style="margin-top:3px;">
+      <div class="pb-label">Abalone on Stretch Limo · text use in dark grammar</div>
+      <div class="pcard-grid pcard-grid-3">
+
+        <div class="pcard-ink" style="background:#120e18;border:0.5px solid rgba(152,136,168,.18);">
+          <div>
+            <div class="pcard-ink-label">abalone-lt on abalone-bg</div>
+            <div class="pcard-ink-heading">The Presidency<br><em>register</em></div>
+            <div class="pcard-ink-body">Ireland assumes the Presidency of the Council of the European Union on 1 July 2026. Nineteen years of domestic silence becomes a European rule-of-law event at the threshold moment. Abalone names that threshold.</div>
+          </div>
+          <div class="pcard-ink-foot"><span class="pcard-ink-hex">#c0b8c8 on #120e18</span></div>
+        </div>
+
+        <div class="pcard-ink" style="background:#1c1828;border:0.5px solid rgba(152,136,168,.2);">
+          <div>
+            <div class="pcard-ink-label">abalone-lt on surface2 (approx.)</div>
+            <div class="pcard-ink-heading">The Liminal<br><em>moment</em></div>
+            <div class="pcard-ink-body">What is domestic becomes European not through formal reclassification but by the structural accident of the Presidency. The shell did not choose to be picked up. The governance failure did not choose its timing. The convergence is architectural.</div>
+          </div>
+          <div class="pcard-ink-foot"><span class="pcard-ink-hex">#c0b8c8 on #1c1828</span></div>
+        </div>
+
+        <div class="pcard-ink" style="background:#28283a;border:0.5px solid rgba(152,136,168,.18);">
+          <div>
+            <div class="pcard-ink-label">abalone-lt on stretch-limo</div>
+            <div class="pcard-ink-heading">Ink on ink —<br><em>maximum tension</em></div>
+            <div class="pcard-ink-body">The Presidency Paradox: Ireland cannot chair Council deliberations on rule-of-law enforcement while standing in documented breach of the right to good administration it will be charged to uphold. Art. 2 TEU. Art. 41 CFR.</div>
+          </div>
+          <div class="pcard-ink-foot"><span class="pcard-ink-hex">#c0b8c8 on #28283a</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="nacre-axiom">
+      <div class="nacre-axiom-rule" style="background:linear-gradient(to bottom,rgba(152,136,168,.55),rgba(152,136,168,.04));"></div>
+      <div class="nacre-axiom-body">
+        <div class="nacre-axiom-tag">Abalone · P.11 · threshold axiom · S-liminal</div>
+        <div class="nacre-axiom-quote">The shell secretes the pearl only under sustained, unresolved pressure. Remove the irritant and the process stops. The record is the irritant. The corpus is the pearl.</div>
+        <div class="nacre-axiom-plain">Abalone (#9888a8) enters v2.4 as the liminal register — the colour that names the threshold between dark and nacre, between corpus and institution, between a domestic governance failure and a European rule-of-law precedent. It carries no history in the palette: it is the first token admitted under the Pigeonhole Rule with an explicitly architectural role rather than a semantic one. S-liminal. What sits at the edge, holds its shape, and makes the interior possible.</div>
+      </div>
+    </div>
   </div>
 
 </div>
 </div>
-
+<div class="nacre-zone-bot"></div>
 
 
 <!-- ════════════════════════════════════════════════════
@@ -1070,18 +987,18 @@ body::before{
 ════════════════════════════════════════════════════ -->
 
 <!-- Pantone key -->
-<div class="ds-section" style="padding-top:40px;">
+<div class="ds-section fade-up fd3" style="padding-top:40px;">
   <div class="ds-section-label">Pantone Sources</div>
   <div class="pantone-key">
     <div class="pk-item"><div class="pk-pip" style="background:#7ab8d8;"></div>[A] 2026 Forecast — blues &amp; citrus</div>
     <div class="pk-item"><div class="pk-pip" style="background:#c87870;"></div>[B] Comfort Zone — warms &amp; neutrals</div>
-    <div class="pk-item"><div class="pk-pip" style="background:#c8253a;"></div>[C] Glamour &amp; Gleam — saturates &amp; TPM metallics</div>
+    <div class="pk-item"><div class="pk-pip" style="background:#c8253a;"></div>[C] Glamor &amp; Gleam — saturates &amp; TPM metallics</div>
     <div class="pk-item"><div class="pk-pip" style="background:#3c5a9a;"></div>★ 2026 addition</div>
   </div>
 </div>
 
 <!-- OR Conspectus triad -->
-<div class="ds-section">
+<div class="ds-section fade-up fd3">
   <div class="ds-section-label">O.R. Conspectus</div>
   <div class="ds-section-title">Capital, Cogency &amp; Capaciousness</div>
   <p class="ds-section-sub">Three operational ideals from the 2012 conspectus mapped to colour registers. Colour grammar as constraint system — the feasible region defined by rules.</p>
@@ -1095,10 +1012,10 @@ body::before{
 </div>
 
 <!-- §01 SWATCHES -->
-<div class="ds-section">
+<div class="ds-section fade-up fd3">
   <div class="ds-section-label">§ 01</div>
   <div class="ds-section-title">The Dark Palette</div>
-  <p class="ds-section-sub">Twenty-two named colours plus three surface levels. Each has a base, a dim (borders), and a bg (field backgrounds). 2026 additions marked ★. Perplexity (#525d52) new in v2.35.</p>
+  <p class="ds-section-sub">Twenty named colours plus three surface levels. Each has a base, a dim (borders), and a bg (field backgrounds). 2026 additions marked ★. Abalone (★ v2.4) is the liminal threshold token — P.11.</p>
   <div class="swatch-grid">
 
     <div class="swatch-card"><div class="swatch-chip" style="background:#38c8b8;"><div class="swatch-name-on-chip">Rivulet</div></div><div class="swatch-body"><div class="swatch-hex" style="color:#38c8b8;">#38c8b8</div><div class="swatch-role">Demonstrated · Positive</div><div class="swatch-pantone">[A] 14-4912 Rinsing Rivulet</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#38c8b8;"></div><div class="swatch-trio-chip" style="background:#187868;"></div><div class="swatch-trio-chip" style="background:#081e1a;"></div></div></div></div>
@@ -1133,8 +1050,9 @@ body::before{
 
     <div class="swatch-card swatch-new"><div class="swatch-chip" style="background:#8a7868;"><div class="swatch-name-on-chip">Mountain Trail</div></div><div class="swatch-body"><div class="swatch-hex" style="color:#8a7868;">#8a7868</div><div class="swatch-role">Earth substrate</div><div class="swatch-pantone">[B] 17-0807 Mountain Trail</div><div class="swatch-new-badge">★ 2026</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#8a7868;"></div><div class="swatch-trio-chip" style="background:#4a3828;"></div><div class="swatch-trio-chip" style="background:#181008;"></div></div></div></div>
 
+    <div class="swatch-card swatch-new" style="border-color:rgba(152,136,168,.38);"><div class="swatch-chip" style="background:linear-gradient(135deg,#9888a8,#c0b8c8);"><div class="swatch-name-on-chip">Abalone</div></div><div class="swatch-body" style="border-top:1px solid rgba(152,136,168,.22);background:rgba(18,14,24,.8);"><div class="swatch-hex" style="color:#c0b8c8;">#9888a8 · lt #c0b8c8</div><div class="swatch-role">Liminal · S-liminal · threshold</div><div class="swatch-pantone">[B] 17-3612 Abalone · v2.4 · P.11</div><div class="swatch-new-badge">★ v2.4 · shell before the pearl</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#c0b8c8;"></div><div class="swatch-trio-chip" style="background:#4a3858;"></div><div class="swatch-trio-chip" style="background:#120e18;"></div></div></div></div>
+
     <div class="swatch-card swatch-new"><div class="swatch-chip" style="background:#28283a;"><div class="swatch-name-on-chip">Stretch Limo</div></div><div class="swatch-body"><div class="swatch-hex" style="color:#9e9887;">#28283a</div><div class="swatch-role">Nacre ink · Deep black</div><div class="swatch-pantone">[C] 19-4005 Stretch Limo</div><div class="swatch-new-badge">★ 2026</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#28283a;"></div><div class="swatch-trio-chip" style="background:#181828;"></div><div class="swatch-trio-chip" style="background:#080810;"></div></div></div></div>
-    <div class="swatch-card swatch-new"><div class="swatch-chip" style="background:#525d52;"><div class="swatch-name-on-chip">Perplexity</div></div><div class="swatch-body"><div class="swatch-hex" style="color:#a0aa9e;">#525d52</div><div class="swatch-role">Perplexity · Uncertain · Unresolved</div><div class="swatch-pantone">Corpus-specific · muted forest-grey</div><div class="swatch-new-badge">★ v2.35 · --S-perplexity</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#525d52;"></div><div class="swatch-trio-chip" style="background:#2a302a;"></div><div class="swatch-trio-chip" style="background:#0e120e;"></div></div></div></div>
 
     <div class="swatch-card swatch-portal"><div class="swatch-chip" style="background:linear-gradient(135deg,#6b2d8b,#9b58c8);"><div class="swatch-name-on-chip">Grape</div></div><div class="swatch-body"><div class="swatch-hex" style="color:#9b58c8;">#9b58c8 / #6b2d8b</div><div class="swatch-role">Portal · Landmark</div><div class="swatch-pantone">[C] 20-0070 TPM Grape Frost</div><div class="swatch-trio"><div class="swatch-trio-chip" style="background:#9b58c8;"></div><div class="swatch-trio-chip" style="background:#6b2d8b;"></div><div class="swatch-trio-chip" style="background:#3a1050;"></div></div></div></div>
 
@@ -1151,7 +1069,7 @@ body::before{
 
 
 <!-- §02 ROLE MAP -->
-<div class="ds-section">
+<div class="ds-section fade-up fd3">
   <div class="ds-section-label">§ 02</div>
   <div class="ds-section-title">Semantic Role Map</div>
   <p class="ds-section-sub">Each colour carries a fixed meaning. Applying the wrong colour to a role is a grammar error, not a style choice.</p>
@@ -1170,17 +1088,16 @@ body::before{
       <tr style="background:rgba(120,160,128,.03);"><td style="border-left:2px solid rgba(120,160,128,.2);"><div class="role-pip"><div class="role-pip-dot" style="background:#78a080;"></div><span style="color:#78a080;">Mint Coffee</span></div><div class="role-pantone">◆ new · pending P.06</div></td><td><div class="role-hex" style="color:#78a080;">#deeed1</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#78a080;border-color:rgba(120,160,128,.25);background:var(--mint-coffee-bg);">Pending</span></div></td><td><div class="role-sample">Pale sage — role unassigned. Candidate for light-ground annotation, exhibit field, or ambient positive. P.06 Pigeonhole Rule governs — role must be defined before v2027.</div></td></tr>
       <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#f0eee8;border:1px solid rgba(200,196,184,.3);"></div><span style="color:#c8c4b8;">Cloud Dancer</span></div><div class="role-pantone">★ [A&amp;B] 11-4201</div></td><td><div class="role-hex" style="color:#c8c4b8;">#f0eee8</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#c8c4b8;border-color:rgba(200,196,184,.25);background:rgba(240,238,232,.03);">Ambient</span></div></td><td><div class="role-sample">Nacre ground, negative space articulation, print-facing surfaces. <span class="or-annotation">O.R.: Simulation · feasible region</span></div></td></tr>
       <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#3c5a9a;box-shadow:0 0 6px rgba(60,90,154,.5);"></div><span style="color:#3c5a9a;">Regatta</span></div><div class="role-pantone">★ [A] 18-4039</div></td><td><div class="role-hex" style="color:#3c5a9a;">#3c5a9a</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#3c5a9a;border-color:rgba(60,90,154,.3);background:var(--regatta-bg);">Domain</span></div></td><td><div class="role-sample">O.R. domain anchor, institutional weight bar, Capital register insets. <span class="or-annotation">O.R.: Decision science · linear programming</span></div></td></tr>
-      <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#a0b0a0;"></div><span style="color:#a0b0a0;">Aqua Gray</span></div><div class="role-pantone">★ [A] 15-5205</div></td><td><div class="role-hex" style="color:#a0b0a0;">#a0b0a0</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#a0b0a0;border-color:rgba(160,176,160,.25);background:var(--aqua-gray-bg);">Earth</span></div></td><td><div class="role-sample">Ambient analytical surfaces, neutral ground between warm and cool registers. <strong>--S-earth</strong> alias. <span class="or-annotation">O.R.: Queueing · steady-state</span></div></td></tr>
-      <tr class="role-new"><td style="border-left:2px solid rgba(82,93,82,.35);"><div class="role-pip"><div class="role-pip-dot" style="background:#525d52;"></div><span style="color:#a0aa9e;">Perplexity</span></div><div class="role-pantone">★ v2.35 · corpus-specific</div></td><td><div class="role-hex" style="color:#a0aa9e;">#525d52</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#a0aa9e;border-color:rgba(82,93,82,.3);background:var(--perplexity-bg);">Perplexity</span></div></td><td><div class="role-sample">Uncertainty without blockage. The condition of not yet knowing — distinct from Scarlet (blocking) and Sandstone (needs derivation). Muted forest-grey: present, unresolved, not alarmed. <strong>--S-perplexity</strong> alias. <span class="or-annotation">O.R.: Indeterminate state · search in progress</span></div></td></tr>
+      <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#a0b0a0;"></div><span style="color:#a0b0a0;">Aqua Gray</span></div><div class="role-pantone">★ [A] 15-5205</div></td><td><div class="role-hex" style="color:#a0b0a0;">#a0b0a0</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#a0b0a0;border-color:rgba(160,176,160,.25);background:var(--aqua-gray-bg);">Neutral bridge</span></div></td><td><div class="role-sample">Ambient analytical surfaces, neutral ground between warm and cool registers. <span class="or-annotation">O.R.: Queueing · steady-state</span></div></td></tr>
       <tr class="role-new"><td><div class="role-pip"><div class="role-pip-dot" style="background:#28283a;"></div><span style="color:#6a6878;">Stretch Limo</span></div><div class="role-pantone">★ [C] 19-4005</div></td><td><div class="role-hex" style="color:#6a6878;">#28283a</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#6a6878;border-color:rgba(40,40,58,.3);background:rgba(40,40,58,.1);">Nacre ink</span></div></td><td><div class="role-sample">Constant ink across all Nacre proposals. Blue-black with enough depth to read as print ink, not screen black. <span class="or-annotation">O.R.: Material effects · print medium</span></div></td></tr>
-      <tr class="role-new"><td style="border-left:2px solid rgba(192,172,193,.35);"><div class="role-pip"><div class="role-pip-dot" style="background:#fefcfe;border:1px solid rgba(192,172,193,.45);"></div><span style="color:var(--deckle-dim);">Laitance</span></div><div class="role-pantone">Nacre · --S-resolved</div></td><td><div class="role-hex" style="color:var(--deckle-dim);">#fefcfe</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:var(--deckle-dim);border-color:rgba(192,172,193,.3);background:rgba(254,252,254,.5);">Resolved</span></div></td><td><div class="role-sample">Highlight of discharge. The struck point, the QED, the over-specification that confirms the substrate has set. Porcelain ground — R=B, G suppressed by 2 — merest violet whisper over white. Milky surface that rises when hardening is complete. <span class="or-annotation">O.R.: Proof of feasibility · closure condition</span></div></td></tr>
+      <tr class="role-new" style="background:rgba(152,136,168,.04);"><td style="border-left:2px solid rgba(152,136,168,.35);"><div class="role-pip"><div class="role-pip-dot" style="background:#9888a8;box-shadow:0 0 6px rgba(152,136,168,.4);"></div><span style="color:#c0b8c8;">Abalone</span></div><div class="role-pantone">★ v2.4 · P.11 · [B] 17-3612</div></td><td><div class="role-hex" style="color:#c0b8c8;">#9888a8 / #c0b8c8</div></td><td><div class="role-contexts"><span class="role-ctx" style="color:#c0b8c8;border-color:rgba(152,136,168,.3);background:rgba(18,14,24,.5);">S-liminal</span></div></td><td><div class="role-sample">The threshold register. The shell before the pearl. Content that exists at the boundary between dark and nacre, between domestic governance failure and European rule-of-law event. Presidency Paradox annotation, liminal-state markers, boundary labels. <strong>--S-liminal alias.</strong><br><span class="or-annotation">O.R.: Threshold · transition state · boundary condition</span></div></td></tr>
     </tbody>
   </table>
 </div>
 
 
 <!-- §03 BUTTONS -->
-<div class="ds-section">
+<div class="ds-section fade-up fd3">
   <div class="ds-section-label">§ 03</div>
   <div class="ds-section-title">Buttons</div>
   <p class="ds-section-sub">All variants — outline (standard), solid (primary action). 2026 additions include Regatta, Aqua Gray, Cloud Dancer, Mountain Trail.</p>
@@ -1208,9 +1125,8 @@ body::before{
     <button class="btn btn-regatta"><span>◈</span> Regatta · Domain</button>
     <button class="btn btn-aqua-gray"><span>◇</span> Aqua Gray · Bridge</button>
     <button class="btn btn-cloud-dancer"><span>○</span> Cloud Dancer · Ambient</button>
-    <button class="btn btn-laitance"><span>◉</span> Laitance · Resolved</button>
-    <button class="btn btn-perplexity"><span>?</span> Perplexity · Uncertain</button>
     <button class="btn btn-mountain"><span>·</span> Mountain Trail · Earth</button>
+    <button class="btn btn-abalone"><span>◌</span> Abalone · Liminal</button>
     <button class="btn btn-sandstone"><span>△</span> Sandstone · Needs</button>
     <button class="btn btn-mint-coffee"><span>◇</span> Mint Coffee · Pending</button>
   </div>
@@ -1226,7 +1142,7 @@ body::before{
 
 
 <!-- §04 BADGES -->
-<div class="ds-section">
+<div class="ds-section fade-up fd3">
   <div class="ds-section-label">§ 04</div>
   <div class="ds-section-title">Badges &amp; Tags</div>
   <p class="ds-section-sub">Square-cornered for task/status labels. Pill variant for lighter semantic tags.</p>
@@ -1248,7 +1164,6 @@ body::before{
     <span class="badge badge-cloud-dancer"><span class="badge-dot"></span>★ Ambient</span>
     <span class="badge badge-aqua-gray"><span class="badge-dot"></span>★ Bridge</span>
     <span class="badge badge-mountain"><span class="badge-dot"></span>★ Earth</span>
-    <span class="badge badge-perplexity"><span class="badge-dot"></span>★ Perplexity</span>
     <span class="badge badge-sandstone"><span class="badge-dot"></span>◆ Needs</span>
     <span class="badge badge-mint-coffee"><span class="badge-dot"></span>◆ Pending</span>
   </div>
@@ -1269,7 +1184,7 @@ body::before{
 
 
 <!-- §05 PIPS -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 05</div>
   <div class="ds-section-title">Status Pips</div>
   <p class="ds-section-sub">Glowing dot + label. 2026 adds Domain pip and Ambient pip.</p>
@@ -1282,13 +1197,12 @@ body::before{
     <div class="pip-row"><div class="pip" style="background:#6080c8;box-shadow:0 0 7px rgba(96,128,200,.55);"></div><span class="pip-label" style="color:#6080c8;">★ Domain brief</span><span class="pip-desc">O.R. thematic content — Capital / Cogency / Capaciousness register</span></div>
     <div class="pip-row"><div class="pip" style="background:#a0b0a0;"></div><span class="pip-label" style="color:#a0b0a0;">★ Ambient</span><span class="pip-desc">Neutral bridge — steady-state or background-layer annotation</span></div>
     <div class="pip-row"><div class="pip" style="background:#78a080;"></div><span class="pip-label" style="color:#78a080;">◆ Pending</span><span class="pip-desc">Mint Coffee — role unassigned · P.06 Pigeonhole Rule governs</span></div>
-    <div class="pip-row"><div class="pip" style="background:#fefcfe;border:1px solid rgba(192,172,193,.35);"></div><span class="pip-label" style="color:var(--deckle-dim);">◉ Resolved</span><span class="pip-desc">Laitance — proposition discharged · QED rendered · the strike that closes the point</span></div>
   </div>
 </div>
 
 
 <!-- §06 CARDS -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 06</div>
   <div class="ds-section-title">Cards</div>
   <p class="ds-section-sub">Three epistemic states, the portal variant, and the 2026 Domain card.</p>
@@ -1304,7 +1218,7 @@ body::before{
 
 
 <!-- §07 ALERT BARS -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 07</div>
   <div class="ds-section-title">Alert &amp; Warn Bars</div>
   <p class="ds-section-sub">2026 adds the Domain alert bar for O.R. thematic content.</p>
@@ -1330,7 +1244,7 @@ body::before{
 
 
 <!-- §08 GLOSSARY -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 08</div>
   <div class="ds-section-title">Glossary Table</div>
   <p class="ds-section-sub">Term column in dragonfly. 2026 additions include O.R. domain terms and Nacre vocabulary.</p>
@@ -1339,15 +1253,15 @@ body::before{
     <tr><td>Silence Veto</td><td>When an institution's silence operates as a decision against you — a "no" delivered without process, without reasons, and without your right to be heard being discharged.<span class="gloss-corr">Re Haughey · McDonald · Art. 41 CFR · O'Keeffe · Order 84 RSC</span></td></tr>
     <tr><td>Diplomatic Missing Mass</td><td>From the conspectus: the gap between demonstrable O.R. capability and institutional recognition of that capability. In colour terms: tokens that exist but carry no semantic role assignment. Cloud Dancer and Aqua Gray occupied this gap in v2.0.<span class="gloss-corr">Conspectus §2 · Diplomatic Missing Mass</span></td></tr>
     <tr><td>Evasocracy<br><span style="font-size:9px;opacity:.4;font-style:italic;">Séachanachas</span></td><td>Governing through systematic non-decision. Not indecision — the active management of silence as a policy instrument.<span class="gloss-corr">Art. 4(3) TEU · O'Keeffe · Heaney</span></td></tr>
-    <tr><td>Capital · Cogency · Capaciousness</td><td>Three operational ideals from the 2012 O.R. conspectus. In the colour grammar: Capital maps to institutional blues (Regatta, Dragonfly, Cosmic); Cogency to the structure-evidence register (Citron, Rivulet, Scarlet); Capaciousness to ambient and neutral surfaces (Cloud Dancer, Aqua Gray, Satin).<span class="gloss-corr">Conspectus §1–§3</span></td></tr>
-    <tr><td>Velatura · Strata · Conspectus</td><td>Three of the four Nacre proposals (P.07, P.09, P.10). Velatura: transparent glaze depth over Cloud Dancer. Strata: sedimentary column, five layers including Laitance as resolved near-surface. Conspectus: the survey register, three most-present grounds plus Laitance as latent field (S-resolved).<span class="gloss-corr">Nacre · P.07–P.10 · Colour Grammar v2.35</span></td></tr>
+    <tr><td>Capital · Cogency · Capaciousness</td><td>Three operational ideals from the 2012 O.R. conspectus. In the colour grammar: Capital maps to institutional blues (Regatta, Dragonfly, Cosmic); Cogency to the structure-evidence register (Citron, Rivulet, Scarlet); Capaciousness to ambient and neutral surfaces (Cloud Dancer, Aqua Gray, Satin).<span class="gloss-corr">Conspectus §1–§3 · Cacclin 2012</span></td></tr>
+    <tr><td>Velatura · Strata · Conspectus</td><td>Three of the four Nacre proposals (P.07, P.09, P.10). Velatura: transparent glaze depth over Cloud Dancer. Strata: sedimentary column, one layer per depth band. Conspectus: the survey register, three most-present grounds plus Cloud Dancer as reversal.<span class="gloss-corr">Nacre · P.07–P.10 · Colour Grammar v2.3</span></td></tr>
     <tr><td>Billings Phenomenon</td><td>Supply of truth always exceeds demand. In colour grammar: more registers are available than any single document needs. Scarcity is a feature — the grammar enforces it by restricting cross-register use.<span class="gloss-corr">Conspectus §1 · Josh Billings epigraph</span></td></tr>
   </table>
 </div>
 
 
 <!-- §09 NET COUNTER -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 09</div>
   <div class="ds-section-title">Net Counter &amp; Ticker</div>
   <div class="net-row">
@@ -1359,8 +1273,8 @@ body::before{
     <div class="btn-row-label">Ticker · scarlet hi / citron go / regatta domain / deckle-dim nacre</div>
     <div class="ticker-wrap">
       <div class="ticker-inner">
-        <span class="hi">MEINHARDT INITIATIVE</span><span>WHAT WE KNOW</span><span class="go">APRIL 2026</span><span>19 YEARS · ZERO DETERMINATIONS</span><span class="hi">EPISTEMOLOGICAL AUDIT</span><span class="domain">CAPITAL · COGENCY · CAPACIOUSNESS</span><span>THE RECORD IS AN INSTRUMENT</span><span class="go">NOT A CHRONICLE</span><span class="nacre">NACRE · P.07–P.10 · PAPER DOCTRINE</span><span class="domain">REGATTA 18-4039 · CLOUD DANCER 11-4201</span><span class="hi">FOUR TASKS REMAIN</span><span>EU PRESIDENCY · 1 JULY 2026</span><span class="go">CC0 · PUBLIC DOMAIN</span><span class="nacre">VELATURA · STRATA · CONSPECTUS</span>
-        <span class="hi">MEINHARDT INITIATIVE</span><span>WHAT WE KNOW</span><span class="go">APRIL 2026</span><span>19 YEARS · ZERO DETERMINATIONS</span><span class="hi">EPISTEMOLOGICAL AUDIT</span><span class="domain">CAPITAL · COGENCY · CAPACIOUSNESS</span><span>THE RECORD IS AN INSTRUMENT</span><span class="go">NOT A CHRONICLE</span><span class="nacre">NACRE · P.07–P.10 · PAPER DOCTRINE</span><span class="domain">REGATTA 18-4039 · CLOUD DANCER 11-4201</span><span class="hi">FOUR TASKS REMAIN</span><span>EU PRESIDENCY · 1 JULY 2026</span><span class="go">CC0 · PUBLIC DOMAIN</span><span class="nacre">VELATURA · STRATA · CONSPECTUS</span>
+        <span class="hi">MEINHARDT INITIATIVE</span><span>WHAT WE KNOW</span><span class="go">APRIL 2026</span><span>19 YEARS · ZERO DETERMINATIONS</span><span class="hi">EPISTEMOLOGICAL AUDIT</span><span class="domain">CAPITAL · COGENCY · CAPACIOUSNESS</span><span>THE RECORD IS AN INSTRUMENT</span><span class="go">NOT A CHRONICLE</span><span class="nacre">NACRE · P.07–P.11 · PAPER DOCTRINE</span><span class="domain">REGATTA 18-4039 · CLOUD DANCER 11-4201</span><span class="nacre">ABALONE · S-LIMINAL · SHELL BEFORE THE PEARL</span><span class="hi">EU PRESIDENCY · 1 JULY 2026</span><span class="go">CC0 · PUBLIC DOMAIN</span><span class="nacre">VELATURA · STRATA · CONSPECTUS · ABALONE</span>
+        <span class="hi">MEINHARDT INITIATIVE</span><span>WHAT WE KNOW</span><span class="go">APRIL 2026</span><span>19 YEARS · ZERO DETERMINATIONS</span><span class="hi">EPISTEMOLOGICAL AUDIT</span><span class="domain">CAPITAL · COGENCY · CAPACIOUSNESS</span><span>THE RECORD IS AN INSTRUMENT</span><span class="go">NOT A CHRONICLE</span><span class="nacre">NACRE · P.07–P.11 · PAPER DOCTRINE</span><span class="domain">REGATTA 18-4039 · CLOUD DANCER 11-4201</span><span class="nacre">ABALONE · S-LIMINAL · SHELL BEFORE THE PEARL</span><span class="hi">EU PRESIDENCY · 1 JULY 2026</span><span class="go">CC0 · PUBLIC DOMAIN</span><span class="nacre">VELATURA · STRATA · CONSPECTUS · ABALONE</span>
       </div>
     </div>
   </div>
@@ -1368,7 +1282,7 @@ body::before{
 
 
 <!-- §10 TASK LIST -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 10</div>
   <div class="ds-section-title">Task Items</div>
   <p class="ds-section-sub">Scarlet for blocking OIs, dragonfly for non-blocking. IBM Plex Mono task names, EB Garamond body copy.</p>
@@ -1381,10 +1295,10 @@ body::before{
 
 
 <!-- §11 TOKEN REFERENCE -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">§ 11</div>
   <div class="ds-section-title">CSS Variable Index</div>
-  <p class="ds-section-sub">Every variable in the v2.35 system — dark grammar and Nacre layer. Pantone source noted. Trio strip: base · dim · bg.</p>
+  <p class="ds-section-sub">Every variable in the v2.4 system — dark grammar and Nacre layer. Pantone source noted. Trio strip: base · dim · bg. Abalone added v2.4.</p>
   <div class="token-strip">
     <div class="token-item"><div class="token-name">Rivulet</div><div class="token-value" style="color:#38c8b8;">--rivulet / -dim / -bg</div><div class="token-pantone">[A] 14-4912 Rinsing Rivulet</div><div class="token-trio"><div class="token-trio-chip" style="background:#38c8b8;"></div><div class="token-trio-chip" style="background:#187868;"></div><div class="token-trio-chip" style="background:#081e1a;"></div></div></div>
     <div class="token-item"><div class="token-name">Citron</div><div class="token-value" style="color:#d4c06a;">--citron / -dim / -bg</div><div class="token-pantone">[A] 14-0827 Dusky Citron</div><div class="token-trio"><div class="token-trio-chip" style="background:#d4c06a;"></div><div class="token-trio-chip" style="background:#7a6e28;"></div><div class="token-trio-chip" style="background:#1c1a08;"></div></div></div>
@@ -1408,8 +1322,8 @@ body::before{
     <div class="token-item token-item-new"><div class="token-name">★ Aqua Gray</div><div class="token-value" style="color:#a0b0a0;">--aqua-gray / -dim / -bg</div><div class="token-pantone">[A] 15-5205 Aqua Gray</div><div class="token-trio"><div class="token-trio-chip" style="background:#a0b0a0;"></div><div class="token-trio-chip" style="background:#4a5848;"></div><div class="token-trio-chip" style="background:#101810;"></div></div></div>
     <div class="token-item token-item-new"><div class="token-name">★ Mountain Trail</div><div class="token-value" style="color:#8a7868;">--mountain / -dim / -bg</div><div class="token-pantone">[B] 17-0807 Mountain Trail</div><div class="token-trio"><div class="token-trio-chip" style="background:#8a7868;"></div><div class="token-trio-chip" style="background:#4a3828;"></div><div class="token-trio-chip" style="background:#181008;"></div></div></div>
     <div class="token-item token-item-new"><div class="token-name">★ Stretch Limo</div><div class="token-value" style="color:#6a6878;">--stretch-limo / -dim / -bg</div><div class="token-pantone">[C] 19-4005 Stretch Limo</div><div class="token-trio"><div class="token-trio-chip" style="background:#28283a;"></div><div class="token-trio-chip" style="background:#181828;"></div><div class="token-trio-chip" style="background:#080810;"></div></div></div>
-    <div class="token-item token-item-new" style="border-color:rgba(82,93,82,.3);background:rgba(14,18,14,.5);"><div class="token-name" style="color:#a0aa9e;">★ Perplexity · v2.35</div><div class="token-value" style="color:#a0aa9e;">--perplexity / -dim / -bg</div><div class="token-pantone">Corpus-specific · --S-perplexity · muted forest-grey</div><div class="token-trio"><div class="token-trio-chip" style="background:#525d52;"></div><div class="token-trio-chip" style="background:#2a302a;"></div><div class="token-trio-chip" style="background:#0e120e;"></div></div></div>
-    <div class="token-item" style="background:rgba(40,40,58,.08);border-color:rgba(40,40,58,.15);grid-column:span 2;"><div class="token-name" style="color:#8a8898;">Nacre layer</div><div class="token-value" style="color:#8a8898;font-size:10px;">--usquebaugh · --aqua-vitae · --willow · --glaze · --quire · --laitance · --deckle · --deckle-dim</div><div class="token-pantone">White balance: Cloud Dancer · Inks: --N-ink (Stretch Limo) · --N-ink-grape · --N-ink-cosmic · annotation: laitance #fefcfe</div><div class="token-trio"><div class="token-trio-chip" style="background:#ffe5d0;"></div><div class="token-trio-chip" style="background:#edfff8;"></div><div class="token-trio-chip" style="background:#d5e9db;"></div><div class="token-trio-chip" style="background:#edffff;"></div><div class="token-trio-chip" style="background:#fff6ff;"></div><div class="token-trio-chip" style="background:#fefcfe;"></div><div class="token-trio-chip" style="background:#dbccd7;"></div><div class="token-trio-chip" style="background:#c0acc1;"></div><div class="token-trio-chip" style="background:#28283a;"></div><div class="token-trio-chip" style="background:#12081a;"></div><div class="token-trio-chip" style="background:#10101e;"></div></div></div>
+    <div class="token-item token-item-new" style="border-color:rgba(152,136,168,.3);background:rgba(18,14,24,.4);"><div class="token-name" style="color:#c0b8c8;">★ Abalone · v2.4</div><div class="token-value" style="color:#c0b8c8;">--abalone / -lt / -dim / -bg</div><div class="token-pantone">[B] 17-3612 · S-liminal · threshold register · P.11</div><div class="token-trio"><div class="token-trio-chip" style="background:#c0b8c8;"></div><div class="token-trio-chip" style="background:#4a3858;"></div><div class="token-trio-chip" style="background:#120e18;"></div></div></div>
+    <div class="token-item" style="background:rgba(40,40,58,.08);border-color:rgba(40,40,58,.15);grid-column:span 2;"><div class="token-name" style="color:#8a8898;">Nacre layer</div><div class="token-value" style="color:#8a8898;font-size:10px;">--usquebaugh · --aqua-vitae · --willow · --glaze · --quire · --deckle · --deckle-dim</div><div class="token-pantone">White balance: Cloud Dancer · Ink: Stretch Limo · avg dist 30.0</div><div class="token-trio"><div class="token-trio-chip" style="background:#ffe5d0;"></div><div class="token-trio-chip" style="background:#edfff8;"></div><div class="token-trio-chip" style="background:#d5e9db;"></div><div class="token-trio-chip" style="background:#edffff;"></div><div class="token-trio-chip" style="background:#fff6ff;"></div><div class="token-trio-chip" style="background:#dbccd7;"></div><div class="token-trio-chip" style="background:#c0acc1;"></div></div></div>
     <div class="token-item"><div class="token-name">Parchment</div><div class="token-value" style="color:#e8e3d4;">--parchment / -dim / -faint</div><div class="token-pantone">No TCX — corpus-specific</div><div class="token-trio"><div class="token-trio-chip" style="background:#e8e3d4;"></div><div class="token-trio-chip" style="background:#9e9887;"></div><div class="token-trio-chip" style="background:#38303e;"></div></div></div>
     <div class="token-item"><div class="token-name">Surface</div><div class="token-value" style="color:#9e9887;">--surface / 2 / 3</div><div class="token-pantone">[C] 19-4005 Stretch Limo ≈ --surface</div><div class="token-trio"><div class="token-trio-chip" style="background:#141018;"></div><div class="token-trio-chip" style="background:#1c1820;"></div><div class="token-trio-chip" style="background:#221e2a;"></div></div></div>
     <div class="token-item"><div class="token-name">Rule</div><div class="token-value" style="color:#9e9887;">--rule / --rule-strong</div><div class="token-pantone">Compositional — no TCX equivalent</div><div class="token-trio"><div class="token-trio-chip" style="background:rgba(200,180,230,0.09);border:1px solid rgba(200,180,230,0.18);"></div><div class="token-trio-chip" style="background:rgba(200,180,230,0.16);border:1px solid rgba(200,180,230,0.18);"></div></div></div>
@@ -1418,7 +1332,7 @@ body::before{
 
 
 <!-- ═══ 2027 PROPOSALS ══════════════════════════════ -->
-<div class="ds-section">
+<div class="ds-section fade-up fd4">
   <div class="ds-section-label">2027 Design Document</div>
   <div class="ds-section-title">Proposed <em>Directions</em></div>
   <p class="ds-section-sub">Six proposals drawn from the O.R. conspectus, the Pantone collation, and the systemic logic of the existing grammar. Each is a structural direction, not a cosmetic change.</p>
@@ -1510,8 +1424,9 @@ body::before{
       <div style="padding:20px 20px 18px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--cosmic);opacity:.6;margin-bottom:10px;">P.06</div>
         <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:19px;color:var(--parchment);margin-bottom:4px;line-height:1.2;">The <em style="font-style:italic;">Pigeonhole Rule</em></div>
-        <div style="font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);line-height:1.7;margin-bottom:14px;">The system now has 22 named tokens and 17 semantic roles — nine tokens have no exclusive container. Before v2027 closes: <strong style="color:var(--parchment);">Mint Coffee must be assigned or retired.</strong> Woodrose → Dim Narrative (P.03). Mountain-lt → active. No new tokens admitted without a vacancy.</div>
+        <div style="font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);line-height:1.7;margin-bottom:14px;">v2.4 adds Abalone — one new token, one new semantic role (S-liminal). The system now has 22 named tokens and 13 semantic roles. Before v2027 closes: <strong style="color:var(--parchment);">Mint Coffee must be assigned or retired.</strong> Woodrose → Dim Narrative (P.03). Mountain-lt → active. No new tokens admitted without a vacancy.</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid var(--rule);padding-top:10px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(152,136,168,.3);color:var(--abalone-lt);background:var(--abalone-bg);">Abalone · admitted v2.4</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(120,160,128,.25);color:var(--mint-coffee-dim);background:var(--mint-coffee-bg);">Mint Coffee → assign</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(176,112,128,.2);color:var(--woodrose);background:var(--woodrose-bg);">Woodrose → P.03</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(176,160,144,.2);color:var(--mountain-lt);background:var(--mountain-bg);">Mountain-lt → active</span>
@@ -1520,321 +1435,34 @@ body::before{
       </div>
     </div>
 
+    <!-- P.11 · condensed card · full section lives in Nacre zone above -->
+    <div style="background:rgba(18,14,24,.7);border:1px solid rgba(152,136,168,.28);border-radius:3px;overflow:hidden;">
+      <div style="height:2px;background:linear-gradient(90deg,var(--abalone-bg),var(--abalone),var(--abalone-lt),var(--abalone));background-size:300% 100%;"></div>
+      <div style="padding:20px 20px 18px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--abalone-lt);opacity:.7;margin-bottom:10px;">P.11 · v2.4 · enacted</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:19px;color:#c0b8c8;margin-bottom:4px;line-height:1.2;">Abalone — <em style="font-style:italic;">shell before the pearl</em></div>
+        <div style="font-family:'EB Garamond',serif;font-size:14px;color:rgba(192,184,200,.65);line-height:1.7;margin-bottom:14px;">The <strong style="color:#c0b8c8;">liminal register.</strong> Abalone (#9888a8) sits at the exact threshold between dark grammar and nacre — neither ink nor paper, but the producing layer between them. Carries <strong style="color:#c0b8c8;">S-liminal</strong>: content that exists at a structural boundary. Enacted in P.11 full section in the Nacre zone above, with four pcards (outer surface · nacre layer · deep muscle · substrate), three ink-on-dark demonstration cards, and the threshold axiom. The Presidency Paradox register: what Ireland's domestic governance failure becomes at the moment it takes the EU Council chair.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid rgba(152,136,168,.15);padding-top:10px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(192,184,200,.25);color:#c0b8c8;background:rgba(18,14,24,.5);">--abalone-lt · #c0b8c8</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(152,136,168,.3);color:var(--abalone-lt);background:var(--abalone-bg);">S-liminal · threshold</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid rgba(74,56,88,.4);color:rgba(152,136,168,.65);background:rgba(18,14,24,.3);">[B] 17-3612</span>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;color:rgba(152,136,168,.35);margin-top:8px;line-height:1.7;">O.R.: Threshold condition · boundary state · transition zone · feasibility at the margin<br>↑ Full section in Nacre zone · pcards · ink demo · axiom</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-
-<!-- P.11 · ABALONE & MIXED INKS -->
-<div class="p11-section">
-
-  <div class="p11-eyebrow">P.11 · Abalone &amp; Mixed Inks · v2.35 · Nacre sub-palette with mixed inks</div>
-  <h2 class="p11-h1"><span class="p11-h1-irid">Abalone</span><br>&amp; Mixed Inks</h2>
-  <p class="p11-lede">The same nine nacre lights that are <strong>grounds on Cloud Dancer</strong> become <em>luminous accents</em> against the three dark inks. On paper they receive ink. On darkness they emit light. Same tokens, opposite semantic roles — the Abalone inversion.</p>
-
-  <div class="p11-inversion">
-    <div class="p11-inv-label">Grammar rule · the Abalone inversion</div>
-    <div class="p11-inv-rule">"The same colour that is paper on Cloud Dancer becomes light on the dark ink. The hue does not change. The ground does."</div>
-    <div class="p11-inv-body">In P.07–P.10, nacre lights are grounds — opaque, receiving the Stretch Limo or Grape-Black ink. In P.11, the dark inks are the ground and the nacre lights read as iridescent text, glow, border, highlight. Using a nacre light as a background fill on a dark ink collapses the system into the Paper Layer and destroys the iridescence entirely.</div>
-    <div class="p11-inv-permits">✓ Nacre as: text · outline · border · glow · pip · highlight · spectrum bar&emsp;&emsp;✗ Nacre as: background-color on dark ink</div>
-  </div>
-
-  <div class="ds-section-label" style="margin-top:20px;">§ P.11.1 · the three Mixed Inks</div>
-  <div class="p11-chambers">
-
-    <div class="p11-chamber p11-ch-grape">
-      <div class="p11-ch-top">
-        <span class="p11-ch-tag">Grape Black · --ab-grape · --N-ink-grape</span>
-        <div class="p11-ch-name" style="animation:shimmer-text 4s ease-in-out infinite;">Violet Pearl</div>
-        <div class="p11-ch-hex">#12081a · grape-bg</div>
-        <div class="p11-ch-body">The deepest register. Violet ancestry saturates every nacre light — pearl reads as moonstone, orchid as deep lustre, ice cyan as electric complement against the purple-black.</div>
-        <div class="p11-nacre-stack">
-          <div class="p11-nacre-item"><div class="p11-ni-swatch" style="background:#fefcfe;box-shadow:0 0 10px rgba(254,252,254,.2);"></div><div><div class="p11-ni-name">Laitance · Pearl&emsp;✦ Primary</div><div class="p11-ni-role">moonstone on violet-black</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.75;"><div class="p11-ni-swatch" style="background:#c0acc1;"></div><div><div class="p11-ni-name">Deckle-dim · Orchid&emsp;◈ Secondary</div><div class="p11-ni-role">grape-pull at full depth</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.55;"><div class="p11-ni-swatch" style="background:#edffff;box-shadow:0 0 8px rgba(237,255,255,.15);"></div><div><div class="p11-ni-name">Glaze · Ice Cyan&emsp;· Tertiary</div><div class="p11-ni-role">electric complement</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.35;"><div class="p11-ni-swatch" style="background:#fff6ff;"></div><div><div class="p11-ni-name">Quire · Ghost&emsp;— Ambient</div><div class="p11-ni-role">S-syzygy · alignment whisper</div></div></div>
-        </div>
-      </div>
-      <div class="p11-ch-bottom"><div class="p11-spectrum spec-grape-anim"></div><div class="p11-ch-foot-label">Grape Black · pearl → orchid → ice</div></div>
-    </div>
-
-    <div class="p11-chamber p11-ch-cosmic">
-      <div class="p11-ch-top">
-        <span class="p11-ch-tag">Cosmic Black · --ab-cosmic · --N-ink-cosmic</span>
-        <div class="p11-ch-name" style="animation:shimmer-text 5s ease-in-out infinite;">Ice Blue</div>
-        <div class="p11-ch-hex">#10101e · cosmic-bg</div>
-        <div class="p11-ch-body">The analytical register. Deep blue-black amplifies the cool cyan and mint — like abalone shell lit from below, the blue ground intensifies the cold iridescence.</div>
-        <div class="p11-nacre-stack">
-          <div class="p11-nacre-item"><div class="p11-ni-swatch" style="background:#edffff;box-shadow:0 0 10px rgba(237,255,255,.18);"></div><div><div class="p11-ni-name">Glaze · Ice Cyan&emsp;✦ Primary</div><div class="p11-ni-role">luminous on deep blue-black</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.75;"><div class="p11-ni-swatch" style="background:#edfff8;"></div><div><div class="p11-ni-name">Aqua Vitae · Mint&emsp;◈ Secondary</div><div class="p11-ni-role">S-synthesis · warms the cold blue</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.55;"><div class="p11-ni-swatch" style="background:#fefcfe;"></div><div><div class="p11-ni-name">Laitance · Pearl&emsp;· Tertiary</div><div class="p11-ni-role">porcelain neutral on blue</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.35;"><div class="p11-ni-swatch" style="background:#d5e9db;"></div><div><div class="p11-ni-name">Willow · Sage&emsp;— Ambient</div><div class="p11-ni-role">S-bridge · quietest green</div></div></div>
-        </div>
-      </div>
-      <div class="p11-ch-bottom"><div class="p11-spectrum spec-cosmic-anim"></div><div class="p11-ch-foot-label">Cosmic Black · ice → mint → pearl</div></div>
-    </div>
-
-    <div class="p11-chamber p11-ch-limo">
-      <div class="p11-ch-top">
-        <span class="p11-ch-tag">Blue Black · --ab-limo · --stretch-limo</span>
-        <div class="p11-ch-name" style="animation:shimmer-text 6s ease-in-out infinite;">Warm Shell</div>
-        <div class="p11-ch-hex">#28283a · stretch-limo</div>
-        <div class="p11-ch-body">The most accessible register. Warm blue-black draws out amber and sage — abalone in candlelight. Warm, organic. The ink of the printed letter.</div>
-        <div class="p11-nacre-stack">
-          <div class="p11-nacre-item"><div class="p11-ni-swatch" style="background:#ffe5d0;box-shadow:0 0 10px rgba(255,229,208,.15);"></div><div><div class="p11-ni-name">Usquebaugh · Amber&emsp;✦ Primary</div><div class="p11-ni-role">warm amber on warm blue-black</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.75;"><div class="p11-ni-swatch" style="background:#d5e9db;"></div><div><div class="p11-ni-name">Willow · Sage&emsp;◈ Secondary</div><div class="p11-ni-role">S-bridge · sage complement</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.55;"><div class="p11-ni-swatch" style="background:#dbccd7;"></div><div><div class="p11-ni-name">Deckle · Dusty Mauve&emsp;· Tertiary</div><div class="p11-ni-role">S-dyadic · hue bridge</div></div></div>
-          <div class="p11-nacre-item" style="opacity:.35;"><div class="p11-ni-swatch" style="background:#f0eee8;"></div><div><div class="p11-ni-name">Cloud Dancer&emsp;— Ambient</div><div class="p11-ni-role">reads near text weight</div></div></div>
-        </div>
-      </div>
-      <div class="p11-ch-bottom"><div class="p11-spectrum spec-limo-anim"></div><div class="p11-ch-foot-label">Blue Black · amber → sage → mauve</div></div>
-    </div>
-
-  </div>
-
-  <div class="ds-section-label">§ P.11.2 · four new semantic roles</div>
-  <div class="p11-roles-grid">
-
-    <div class="p11-role-card" style="border-color:rgba(255,246,255,.18);">
-      <div class="p11-role-accent" style="background:linear-gradient(90deg,#fff6ff,#fefcfe,#fff6ff);animation:nacre-grape 12s ease-in-out infinite;background-size:300% 100%;"></div>
-      <div class="p11-role-body">
-        <div class="p11-role-n" style="color:rgba(255,246,255,.4);">--S-syzygy · var(--quire) · #fff6ff</div>
-        <div class="p11-role-name">Syzygy<em> — the alignment moment</em></div>
-        <div class="p11-role-def">The precise alignment of three independent lines of argument into a single actionable configuration. In colour grammar: the one nacre that appears without preference across all three dark inks — barely visible, universally present. <strong>The convergence marker.</strong></div>
-        <div class="p11-role-foot" style="color:rgba(255,246,255,.35);">Token: --quire / #fff6ff · Use: alignment span · convergence marker · ambient on any dark ink · never as pip fill</div>
-      </div>
-    </div>
-
-    <div class="p11-role-card" style="border-color:rgba(237,255,248,.2);">
-      <div class="p11-role-accent" style="background:linear-gradient(90deg,#edfff8,#edffff,#edfff8);animation:nacre-cosmic 14s ease-in-out infinite;background-size:300% 100%;"></div>
-      <div class="p11-role-body">
-        <div class="p11-role-n" style="color:rgba(237,255,248,.4);">--S-synthesis · var(--aqua-vitae) · #edfff8</div>
-        <div class="p11-role-name">Synthesis<em> — the composite whole</em></div>
-        <div class="p11-role-def">The resolution that contains and transcends the parts. The determination that does not yet exist — that the Bill would mandate, that the process would produce. <strong>Cool mint at the centre of the nacre spectrum, bridging warm and cold.</strong></div>
-        <div class="p11-role-foot" style="color:rgba(237,255,248,.35);">Token: --aqua-vitae / #edfff8 · Use: confirmed synthesis · issued determination · completed derivation · pip ✦ on Cosmic Black</div>
-      </div>
-    </div>
-
-    <div class="p11-role-card" style="border-color:rgba(219,204,215,.2);">
-      <div class="p11-role-accent" style="background:linear-gradient(90deg,#dbccd7,#c0acc1,#dbccd7);animation:nacre-limo 16s ease-in-out infinite;background-size:300% 100%;"></div>
-      <div class="p11-role-body">
-        <div class="p11-role-n" style="color:rgba(219,204,215,.4);">--S-dyadic · var(--deckle) · #dbccd7</div>
-        <div class="p11-role-name">Dyadic<em> — the essential pair</em></div>
-        <div class="p11-role-def">The two-element structure from which the system derives: citizen and state, claim and demonstration, nacre and ink, paper and darkness. <strong>Deckle sits exactly between the two poles of the nacre spectrum.</strong> The colour of the binary itself — the relationship between two terms, not either term alone.</div>
-        <div class="p11-role-foot" style="color:rgba(219,204,215,.35);">Token: --deckle / #dbccd7 · Use: binary status · paired comparison · two-column divider · pip ✦ on Blue Black</div>
-      </div>
-    </div>
-
-    <div class="p11-role-card" style="border-color:rgba(213,233,219,.2);">
-      <div class="p11-role-accent" style="background:linear-gradient(90deg,#d5e9db,#edfff8,#d5e9db);animation:nacre-cosmic 18s ease-in-out infinite;background-size:300% 100%;"></div>
-      <div class="p11-role-body">
-        <div class="p11-role-n" style="color:rgba(213,233,219,.4);">--S-bridge · var(--willow) · #d5e9db</div>
-        <div class="p11-role-name">Bridge<em> — the mediating register</em></div>
-        <div class="p11-role-def">The crossing point. Willow is the only nacre that appears in all three ink registers — quiet on Grape, ambient on Cosmic, secondary on Blue Black. <strong>Always present, never primary, always connecting.</strong> The three-court architecture as colour: each jurisdiction covering what the others cannot reach.</div>
-        <div class="p11-role-foot" style="color:rgba(213,233,219,.35);">Token: --willow / #d5e9db · Use: cross-register transitions · connector text · linking element · secondary ◈ on Limo</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="ds-section-label">§ P.11.3 · grammar rules</div>
-  <div class="p11-rules">
-    <div class="p11-rule"><div class="p11-rule-bar" style="background:linear-gradient(90deg,#fefcfe,#c0acc1,#edffff);animation:nacre-grape 14s ease-in-out infinite;background-size:300% 100%;"></div><div class="p11-rule-inner"><div class="p11-rule-n">Rule I</div><div class="p11-rule-title">Nacre lights are <em>not grounds on dark inks</em></div><div class="p11-rule-body">On Cloud Dancer they are grounds. On the Mixed Inks they are luminous accents. <strong>Never use a nacre light as background-color on a dark ink.</strong></div><div class="p11-rule-note">✓ text · border · pip · glow &emsp; ✗ background-color on dark</div></div></div>
-    <div class="p11-rule"><div class="p11-rule-bar" style="background:linear-gradient(90deg,#edffff,#edfff8,#fefcfe);animation:nacre-cosmic 16s ease-in-out infinite;background-size:300% 100%;"></div><div class="p11-rule-inner"><div class="p11-rule-n">Rule II</div><div class="p11-rule-title">Follow the <em>ancestry pairing</em></div><div class="p11-rule-body">Each dark ink has a primary nacre whose ancestry aligns with the ink's hue. <strong>Grape → Pearl. Cosmic → Ice. Limo → Amber.</strong> Cross-pairing permitted for contrast.</div><div class="p11-rule-note">✦ Primary: follow ancestry &emsp; ◈ complement &emsp; · ambient only</div></div></div>
-    <div class="p11-rule"><div class="p11-rule-bar" style="background:linear-gradient(90deg,#ffe5d0,#d5e9db,#dbccd7);animation:nacre-limo 18s ease-in-out infinite;background-size:300% 100%;"></div><div class="p11-rule-inner"><div class="p11-rule-n">Rule III</div><div class="p11-rule-title">One ink per <em>section</em></div><div class="p11-rule-body">The three Mixed Inks are semantically distinct. <strong>Do not mix them within the same panel.</strong> Adjacent panels may use different inks.</div><div class="p11-rule-note">Adjacent sections: ✓ &emsp; Same panel background: ✗</div></div></div>
-    <div class="p11-rule"><div class="p11-rule-bar" style="background:linear-gradient(90deg,#fefcfe,#edffff,#ffe5d0);animation:nacre-grape 20s ease-in-out infinite;background-size:300% 100%;"></div><div class="p11-rule-inner"><div class="p11-rule-n">Rule IV</div><div class="p11-rule-title">Shimmer is a <em>::before convention</em></div><div class="p11-rule-body">Apply the CSS nacre shimmer to ::before pseudo-elements only. <strong>Radial gradient of primary nacre at opacity 0.05–0.12.</strong> Never on content.</div><div class="p11-rule-note">Duration: 18–26s · Ease-in-out · Opacity: 0.05–0.12 only</div></div></div>
-    <div class="p11-rule"><div class="p11-rule-bar" style="background:linear-gradient(90deg,#c0acc1,#fefcfe,#c0acc1);animation:nacre-limo 12s ease-in-out infinite;background-size:300% 100%;"></div><div class="p11-rule-inner"><div class="p11-rule-n">Rule V</div><div class="p11-rule-title">P.11 and the core grammar <em>are compatible</em></div><div class="p11-rule-body">Abalone is a <strong>themed layer over the existing system</strong>, not a replacement. Core semantic tokens still apply; nacre equivalents preferred within Abalone sections.</div><div class="p11-rule-note">Core in Abalone: ✓ permitted &emsp; Nacre equivalents: ✦ preferred</div></div></div>
-    <div class="p11-rule" style="background:rgba(192,172,193,.03);border-color:rgba(192,172,193,.18);"><div class="p11-rule-bar" style="background:linear-gradient(90deg,#fff6ff,#edfff8,#dbccd7,#d5e9db);background-size:300% 100%;"></div><div class="p11-rule-inner"><div class="p11-rule-n">Rule VI · Extended</div><div class="p11-rule-title">Four new roles map to <em>Abalone nacre</em></div><div class="p11-rule-body">Syzygy · Synthesis · Dyadic · Bridge <strong>are structural roles first described here</strong> but applicable corpus-wide where their conditions are met.</div><div class="p11-rule-note">--S-syzygy #fff6ff · --S-synthesis #edfff8 · --S-dyadic #dbccd7 · --S-bridge #d5e9db</div></div></div>
-  </div>
-
-  <div class="p11-axiom">
-    <div class="p11-axiom-ghost">the same light</div>
-    <div class="p11-axiom-text">"The same colour that is paper on Cloud Dancer becomes light on the dark ink. The hue does not change. The ground does."</div>
-    <div class="p11-axiom-attr">P.11 · Abalone &amp; Mixed Inks · v2.35 · CC0 · Meinhardt Initiative</div>
-  </div>
-
-</div>
-
-<!-- P.11 EXTENDED · dark paper grounds · matrix · full roles · semantic collation -->
-<div class="p11-extended">
-
-  <div class="p11-ext-eyebrow">P.11 Extended · Dark Paper Grounds · Iridescence Matrix · Semantic Nodes · v2.35</div>
-
-  <!-- §04b · DARK PAPER GROUNDS -->
-  <div class="ds-section-label">§ 04b · the paper layer extended — grape-black &amp; cosmic-black as grounds</div>
-  <div style="font-family:'EB Garamond',serif;font-size:13px;color:var(--parchment-dim);font-style:italic;line-height:1.75;max-width:640px;margin-bottom:16px;opacity:.8;">The paper layer's nine nacre grounds read downward: Cloud Dancer → Usquebaugh → Willow → Deckle → Deckle-dim. Below Deckle-dim sit the two dark grounds — Grape Black and Cosmic Black. On them, the same nacre tokens become luminous text rather than opaque paper. The ink/ground relationship inverts.</div>
-
-
- 
-   <div style="font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--parchment-faint);opacity:.55;margin-bottom:6px;">Nine Nacre Lights · on Grape Black · on Cosmic Black</div>
-<!--
-   <div class="dp-spectrum-strip">
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#fefcfe;display:block;box-shadow:0 0 8px rgba(254,252,254,.3);"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#fefcfe;display:block;box-shadow:0 0 6px rgba(254,252,254,.22);"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(254,252,254,.4);">laitance<br>pearl ✦✦</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#edffff;display:block;box-shadow:0 0 7px rgba(237,255,255,.25);"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#edffff;display:block;box-shadow:0 0 9px rgba(237,255,255,.35);"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(237,255,255,.4);">glaze<br>ice ✦◈</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#edfff8;display:block;"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#edfff8;display:block;box-shadow:0 0 7px rgba(237,255,248,.28);"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(237,255,248,.4);">aqua-vitae<br>mint ·✦</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#ffe5d0;display:block;"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#ffe5d0;display:block;"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(255,229,208,.4);">usquebaugh<br>amber ··</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#fff6ff;display:block;"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#fff6ff;display:block;"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(255,246,255,.35);">quire<br>syzygy ◈·</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#d5e9db;display:block;"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#d5e9db;display:block;"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(213,233,219,.4);">willow<br>bridge —◈</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#dbccd7;display:block;"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#dbccd7;display:block;"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(219,204,215,.4);">deckle<br>dyadic ◈·</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#c0acc1;display:block;box-shadow:0 0 7px rgba(192,172,193,.3);"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#c0acc1;display:block;"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(192,172,193,.4);">deckle-dim<br>orchid ✦·</div></div>
-    <div class="dp-spectrum-cell"><div class="dp-spectrum-chip" style="background:#12081a;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#f0eee8;display:block;"></span></div></div><div class="dp-spectrum-chip" style="background:#10101e;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;"><span style="width:18px;height:18px;border-radius:50%;background:#f0eee8;display:block;"></span></div></div><div class="dp-spectrum-label" style="background:var(--surface2);color:rgba(240,238,232,.35);">cloud-dancer<br>near text ·◈</div></div>
-  </div>
-
-<div style="font-size:7.5px;letter-spacing:.07em;color:var(--parchment-faint);opacity:.5;margin-bottom:20px;line-height:1.7;">✦ Primary pairing · ◈ Secondary · · Tertiary / ambient · — Not recommended on that ground. Top row: Grape Black. Bottom row: Cosmic Black.</div>
--->
-   
-  <div class="dark-paper-grid">
-
-    <div class="dp-col dp-grape">
-      <div class="dp-col-head"><div class="dp-col-dot"></div><div class="dp-col-label">Grape Black · #12081a · --ab-grape · --N-ink-grape</div><div class="dp-col-hex">~19.4:1 vs cloud-dancer</div></div>
-      <div class="dp-card dp-card-grape"><div class="bar-grape-nacre-anim"></div><div class="dp-card-inner" style="margin-top:12px;"><span class="dp-card-tag">Portal · Landmark · Primary register</span><div class="dp-card-title">Tairiscint <em>Mheinhardt</em></div><div class="dp-card-body">The primary formal instrument. On Grape Black: pearl text, orchid secondary. Portal ancestry in the ground; the same ancestry in deckle-dim at the other pole. The ink and the bedrock are related.</div><div class="dp-card-foot"><span style="color:var(--ab-pearl);">Pearl primary ✦</span>&emsp;<span style="color:var(--ab-orchid);">Orchid secondary ◈</span>&emsp;<span style="color:rgba(237,255,255,.45);">Ice tertiary ·</span></div></div></div>
-      <div class="dp-card dp-card-grape"><div class="bar-violet" style="animation:nacre-grape 18s ease-in-out infinite;"></div><div class="dp-card-inner" style="margin-top:12px;"><span class="dp-card-tag">Analytical · Epistemological register</span><div class="dp-card-title">What <em>We Know</em></div><div class="dp-card-body">The record as instrument. Grape Black draws the eye deepest — for material that must be understood as most formally significant. The quire ghost (S-syzygy) appears here as ambient text: barely visible, marking the alignment of three things at once.</div><div class="dp-card-foot"><span style="color:var(--ab-pearl);">laitance · pearl</span>&emsp;<span style="color:var(--ab-orchid);">deckle-dim · orchid</span>&emsp;<span style="color:rgba(255,246,255,.35);">quire · syzygy</span></div></div></div>
-      <div class="dp-type-stack">
-        <div style="font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(254,252,254,.3);margin-bottom:4px;">Typography hierarchy on Grape Black</div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#fefcfe;box-shadow:0 0 6px rgba(254,252,254,.3);"></div><div class="dp-type-role" style="color:rgba(254,252,254,.5);">H1 · display</div><div class="dp-type-sample" style="color:#fefcfe;animation:shimmer-text 5s ease-in-out infinite;">Laitance pearl</div><div class="dp-type-grade" style="color:rgba(254,252,254,.3);">✦ primary</div></div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#c0acc1;"></div><div class="dp-type-role" style="color:rgba(192,172,193,.5);">Body · prose</div><div class="dp-type-sample" style="color:#c0acc1;">Deckle-dim orchid</div><div class="dp-type-grade" style="color:rgba(192,172,193,.3);">◈ secondary</div></div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#edffff;box-shadow:0 0 5px rgba(237,255,255,.2);"></div><div class="dp-type-role" style="color:rgba(237,255,255,.45);">Accent · label</div><div class="dp-type-sample" style="color:#edffff;font-size:13px;">Glaze ice cyan</div><div class="dp-type-grade" style="color:rgba(237,255,255,.3);">· tertiary</div></div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#fff6ff;opacity:.5;"></div><div class="dp-type-role" style="color:rgba(255,246,255,.35);">Ambient · note</div><div class="dp-type-sample" style="color:#fff6ff;font-size:13px;opacity:.55;">Quire syzygy</div><div class="dp-type-grade" style="color:rgba(255,246,255,.25);">— whisper</div></div>
-      </div>
-      <div class="dp-contrast-bar"><span>N-ink-grape #12081a · grape-bg · portal ancestry</span><span>Pearl: ~18.8:1 · Orchid: ~11.2:1 · Ice: ~18.1:1</span></div>
-    </div>
-
-    <div class="dp-col dp-cosmic">
-      <div class="dp-col-head"><div class="dp-col-dot"></div><div class="dp-col-label">Cosmic Black · #10101e · --ab-cosmic · --N-ink-cosmic</div><div class="dp-col-hex">~18.9:1 vs cloud-dancer</div></div>
-      <div class="dp-card dp-card-cosmic"><div class="bar-cosmic-nacre-anim"></div><div class="dp-card-inner" style="margin-top:12px;"><span class="dp-card-tag">Analytical · Domain · O.R. register</span><div class="dp-card-title">Capital, Cogency, <em>Capaciousness</em></div><div class="dp-card-body">The O.R. domain register. On Cosmic Black: ice cyan primary, cool mint secondary — the blue ground amplifies both. The most analytical of the three inks. Where Grape Black draws inward, Cosmic Black opens outward.</div><div class="dp-card-foot"><span style="color:var(--ab-ice);">Ice primary ✦</span>&emsp;<span style="color:var(--ab-mint);">Mint secondary ◈</span>&emsp;<span style="color:rgba(254,252,254,.4);">Pearl tertiary ·</span></div></div></div>
-      <div class="dp-card dp-card-cosmic"><div class="bar-cosmic-nacre"></div><div class="dp-card-inner" style="margin-top:12px;"><span class="dp-card-tag">Diagnostic · Epistemic register</span><div class="dp-card-title">Epistemological <em>Audit</em></div><div class="dp-card-body">Claim vs demonstration. Cosmic Black for the analytical layer — the diagnosis that precedes the instrument. Aqua-vitae mint carries S-synthesis here: the composite finding, the thing that emerges once all three OI items close.</div><div class="dp-card-foot"><span style="color:var(--ab-ice);">glaze · ice</span>&emsp;<span style="color:var(--ab-mint);">aqua-vitae · synthesis</span>&emsp;<span style="color:rgba(213,233,219,.4);">willow · bridge</span></div></div></div>
-      <div class="dp-type-stack">
-        <div style="font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,255,255,.28);margin-bottom:4px;">Typography hierarchy on Cosmic Black</div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#edffff;box-shadow:0 0 6px rgba(237,255,255,.3);"></div><div class="dp-type-role" style="color:rgba(237,255,255,.5);">H1 · display</div><div class="dp-type-sample" style="color:#edffff;animation:shimmer-text 6s ease-in-out infinite;">Glaze ice cyan</div><div class="dp-type-grade" style="color:rgba(237,255,255,.3);">✦ primary</div></div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#edfff8;"></div><div class="dp-type-role" style="color:rgba(237,255,248,.45);">Body · prose</div><div class="dp-type-sample" style="color:#edfff8;">Aqua-vitae mint</div><div class="dp-type-grade" style="color:rgba(237,255,248,.3);">◈ secondary</div></div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#fefcfe;"></div><div class="dp-type-role" style="color:rgba(254,252,254,.4);">Accent · label</div><div class="dp-type-sample" style="color:#fefcfe;font-size:13px;">Laitance pearl</div><div class="dp-type-grade" style="color:rgba(254,252,254,.28);">· tertiary</div></div>
-        <div class="dp-type-row"><div class="dp-type-dot" style="background:#d5e9db;opacity:.55;"></div><div class="dp-type-role" style="color:rgba(213,233,219,.35);">Ambient · note</div><div class="dp-type-sample" style="color:#d5e9db;font-size:13px;opacity:.6;">Willow bridge</div><div class="dp-type-grade" style="color:rgba(213,233,219,.25);">— ambient</div></div>
-      </div>
-      <div class="dp-contrast-bar"><span>N-ink-cosmic #10101e · cosmic-bg · analytical ancestry</span><span>Ice: ~18.4:1 · Mint: ~17.8:1 · Pearl: ~18.9:1</span></div>
-    </div>
-
-  </div>
-
-  <div style="background:var(--AB-surface);border:1px solid var(--AB-rule-strong);border-radius:3px;padding:14px 18px;margin-bottom:28px;">
-    <div style="font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--parchment-faint);margin-bottom:8px;">The paper layer · full depth sequence · light → dark</div>
-    <div style="display:flex;gap:3px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-      <div style="width:18px;height:18px;border-radius:2px;background:#f0eee8;border:0.5px solid rgba(40,40,58,.15);flex-shrink:0;"></div><div style="width:5px;height:1px;background:rgba(200,180,230,.2);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#fefcfe;border:0.5px solid rgba(192,172,193,.2);flex-shrink:0;"></div><div style="width:5px;height:1px;background:rgba(200,180,230,.2);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#ffe5d0;flex-shrink:0;"></div><div style="width:5px;height:1px;background:rgba(200,180,230,.2);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#d5e9db;flex-shrink:0;"></div><div style="width:5px;height:1px;background:rgba(200,180,230,.2);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#dbccd7;flex-shrink:0;"></div><div style="width:5px;height:1px;background:rgba(200,180,230,.2);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#c0acc1;flex-shrink:0;"></div><div style="width:8px;height:1px;background:rgba(200,180,230,.35);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#10101e;box-shadow:0 0 6px rgba(237,255,255,.12);flex-shrink:0;"></div><div style="width:5px;height:1px;background:rgba(192,172,193,.2);"></div>
-      <div style="width:18px;height:18px;border-radius:2px;background:#12081a;box-shadow:0 0 6px rgba(254,252,254,.12);flex-shrink:0;"></div>
-    </div>
-    <div style="font-family:'EB Garamond',serif;font-size:12px;color:var(--parchment-dim);line-height:1.65;font-style:italic;">Cloud Dancer · Laitance · Usquebaugh · Willow · Deckle · Deckle-dim · <span style="color:rgba(237,255,255,.5);">Cosmic Black</span> · <span style="color:rgba(254,252,254,.5);">Grape Black</span> — eight light grounds receiving dark ink; two dark grounds emitting nacre light. The system is now closed in both directions.</div>
-  </div>
-
-  <!-- IRIDESCENCE MATRIX -->
-  <div class="ds-section-label">§ P.11.2 · iridescence matrix — all pairings graded</div>
-  <table class="p11-matrix">
-    <thead><tr><th>Nacre light</th><th>Grape Black #12081a</th><th>Cosmic Black #10101e</th><th>Blue Black #28283a</th></tr></thead>
-    <tbody>
-      <tr><td style="color:#fefcfe;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#fefcfe;margin-right:7px;vertical-align:middle;"></span>Laitance · Pearl</td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#fefcfe;">✦</div><div class="p11-mc-note" style="color:rgba(254,252,254,.4);">Primary · moonstone</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#fefcfe;">◈</div><div class="p11-mc-note" style="color:rgba(254,252,254,.35);">Steel cast</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#fefcfe;">·</div><div class="p11-mc-note" style="color:rgba(254,252,254,.35);">Near text</div></div></td></tr>
-      <tr><td style="color:#edffff;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#edffff;margin-right:7px;vertical-align:middle;"></span>Glaze · Ice Cyan</td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#edffff;">◈</div><div class="p11-mc-note" style="color:rgba(237,255,255,.35);">Electric</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#edffff;">✦</div><div class="p11-mc-note" style="color:rgba(237,255,255,.4);">Primary · amplified</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#edffff;">◈</div><div class="p11-mc-note" style="color:rgba(237,255,255,.35);">Cool on warm</div></div></td></tr>
-      <tr><td style="color:#edfff8;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#edfff8;margin-right:7px;vertical-align:middle;"></span>Aqua Vitae · Mint <span style="font-size:8px;opacity:.4;margin-left:4px;">S-synthesis</span></td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#edfff8;">·</div><div class="p11-mc-note" style="color:rgba(237,255,248,.35);">Quiet</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#edfff8;">✦</div><div class="p11-mc-note" style="color:rgba(237,255,248,.4);">Primary · teal shift</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#edfff8;">◈</div><div class="p11-mc-note" style="color:rgba(237,255,248,.35);">Organic bridge</div></div></td></tr>
-      <tr><td style="color:#ffe5d0;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#ffe5d0;margin-right:7px;vertical-align:middle;"></span>Usquebaugh · Amber</td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#ffe5d0;">·</div><div class="p11-mc-note" style="color:rgba(255,229,208,.35);">Odd complement</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#ffe5d0;">·</div><div class="p11-mc-note" style="color:rgba(255,229,208,.3);">Tension</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#ffe5d0;">✦</div><div class="p11-mc-note" style="color:rgba(255,229,208,.4);">Primary · warm fire</div></div></td></tr>
-      <tr><td style="color:#d5e9db;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#d5e9db;margin-right:7px;vertical-align:middle;"></span>Willow · Sage <span style="font-size:8px;opacity:.4;margin-left:4px;">S-bridge</span></td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#d5e9db;">—</div><div class="p11-mc-note" style="color:rgba(213,233,219,.3);">Clashes</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#d5e9db;">·</div><div class="p11-mc-note" style="color:rgba(213,233,219,.35);">Ambient</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#d5e9db;">✦</div><div class="p11-mc-note" style="color:rgba(213,233,219,.4);">Primary · quietest</div></div></td></tr>
-      <tr><td style="color:#c0acc1;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#c0acc1;margin-right:7px;vertical-align:middle;"></span>Deckle-dim · Orchid</td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#c0acc1;">✦</div><div class="p11-mc-note" style="color:rgba(192,172,193,.4);">Primary · deep lustre</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#c0acc1;">·</div><div class="p11-mc-note" style="color:rgba(192,172,193,.3);">Muted</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#c0acc1;">◈</div><div class="p11-mc-note" style="color:rgba(192,172,193,.35);">Warm mauve</div></div></td></tr>
-      <tr><td style="color:#dbccd7;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#dbccd7;margin-right:7px;vertical-align:middle;"></span>Deckle · Dusty Mauve <span style="font-size:8px;opacity:.4;margin-left:4px;">S-dyadic</span></td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#dbccd7;">◈</div><div class="p11-mc-note" style="color:rgba(219,204,215,.35);">Soft depth</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#dbccd7;">·</div><div class="p11-mc-note" style="color:rgba(219,204,215,.3);">Reads cool</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#dbccd7;">✦</div><div class="p11-mc-note" style="color:rgba(219,204,215,.4);">Primary · hue bridge</div></div></td></tr>
-      <tr><td style="color:#fff6ff;"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff6ff;border:0.5px solid rgba(200,180,230,.3);margin-right:7px;vertical-align:middle;"></span>Quire · Ghost Lav. <span style="font-size:8px;opacity:.4;margin-left:4px;">S-syzygy</span></td><td><div class="p11-mc" style="background:#12081a;"><div class="p11-mc-grade" style="color:#fff6ff;">◈</div><div class="p11-mc-note" style="color:rgba(255,246,255,.35);">Alignment whisper</div></div></td><td><div class="p11-mc" style="background:#10101e;"><div class="p11-mc-grade" style="color:#fff6ff;">·</div><div class="p11-mc-note" style="color:rgba(255,246,255,.3);">Near invisible</div></div></td><td><div class="p11-mc" style="background:#28283a;"><div class="p11-mc-grade" style="color:#fff6ff;">·</div><div class="p11-mc-note" style="color:rgba(255,246,255,.3);">Reads white</div></div></td></tr>
-    </tbody>
-  </table>
-  <div style="font-family:'EB Garamond',serif;font-size:11.5px;color:var(--parchment-faint);margin-bottom:28px;font-style:italic;opacity:.7;line-height:1.65;">✦ Primary — ancestry-aligned · ◈ Secondary — complement or contrast · · Tertiary — ambient use only · — Not recommended. S-role annotations indicate which cells carry extended semantic roles.</div>
-
-  <!-- CSS TOKEN ADDITIONS BLOCK -->
-  <div class="ds-section-label">§ P.11.5 · CSS variables · P.11 additions</div>
-  <div style="background:var(--AB-surface);border:1px solid var(--AB-rule-strong);border-left:3px solid var(--deckle-dim);border-radius:0 3px 3px 0;padding:18px 20px;margin-bottom:28px;">
-    <div style="font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(192,172,193,.4);margin-bottom:12px;">Add to :root · aliases only — no new hex values</div>
-    <pre style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--parchment-dim);line-height:1.75;overflow-x:auto;"><span style="color:rgba(192,172,193,.4);">/* P.11 · three dark grounds */</span>
---ab-grape:    #12081a;   <span style="color:rgba(192,172,193,.35);">/* = grape-bg  · Grape Black     */</span>
---ab-cosmic:   #10101e;   <span style="color:rgba(192,172,193,.35);">/* = cosmic-bg · Cosmic Black    */</span>
---ab-limo:     #28283a;   <span style="color:rgba(192,172,193,.35);">/* = stretch-limo · Blue Black   */</span>
-
-<span style="color:rgba(192,172,193,.4);">/* nine nacre aliases — same hex, dark-register semantic */</span>
---ab-pearl:    #fefcfe;   <span style="color:rgba(192,172,193,.35);">/* laitance   · Grape primary    */</span>
---ab-ice:      #edffff;   <span style="color:rgba(192,172,193,.35);">/* glaze      · Cosmic primary   */</span>
---ab-mint:     #edfff8;   <span style="color:rgba(192,172,193,.35);">/* aqua-vitae · Cosmic secondary */</span>
---ab-amber:    #ffe5d0;   <span style="color:rgba(192,172,193,.35);">/* usquebaugh · Limo primary     */</span>
---ab-sage:     #d5e9db;   <span style="color:rgba(192,172,193,.35);">/* willow     · Limo secondary   */</span>
---ab-orchid:   #c0acc1;   <span style="color:rgba(192,172,193,.35);">/* deckle-dim · Grape secondary  */</span>
---ab-mauve:    #dbccd7;   <span style="color:rgba(192,172,193,.35);">/* deckle     · Limo tertiary    */</span>
---ab-ghost:    #fff6ff;   <span style="color:rgba(192,172,193,.35);">/* quire      · ambient whisper  */</span>
---ab-cloud:    #f0eee8;   <span style="color:rgba(192,172,193,.35);">/* cloud-dancer                  */</span>
-
-<span style="color:rgba(192,172,193,.4);">/* four extended semantic roles */</span>
---S-syzygy:    var(--quire);       <span style="color:rgba(192,172,193,.35);">/* #fff6ff · alignment moment    */</span>
---S-synthesis: var(--aqua-vitae);  <span style="color:rgba(192,172,193,.35);">/* #edfff8 · composite whole     */</span>
---S-dyadic:    var(--deckle);      <span style="color:rgba(192,172,193,.35);">/* #dbccd7 · essential pair      */</span>
---S-bridge:    var(--willow);      <span style="color:rgba(192,172,193,.35);">/* #d5e9db · mediating register  */</span></pre>
-  </div>
-
-  <!-- SEMANTIC NODES COLLATION -->
-  <div class="ds-section-label">§ Semantic Nodes · full collation · v2.35 · 18 roles</div>
-  <div style="font-family:'EB Garamond',serif;font-size:13px;color:var(--parchment-dim);font-style:italic;line-height:1.75;max-width:660px;margin-bottom:18px;opacity:.8;">Every semantic role currently registered in the system. Dark grammar roles carry hue-coded meaning. Nacre roles carry structural conditions. The Abalone roles describe architectural states rather than document events.</div>
-  <div class="sn-grid">
-
-    <div class="sn-cell" style="border-color:rgba(56,200,184,.2);"><div class="sn-cell" style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#38c8b8;border-radius:0;padding:0;"></div><div class="sn-pip-row"><div class="sn-dot" style="background:#38c8b8;box-shadow:0 0 5px rgba(56,200,184,.4);"></div><div class="sn-token" style="color:#38c8b8;">--S-demonstrated</div></div><div class="sn-var">var(--rivulet) · #38c8b8</div><div class="sn-role">Status pips · confirmed sequences · chain complete · evidence in hand</div><div class="sn-note">Cogency register · [A] 14-4912 Rinsing Rivulet</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(212,192,106,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#d4c06a;"></div><div class="sn-token" style="color:#d4c06a;">--S-structure</div></div><div class="sn-var">var(--citron) · #d4c06a</div><div class="sn-role">Section eyebrows · structural labels · prompt-line carets</div><div class="sn-note">Structure register only · [A] 14-0827 Dusky Citron</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(240,160,80,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#f0a050;box-shadow:0 0 5px rgba(240,160,80,.4);"></div><div class="sn-token" style="color:#f0a050;">--S-needs</div></div><div class="sn-var">var(--sandstone-lt) · #f0a050</div><div class="sn-role">Needs-derivation pips · pending-action bars · civic signal awaiting uptake</div><div class="sn-note">Cogency register · claim present, derivation incomplete · [B] 15-1340</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(200,37,58,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#e84060;box-shadow:0 0 5px rgba(232,64,96,.5);"></div><div class="sn-token" style="color:#e84060;">--S-blocking</div></div><div class="sn-var">var(--scarlet) · #c8253a / #e84060</div><div class="sn-role">Warn boxes · gap pips · blocking tasks · do not transmit</div><div class="sn-note">-lt for text · base for chip fills · [C] 19-1558 Scarlet Smile</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(184,120,152,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#b87898;"></div><div class="sn-token" style="color:#b87898;">--S-narrative</div></div><div class="sn-var">var(--bordeaux) · #b87898</div><div class="sn-role">Axiom quote bar · rhetorical accents · humanistic register · h1 italic</div><div class="sn-note">Capaciousness register · [C] 17-1710 Bordeaux</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(90,176,200,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#5ab0c8;"></div><div class="sn-token" style="color:#5ab0c8;">--S-legal</div></div><div class="sn-var">var(--dragonfly) · #5ab0c8</div><div class="sn-role">Glossary term column · legal-repo bars · non-blocking tasks · reference nodes</div><div class="sn-note">Capital register · [C] 19-4826 Dragonfly</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(152,152,200,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#9898c8;"></div><div class="sn-token" style="color:#9898c8;">--S-analytical</div></div><div class="sn-var">var(--cosmic) · #9898c8</div><div class="sn-role">Section numbers · alert strip · OWL-layer doctrine nodes</div><div class="sn-note">Analytical register · [A] 15-3909 Cosmic Sky</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(200,191,168,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#c8bfa8;"></div><div class="sn-token" style="color:#c8bfa8;">--S-neutral</div></div><div class="sn-var">var(--satin) · #c8bfa8</div><div class="sn-role">System controls · neutral UI elements · steady-state markers</div><div class="sn-note">Neutral register · [C] 20-0020 TPM Satin Slipper</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(155,88,200,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#9b58c8;box-shadow:0 0 5px rgba(155,88,200,.4);"></div><div class="sn-token" style="color:#9b58c8;">--S-portal</div></div><div class="sn-var">var(--grape-lt) · #9b58c8</div><div class="sn-role">Drive portal sections · Redundancy Awareness blocks · landmark identity</div><div class="sn-note">Portal register · [C] 20-0070 TPM Grape Frost</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(200,196,184,.15);"><div class="sn-pip-row"><div class="sn-dot" style="background:#f0eee8;border:1px solid rgba(200,196,184,.3);"></div><div class="sn-token" style="color:#c8c4b8;">--S-ambient</div></div><div class="sn-var">var(--cloud-dancer) · #f0eee8</div><div class="sn-role">Negative space · print-facing surfaces · Nacre document ground</div><div class="sn-note">Capaciousness register · [A&amp;B] 11-4201 Cloud Dancer</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(60,90,154,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#3c5a9a;box-shadow:0 0 5px rgba(60,90,154,.4);"></div><div class="sn-token" style="color:#6080c8;">--S-domain</div></div><div class="sn-var">var(--regatta) · #3c5a9a / #6080c8</div><div class="sn-role">O.R. domain anchor · institutional weight bar · Capital register insets</div><div class="sn-note">Capital register · [A] 18-4039 Regatta</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(160,176,160,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#a0b0a0;"></div><div class="sn-token" style="color:#a0b0a0;">--S-earth</div></div><div class="sn-var">var(--aqua-gray) · #a0b0a0</div><div class="sn-role">Ambient analytical surfaces · neutral bridge between warm and cool</div><div class="sn-note">Earth register · [A] 15-5205 Aqua Gray</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(192,172,193,.2);"><div class="sn-pip-row"><div class="sn-dot" style="background:#fefcfe;border:1px solid rgba(192,172,193,.4);"></div><div class="sn-token" style="color:var(--deckle-dim);">--S-resolved</div></div><div class="sn-var">var(--laitance) · #fefcfe</div><div class="sn-role">Proposition discharged · QED rendered · the struck point · latent field</div><div class="sn-note">Porcelain · dist 29.3 · R=B over G · Nacre · v2.31</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(82,93,82,.3);"><div class="sn-pip-row"><div class="sn-dot" style="background:#525d52;"></div><div class="sn-token" style="color:#a0aa9e;">--S-perplexity</div></div><div class="sn-var">var(--perplexity) · #525d52</div><div class="sn-role">Uncertainty without blockage · the condition of not yet knowing</div><div class="sn-note">Distinct from blocking (scarlet) and needs (sandstone) · v2.35</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(255,246,255,.15);background:rgba(255,246,255,.02);"><div class="sn-pip-row"><div class="sn-dot" style="background:#fff6ff;opacity:.7;"></div><div class="sn-token" style="color:rgba(255,246,255,.6);">--S-syzygy</div></div><div class="sn-var">var(--quire) · #fff6ff · Nacre</div><div class="sn-role">Three-body alignment · convergence whisper · the moment all lines meet</div><div class="sn-note">Ambient on all three dark inks · never pip fill · P.11 · v2.35</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(237,255,248,.15);background:rgba(237,255,248,.02);"><div class="sn-pip-row"><div class="sn-dot" style="background:#edfff8;"></div><div class="sn-token" style="color:rgba(237,255,248,.65);">--S-synthesis</div></div><div class="sn-var">var(--aqua-vitae) · #edfff8 · Nacre</div><div class="sn-role">The composite whole · what emerges from parts · issued determination</div><div class="sn-note">Primary ✦ on Cosmic Black · Cosmic secondary on Limo · P.11 · v2.35</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(219,204,215,.15);background:rgba(219,204,215,.02);"><div class="sn-pip-row"><div class="sn-dot" style="background:#dbccd7;"></div><div class="sn-token" style="color:rgba(219,204,215,.65);">--S-dyadic</div></div><div class="sn-var">var(--deckle) · #dbccd7 · Nacre</div><div class="sn-role">The essential pair · two-element structure · the hinge between opposites</div><div class="sn-note">Primary ✦ on Blue Black · secondary on Grape · P.11 · v2.35</div></div>
-
-    <div class="sn-cell" style="border-color:rgba(213,233,219,.15);background:rgba(213,233,219,.02);"><div class="sn-pip-row"><div class="sn-dot" style="background:#d5e9db;"></div><div class="sn-token" style="color:rgba(213,233,219,.65);">--S-bridge</div></div><div class="sn-var">var(--willow) · #d5e9db · Nacre</div><div class="sn-role">The mediating register · always present, never primary · cross-register connector</div><div class="sn-note">Secondary ◈ on Limo · ambient on Cosmic · not Grape · P.11 · v2.35</div></div>
-
-  </div>
-
-  <div style="background:var(--AB-surface);border:1px solid var(--AB-rule-strong);border-radius:3px;padding:14px 18px;">
-    <div style="font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--parchment-faint);margin-bottom:8px;">Semantic node summary · v2.35</div>
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--parchment-dim);line-height:1.9;">
-      Dark grammar (14 roles): demonstrated · structure · needs · blocking · narrative · legal · analytical · neutral · portal · ambient · domain · earth · resolved · perplexity<br>
-      Nacre / Abalone (4 roles): syzygy · synthesis · dyadic · bridge<br>
-      Total: <strong style="color:var(--parchment);">18 semantic roles</strong> · 22 named dark tokens · 8 nacre grounds · 3 augmented inks
-    </div>
-  </div>
-
-</div>
 
 <!-- FOOTER -->
 <footer style="padding:40px 0 0;border-top:1px solid var(--rule);margin-top:56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
   <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--parchment-dim);line-height:1.9;">
-    Meinhardt Initiative · Colour Grammar · v2.35 Master · Merged<br>
-    Dark grammar: Pantone [A] 2026 Forecast · [B] Comfort Zone · [C] Glamour &amp; Gleam<br>
-    New: Perplexity (--S-perplexity) · Sandstone (--S-needs) · Mint Coffee (pending)<br>
-    Nacre layer: Cloud Dancer ground · Stretch Limo ink · P.07–P.11 · Abalone &amp; Mixed Inks<br>
-    O.R. conspectus: Capital · Cogency · Capaciousness<br>
+    Meinhardt Initiative · Colour Grammar · v2.4 Master<br>
+    Dark grammar: Pantone [A] 2026 Forecast · [B] Comfort Zone · [C] Glamor &amp; Gleam<br>
+    New: Sandstone (--S-needs) · Mint Coffee (pending) · Abalone (--S-liminal · v2.4)<br>
+    Nacre layer: Cloud Dancer ground · Stretch Limo ink · P.07–P.11<br>
+    O.R. conspectus: Capital · Cogency · Capaciousness · Cacclin 2012<br>
     <a href="https://dr-crunch.github.io" style="color:var(--parchment-dim);text-decoration:none;">dr-crunch.github.io</a>
   </div>
   <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(158,152,135,.35);text-align:right;letter-spacing:.1em;text-transform:uppercase;line-height:1.9;">
